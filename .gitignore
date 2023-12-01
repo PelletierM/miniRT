@@ -2,3 +2,7 @@
 *.swp
 *.swo
 DS_Store
+miniRT
+lib/MLX42
+*.a
+test/test_parsing

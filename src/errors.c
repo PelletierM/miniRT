@@ -6,13 +6,13 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:45:11 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/01 11:13:32 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:51:56 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int mrt_error_message(int error)
+int mrt_error_message(int error, int line)
 {
 	write(2, "Error\n", 6); 
 	if (error == ERR_ARGC)
@@ -21,5 +21,7 @@ int mrt_error_message(int error)
 		write(2, "Invalid file format\n", 20);
 	if (error == ERR_NO_FILE)
 		write(2, "File does not exist\n", 20);
+	if (error == ERR_LINE_FORMAT)
+		ft_dprintf(2, "Invalid line format (%d)\n", line);
 	return (1);
 }

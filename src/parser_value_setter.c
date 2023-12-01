@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser_value_setter.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
+/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/01 12:48:41 by eguefif          ###   ########.fr       */
+/*   Created: 2023/12/01 12:39:29 by eguefif           #+#    #+#             */
+/*   Updated: 2023/12/01 14:19:26 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	main(int argc, char *argv[])
+int	set_values(char *line, t_data *data)
 {
-	t_data	data;
-	if (mrt_check_argv(argc, argv))
-		return (1);
-	if (mrt_parser(argv[1], &data))
-		return (1);
+	if (!ft_strncmp(line, "A", 1))
+	{
+		return (set_ambient(line, data));
+	}
 	return (0);
 }
