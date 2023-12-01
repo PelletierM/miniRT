@@ -77,6 +77,12 @@ glfw:
 		brew install glfw; \
 	fi
 
+test:
+	make -C ./test/
+	@cd test ; \
+		bash ./test_parsing.sh ; \
+		cd ..
+
 clean:
 	make -C $(LIBFT_DIR) clean
 	rm -rf $(LIB_DIR)/MLX42
@@ -89,4 +95,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: dependencies dep_msg brew 42homebrew cmake glfw clean fclean re
+.PHONY: dependencies dep_msg brew 42homebrew cmake glfw clean fclean re test
