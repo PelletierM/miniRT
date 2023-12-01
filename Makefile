@@ -8,7 +8,7 @@ LIBFT_DIR = $(LIB_DIR)/libft
 MLX42 = libmlx42.a
 MLX42_DIR = $(LIB_DIR)/MLX42/build
 
-IDIR = includes
+IDIR = include
 
 SRCDIR = ./src
 SRC = 
