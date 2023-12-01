@@ -6,3 +6,5 @@ miniRT
 lib/MLX42
 *.a
 test/test_parsing
+include/MLX42.h
+include/libft.h
