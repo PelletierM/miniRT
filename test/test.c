@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
+/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/01 12:48:41 by eguefif          ###   ########.fr       */
+/*   Created: 2023/12/01 09:58:09 by eguefif           #+#    #+#             */
+/*   Updated: 2023/12/01 09:59:01 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	main(int argc, char *argv[])
+int	main(int argc, char **argv)
 {
-	t_data	data;
-	if (mrt_check_argv(argc, argv))
+	
+	if (argc != 2)
 		return (1);
-	if (mrt_parser(argv[1], &data))
-		return (1);
-	return (0);
+
 }

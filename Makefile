@@ -11,7 +11,9 @@ MLX42_DIR = $(LIB_DIR)/MLX42/build
 IDIR = include
 
 SRCDIR = ./src
-SRC = 
+SRC = main.c parser.c parser_check.c parser_checker_line.c parser_value_setter.c \
+	  errors.c parser_utils.c parser_ambient.c color.c
+
 SRC_BONUS = 
 
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
@@ -31,11 +33,11 @@ bonus: $(LIB_DIR)/$(MLX42) $(LIB_DIR)/$(LIBFT) $(SRCS_BONUS)
 $(LIB_DIR)/$(LIBFT):
 	make -C $(LIBFT_DIR)
 	cp $(LIBFT_DIR)/$(LIBFT) $(LIB_DIR)/$(LIBFT)
-	cp $(LIBFT_DIR)/$(patsubst %.a,%.h,$(LIBFT)) $(IDIR)/$(patsubst %.a,%.h,$(LIBFT))
+	cp $(LIBFT_DIR)/includes/$(patsubst %.a,%.h,$(LIBFT)) $(IDIR)/$(patsubst %.a,%.h,$(LIBFT))
 
 $(LIB_DIR)/$(MLX42):
 	@$(MAKE) dependencies
-	@cd libs; \
+	@cd $(LIB_DIR); \
 	if [ ! -d "MLX42" ] ; then \
 		echo "git clone https://github.com/PelletierM/MLX42.git"; \
 		git clone https://github.com/PelletierM/MLX42.git; \
@@ -47,7 +49,7 @@ $(LIB_DIR)/$(MLX42):
 	cmake --build build -j4; \
 	cd ../..; \
 	cp $(MLX42_DIR)/$(MLX42) $(LIB_DIR)/$(MLX42)
-	cp ./libs/MLX42/include/MLX42/MLX42.h $(IDIR)/MLX42.h
+	cp $(LIB_DIR)/MLX42/include/MLX42/MLX42.h $(IDIR)/MLX42.h
 
 dependencies: dep_msg brew cmake glfw
 

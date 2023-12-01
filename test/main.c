@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_check.c                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 10:40:42 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/01 14:17:46 by eguefif          ###   ########.fr       */
+/*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
+/*   Updated: 2023/12/01 14:29:32 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	mrt_check_argv(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	int	len;
-	int	fd;
-
-	if (argc != 2)
-		return (mrt_error_message(ERR_ARGC, 0));
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-	{
-		close(fd);
-		return (mrt_error_message(ERR_NO_FILE, 0));
-	}
-	close(fd);
-	len = ft_strlen(argv[1]);
-	if (!(len > 3 && ft_strcmp(&argv[1][len - 4], ".rt")))
-		return (mrt_error_message(ERR_FILE_FORMAT, 0));
+	t_data	data;
+	if (mrt_check_argv(argc, argv))
+		return (1);
+	if (mrt_parser(argv[1], &data))
+		return (1);
+	if (data.ambient.ratio)
+		ft_printf("A %f %d,%d,%d\n", data.ambient.ratio, get_red(data.ambient.color), get_green(data.ambient.color), get_blue(data.ambient.color));
 	return (0);
 }
