@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 17:07:49 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:13:08 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,7 @@ int				mrt_error_message(int error, int line);
 void			ft_fill_bg(t_data *data);
 void			ft_put_pixel(t_data *data, double x,
 					double y, unsigned int color);
+
+void			render(void *param);
 
 #endif

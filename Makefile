@@ -16,7 +16,7 @@ SRCDIR = ./src
 SRC = main.c parser.c parser_check.c parser_checker_line.c parser_value_setter.c \
 	  errors.c parser_utils.c parser_ambient.c color.c parser_camera.c \
 	  parser_light.c parser_sphere.c parser_plane.c parser_cylinder.c init.c parser_value_checker.c \
-	  parser_value_checker2.c parser_utils2.c graphics.c
+	  parser_value_checker2.c parser_utils2.c graphics.c mrt_renderer.c
 
 
 SRC_BONUS = 
