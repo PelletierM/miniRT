@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/04 16:04:28 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 16:18:05 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int argc, char *argv[])
 		printf("position: %f %f %f, ratio %f, color: %f,%f,%f\n", data.light.position.x, data.light.position.y, data.light.position.z, data.light.ratio,
 				data.light.color.x, data.light.color.y, data.light.color.z);
 
+	printf("Spheres\n");
 	while (i < data.num_spheres)
 	{
 		printf("position %f %f %f, color: %f,%f,%f diameter: %f\n", data.spheres[i].position.x, data.spheres[i].position.y, data.spheres[i].position.z, 
@@ -37,6 +38,7 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	i = 0;
+	printf("Cylinders\n");
 	while (i < data.num_cylinders)
 	{
 		printf("position %f %f %f, vector normalized: %f,%f,%f diameter: %f, height: %f, color: %f %f %f\n",
@@ -46,7 +48,8 @@ int	main(int argc, char *argv[])
 				data.cylinders[i].color.x, data.cylinders[i].color.y, data.cylinders[i].color.z);
 		i++;
 	}
-
+	i = 0;
+	printf("Planes\n");
 	while (i < data.num_planes)
 	{
 		printf("position %f %f %f, orientation: %f,%f,%f color: %f %f %f\n",
