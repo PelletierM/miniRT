@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
+/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:00:57 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 11:27:40 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 13:08:27 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-
-int		get_ratio(char *line, double *ratio)
+int	get_ratio(char *line, double *ratio)
 {
 	double	value;
 
@@ -33,7 +32,7 @@ double	get_double(char *line)
 	double	retval;
 	int		div;
 	double	neg;
-	
+
 	neg = 1;
 	if (*line == '-')
 		neg = -1;

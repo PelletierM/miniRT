@@ -14,7 +14,8 @@ IDIR = include
 
 SRCDIR = ./src
 SRC = main.c parser.c parser_check.c parser_checker_line.c parser_value_setter.c \
-	  errors.c parser_utils.c parser_ambient.c color.c parser_camera.c
+	  errors.c parser_utils.c parser_ambient.c color.c parser_camera.c \
+	  parser_light.c parser_sphere.c parser_plane.c parser_cylinder.c init.c
 
 SRC_BONUS = 
 

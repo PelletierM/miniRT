@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_camera.c                                    :+:      :+:    :+:   */
+/*   parser_plane.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 11:08:08 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 11:38:36 by maxpelle         ###   ########.fr       */
+/*   Created: 2023/12/04 12:51:30 by maxpelle          #+#    #+#             */
+/*   Updated: 2023/12/04 13:01:26 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	set_camera(char *line, t_data *data)
+// coord - coord - coord
+int	set_plane(char *line, t_data *data, int num)
 {
-	line++;
+	line += 2;
 	if (*line != ' ')
 		return (1);
 	line = skip_spaces(line);
 	if (!*line)
 		return (1);
-	if (get_coord(line, &data->camera.position))
+	if (get_coord(line, &data->planes[num].position))
 		return (1);
 	line = skip_coord(line);
 	line = skip_spaces(line);
 	if (!*line)
 		return (1);
-	if (get_coord(line, &data->camera.orientation))
+	if (get_coord(line, &data->planes[num].orientation))
 		return (1);
 	line = skip_coord(line);
 	line = skip_spaces(line);
-	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
+	if (!*line)
 		return (1);
-	data->camera.fov = get_double(line);
-	line = skip_double(line);
+	if (get_coord(line, &data->planes[num].color))
+		return (1);
+	line = skip_coord(line);
 	line = skip_spaces(line);
 	if (*line != '\n')
 		return (1);

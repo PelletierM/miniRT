@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_camera.c                                    :+:      :+:    :+:   */
+/*   parser_light.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 11:08:08 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 11:38:36 by maxpelle         ###   ########.fr       */
+/*   Created: 2023/12/04 11:32:19 by maxpelle          #+#    #+#             */
+/*   Updated: 2023/12/04 12:32:37 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	set_camera(char *line, t_data *data)
+// coord - ratio - coord
+int	set_light(char *line, t_data *data)
 {
 	line++;
 	if (*line != ' ')
@@ -20,20 +21,20 @@ int	set_camera(char *line, t_data *data)
 	line = skip_spaces(line);
 	if (!*line)
 		return (1);
-	if (get_coord(line, &data->camera.position))
+	if (get_coord(line, &data->light.position))
 		return (1);
 	line = skip_coord(line);
 	line = skip_spaces(line);
 	if (!*line)
 		return (1);
-	if (get_coord(line, &data->camera.orientation))
-		return (1);
-	line = skip_coord(line);
-	line = skip_spaces(line);
 	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
 		return (1);
-	data->camera.fov = get_double(line);
+	data->light.ratio = get_double(line);
 	line = skip_double(line);
+	line = skip_spaces(line);
+	if (get_coord(line, &data->light.color))
+		return (1);
+	line = skip_coord(line);
 	line = skip_spaces(line);
 	if (*line != '\n')
 		return (1);

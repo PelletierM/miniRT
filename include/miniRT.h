@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
+/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 11:27:41 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 13:08:59 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,30 @@ typedef struct s_data
 	t_camera	camera;
 	t_light		light;
 	t_sphere	spheres[MAX_FIGURE];
+	int			num_spheres;
 	t_plane		planes[MAX_FIGURE];
+	int			num_planes;
 	t_cylinder	cylinders[MAX_FIGURE];
+	int			num_cylinders;
 }				t_data;
 
 int				mrt_parser(char *file, t_data *data);
 int				mrt_check_argv(int argc, char **argv);
+void			mrt_init_data(t_data *data);
 int				set_values(char *line, t_data *data);
 int				check_line(char *line);
 char			*skip_spaces(char *line);
 char			*skip_double(char *line);
 char			*skip_digits(char *line);
 char			*skip_coord(char *line);
+
 int				set_ambient(char *line, t_data *data);
 int				set_camera(char *line, t_data *data);
+int				set_light(char *line, t_data *data);
+int				set_sphere(char *line, t_data *data, int num);
+int				set_plane(char *line, t_data *data, int num);
+int				set_cylinder(char *line, t_data *data, int num);
+
 int				get_ratio(char *line, double *ratio);
 int				get_coord(char *line, t_vector *vector);
 double			get_double(char *line);
@@ -103,6 +113,6 @@ int				get_red(unsigned int color);
 int				get_green(unsigned int color);
 int				get_blue(unsigned int color);
 
-int 			mrt_error_message(int error, int line);
+int				mrt_error_message(int error, int line);
 
 #endif

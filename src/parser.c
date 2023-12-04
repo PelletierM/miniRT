@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
+/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:52:51 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 09:50:23 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 13:07:24 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void 	init_values(t_data *data);
+void	init_values(t_data *data);
 int		get_data(char *file, t_data *data);
 int		parse_line(char *line, t_data *data);
 int		check_data(t_data *data);
@@ -23,7 +23,7 @@ int	mrt_parser(char *file, t_data *data)
 	return (get_data(file, data));
 }
 
-void init_values(t_data *data)
+void	init_values(t_data *data)
 {
 	data->ambient.ratio = 0;
 	data->camera.fov = 0;
@@ -72,7 +72,7 @@ int	parse_line(char *line, t_data *data)
 	return (0);
 }
 
-int		check_data(t_data *data)
+int	check_data(t_data *data)
 {
 	(void) data;
 	return (0);

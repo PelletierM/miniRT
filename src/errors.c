@@ -6,13 +6,13 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:45:11 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/04 09:00:43 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 13:04:21 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int mrt_error_message(int error, int line)
+int	mrt_error_message(int error, int line)
 {
 	write(2, "Error\n", 6); 
 	if (error == ERR_ARGC)

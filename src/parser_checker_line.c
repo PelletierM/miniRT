@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_checker_line.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
+/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:33:08 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/01 14:19:27 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 13:04:51 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		check_characters(char *line);
 char	*is_valid_identifier(char *line);
 
-int		check_line(char *line)
+int	check_line(char *line)
 {
 	if (check_characters(line))
 		return (1);
@@ -47,12 +47,11 @@ char	*is_valid_identifier(char *line)
 	if (line[i] == 'A' || line[i] == 'C' || line[i] == 'L')
 		line++;
 	else if (ft_strncmp(&line[i], "sp", 2)
-			|| !ft_strncmp(&line[i], "cy", 2)
-			|| !ft_strncmp(&line[i], "pl", 2))
+		|| !ft_strncmp(&line[i], "cy", 2)
+		|| !ft_strncmp(&line[i], "pl", 2))
 		line += 2;
 	else
 		return (0);
 	line = skip_spaces(line);
 	return (line);
 }
-
