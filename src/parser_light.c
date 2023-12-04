@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:32:19 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/04 12:32:37 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:49:16 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 // coord - ratio - coord
 int	set_light(char *line, t_data *data)
 {
+	if (data->flag &4)
+		return (4);
 	line++;
 	if (*line != ' ')
 		return (1);
@@ -38,5 +40,6 @@ int	set_light(char *line, t_data *data)
 	line = skip_spaces(line);
 	if (*line != '\n')
 		return (1);
+	data->flag += 4;
 	return (0);
 }

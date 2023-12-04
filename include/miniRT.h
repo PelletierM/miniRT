@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 13:49:30 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 13:53:01 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_data
 	t_ambient	ambient;
 	t_camera	camera;
 	t_light		light;
+	char		flag;
 	t_sphere	spheres[MAX_FIGURE];
 	int			num_spheres;
 	t_plane		planes[MAX_FIGURE];
