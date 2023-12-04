@@ -85,6 +85,11 @@ test:
 		bash ./test_parsing.sh ; \
 		cd ..
 
+render:
+	make
+	./miniRT map.rt
+
+
 clean:
 	make -C $(LIBFT_DIR) clean
 	rm -rf $(LIB_DIR)/MLX42
