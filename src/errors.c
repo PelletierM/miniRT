@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:45:11 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/04 13:04:21 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:46:27 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ int	mrt_error_message(int error, int line)
 		write(2, "File does not exist\n", 20);
 	if (error == ERR_LINE_FORMAT)
 		ft_dprintf(2, "Invalid line format (%d)\n", line);
+	if (error == ERR_MLX_INIT)
+		ft_dprintf(2, "Could not initiate MLX image\n");
 	return (1);
 }

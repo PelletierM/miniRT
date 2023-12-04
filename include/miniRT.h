@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 16:21:20 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 17:07:49 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,20 @@
 
 # include "libft.h"
 # include "MLX42.h"
-# define VALID_CHARS "+-., 0123456789\n"
+
+# define WIN_HEIGHT 1080
+# define WIN_WIDTH 1920
+# define BG_COLOR 0x000000FF
+
 # define MAX_LINES 1024
 # define MAX_FIGURE 256
+
+# define VALID_CHARS "+-., 0123456789\n"
 # define ERR_ARGC 0
 # define ERR_FILE_FORMAT 1
 # define ERR_NO_FILE 2
 # define ERR_LINE_FORMAT 3
+# define ERR_MLX_INIT 4
 
 typedef struct s_vector
 {
@@ -85,6 +92,8 @@ typedef struct s_data
 	int			num_planes;
 	t_cylinder	cylinders[MAX_FIGURE];
 	int			num_cylinders;
+	mlx_image_t	*img;
+	mlx_t		*mlx;
 }				t_data;
 
 int				mrt_parser(char *file, t_data *data);
@@ -120,5 +129,9 @@ int				get_green(unsigned int color);
 int				get_blue(unsigned int color);
 
 int				mrt_error_message(int error, int line);
+
+void			ft_fill_bg(t_data *data);
+void			ft_put_pixel(t_data *data, double x,
+					double y, unsigned int color);
 
 #endif
