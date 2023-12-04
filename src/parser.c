@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:52:51 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 14:18:36 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 14:24:50 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	get_data(char *file, t_data *data)
 		free(line);
 		if (retval)
 		{
-			mrt_error_message(ERR_LINE_FORMAT, i);
+			mrt_error_message(ERR_LINE_FORMAT, i + 1);
 			break ;
 		}
 		line = get_next_line(fd);
