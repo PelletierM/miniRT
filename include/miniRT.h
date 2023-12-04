@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 13:08:59 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:49:30 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ char			*skip_spaces(char *line);
 char			*skip_double(char *line);
 char			*skip_digits(char *line);
 char			*skip_coord(char *line);
+int				check_data(t_data data);
 
 int				set_ambient(char *line, t_data *data);
 int				set_camera(char *line, t_data *data);
