@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:56:52 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 13:49:07 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:22:41 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	set_ambient(char *line, t_data *data)
 {
-	if (data->flag &1)
+	if (data->flag & 1)
 		return (1);
 	line++;
 	if (*line != ' ')
