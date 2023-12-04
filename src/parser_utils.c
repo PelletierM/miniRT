@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:00:57 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 14:33:13 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 14:50:01 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ int	get_coord(char *line, t_vector *vector)
 		if (!ft_isdigit(*line) && *line != '-' && *line != '+')
 			return (1);
 		v[i] = get_double(line);
-		if (v[i] < 0 || v[i] > 255)
-			return (1);
 		if (*line == '+')
 			line++;
 		line = skip_double(line);
