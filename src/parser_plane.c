@@ -6,14 +6,15 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:51:30 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/04 13:01:26 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/04 15:55:11 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-// coord - coord - coord
-int	set_plane(char *line, t_data *data, int num)
+int	set_plane_2(char *line, t_data *data);
+
+int	set_plane(char *line, t_data *data)
 {
 	line += 2;
 	if (*line != ' ')
@@ -21,23 +22,29 @@ int	set_plane(char *line, t_data *data, int num)
 	line = skip_spaces(line);
 	if (!*line)
 		return (1);
-	if (get_coord(line, &data->planes[num].position))
+	if (get_coord(line, &data->planes[data->num_planes].position))
 		return (1);
 	line = skip_coord(line);
 	line = skip_spaces(line);
 	if (!*line)
 		return (1);
-	if (get_coord(line, &data->planes[num].orientation))
+	if (get_coord(line, &data->planes[data->num_planes].orientation))
 		return (1);
+	return (set_plane_2(line, data));
+}
+
+int	set_plane_2(char *line, t_data *data)
+{
 	line = skip_coord(line);
 	line = skip_spaces(line);
 	if (!*line)
 		return (1);
-	if (get_coord(line, &data->planes[num].color))
+	if (get_coord(line, &data->planes[data->num_planes].color))
 		return (1);
 	line = skip_coord(line);
 	line = skip_spaces(line);
 	if (*line != '\n')
 		return (1);
+	data->num_planes++;
 	return (0);
 }

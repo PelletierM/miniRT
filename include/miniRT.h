@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 15:02:20 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 15:45:36 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,9 @@ int				check_normalized_vector(t_vector vector);
 int				set_ambient(char *line, t_data *data);
 int				set_camera(char *line, t_data *data);
 int				set_light(char *line, t_data *data);
-int				set_sphere(char *line, t_data *data, int num);
-int				set_plane(char *line, t_data *data, int num);
-int				set_cylinder(char *line, t_data *data, int num);
+int				set_sphere(char *line, t_data *data);
+int				set_plane(char *line, t_data *data);
+int				set_cylinder(char *line, t_data *data);
 
 int				get_ratio(char *line, double *ratio);
 int				get_coord(char *line, t_vector *vector);
