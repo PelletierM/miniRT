@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/01 14:19:28 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 11:27:41 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,35 +33,35 @@ typedef struct s_vector
 typedef struct s_ambient
 {
 	double			ratio;
-	unsigned int	color;
+	t_vector		color;
 }			t_ambient;
 
 typedef struct s_camera
 {
 	t_vector	position;
 	t_vector	orientation;
-	int			fov;
+	double		fov;
 }				t_camera;
 
 typedef struct s_light
 {
 	t_vector		position;
 	double			ratio;
-	unsigned int	color;
+	t_vector		color;
 }				t_light;
 
 typedef struct s_sphere
 {
 	t_vector		position;
 	double			diameter;
-	unsigned int	color;
+	t_vector		color;
 }				t_sphere;
 
 typedef struct s_plane
 {
 	t_vector		position;
 	t_vector		orientation;
-	unsigned int	color;
+	t_vector		color;
 }				t_plane;
 
 typedef struct s_cylinder
@@ -70,7 +70,7 @@ typedef struct s_cylinder
 	t_vector		orientation;
 	double			diameter;
 	double			height;
-	unsigned int	color;
+	t_vector		color;
 }				t_cylinder;
 
 typedef struct s_data
@@ -90,10 +90,12 @@ int				check_line(char *line);
 char			*skip_spaces(char *line);
 char			*skip_double(char *line);
 char			*skip_digits(char *line);
-char			*skip_color(char *line);
+char			*skip_coord(char *line);
 int				set_ambient(char *line, t_data *data);
+int				set_camera(char *line, t_data *data);
 int				get_ratio(char *line, double *ratio);
-int				get_color(char *line, unsigned int *color);
+int				get_coord(char *line, t_vector *vector);
+double			get_double(char *line);
 
 unsigned int	get_rgba(int r, int g, int b, int a);
 int				get_alpha(unsigned int color);
@@ -101,6 +103,6 @@ int				get_red(unsigned int color);
 int				get_green(unsigned int color);
 int				get_blue(unsigned int color);
 
-int 	mrt_error_message(int error, int line);
+int 			mrt_error_message(int error, int line);
 
 #endif

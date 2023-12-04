@@ -1,6 +1,8 @@
 PROGNAME = miniRT 
 PROGNAME_BONUS = miniRT_bonus
 
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g
 
 LIB_DIR = ./lib
 LIBFT = libft.a
@@ -12,15 +14,12 @@ IDIR = include
 
 SRCDIR = ./src
 SRC = main.c parser.c parser_check.c parser_checker_line.c parser_value_setter.c \
-	  errors.c parser_utils.c parser_ambient.c color.c
+	  errors.c parser_utils.c parser_ambient.c color.c parser_camera.c
 
 SRC_BONUS = 
 
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 SRCS_BONUS = $(addprefix $(SRCDIR)/, $(SRC_BONUS))
-
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
 
 all: $(PROGNAME)
 

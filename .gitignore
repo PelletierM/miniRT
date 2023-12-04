@@ -8,3 +8,4 @@ lib/MLX42
 test/test_parsing
 include/MLX42.h
 include/libft.h
+*.dSYM

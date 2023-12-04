@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 GREEN="\033[0;32m"
 RED="\033[0;31m"
@@ -13,4 +13,12 @@ for file in "./invalid"/*; do
 	else
 		echo -e "${RED}Test failed\n"
 	fi
+done
+
+for file in "./valid"/*; do
+	echo -en "${WHITE}$file content: "
+	cat $file
+	echo -en "output:"
+	./test_parsing $file
+	echo -e "\n"
 done

@@ -6,13 +6,12 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:00:57 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/01 14:19:27 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 11:27:40 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-double	get_double(char *line);
 
 int		get_ratio(char *line, double *ratio)
 {
@@ -33,14 +32,18 @@ double	get_double(char *line)
 	int		integer;
 	double	retval;
 	int		div;
+	double	neg;
 	
+	neg = 1;
+	if (*line == '-')
+		neg = -1;
 	integer = ft_atoi(line);
 	if (*line && (*line == '+' || *line == '-'))
 		line++;
 	while (*line && ft_isdigit(*line))
 		line++;
 	if (*line != '.')
-		return ((double) integer);
+		return (neg * (double) integer);
 	line++;
 	div = 10;
 	retval = 0;
@@ -50,28 +53,34 @@ double	get_double(char *line)
 		line++;
 		div *= 10;
 	}
-	return ((double) integer + retval); 
+	return (neg * ((double) integer + retval));
 }
 
-int		get_color(char *line, unsigned int *color)
+int	get_coord(char *line, t_vector *vector)
 {
 	int				i;
-	unsigned int	clr[3];
+	double			v[3];
 
 	i = 0;
 	while (i < 3)
 	{
-		clr[i] = ft_atoi(line);
-		if (clr[i] < 0 || clr[i] > 255)
+		if (!ft_isdigit(*line) && *line != '-' && *line != '+')
+			return (1);
+		v[i] = get_double(line);
+		if (v[i] < 0 || v[i] > 255)
 			return (1);
 		if (*line == '+')
 			line++;
-		line = skip_digits(line);
+		line = skip_double(line);
 		if (*line != ',' && i < 2)
 			return (1);
+		if (i < 2)
+			line++;
 		i++;
 	}
-	*color = get_rgba(clr[0], clr[1], clr[2], 255);
+	vector->x = v[0];
+	vector->y = v[1];
+	vector->z = v[2];
 	return (0);
 }
 
@@ -101,7 +110,7 @@ char	*skip_double(char *line)
 	return (line);
 }
 
-char	*skip_color(char *line)
+char	*skip_coord(char *line)
 {
 	if (*line == '+')
 		line++;

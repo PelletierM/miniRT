@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/01 15:14:10 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/04 11:04:57 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(int argc, char *argv[])
 		return (1);
 	if (mrt_parser(argv[1], &data))
 		return (1);
-	if (data.ambient.ratio)
-		ft_printf("A %f %d,%d,%d\n", data.ambient.ratio, get_red(data.ambient.color), get_green(data.ambient.color), get_blue(data.ambient.color));
+	ft_printf("ratio %f, color: %f,%f,%f\n", data.ambient.ratio, data.ambient.color.x, data.ambient.color.y, data.ambient.color.z);
 	return (0);
 }

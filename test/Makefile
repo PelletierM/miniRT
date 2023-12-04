@@ -1,5 +1,7 @@
 PROGNAME = test_parsing 
 
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g
 
 LIB_DIR = ../lib
 LIBFT = libft.a
@@ -9,12 +11,10 @@ IDIR = ../include
 
 SRCDIR = ../src
 SRC = parser.c parser_check.c parser_checker_line.c parser_value_setter.c \
-	  errors.c parser_utils.c parser_ambient.c color.c
+	  errors.c parser_utils.c parser_ambient.c color.c parser_camera.c
 
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
 
 all: $(PROGNAME)
 

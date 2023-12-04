@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_ambient.c                                   :+:      :+:    :+:   */
+/*   parser_camera.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 12:56:52 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 11:27:40 by eguefif          ###   ########.fr       */
+/*   Created: 2023/12/04 11:08:08 by eguefif           #+#    #+#             */
+/*   Updated: 2023/12/04 11:27:39 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	set_ambient(char *line, t_data *data)
+int	set_camera(char *line, t_data *data)
 {
 	line++;
 	if (*line != ' ')
@@ -20,15 +20,20 @@ int	set_ambient(char *line, t_data *data)
 	line = skip_spaces(line);
 	if (!*line)
 		return (1);
-	if (get_ratio(line, &data->ambient.ratio))
+	if (get_coord(line, &data->camera.position))
 		return (1);
 	line = skip_double(line);
 	line = skip_spaces(line);
 	if (!*line)
 		return (1);
-	if (get_coord(line, &data->ambient.color))
+	if (get_coord(line, &data->camera.orientation))
 		return (1);
 	line = skip_coord(line);
+	line = skip_spaces(line);
+	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
+		return (1);
+	data->camera.fov = get_double(line);
+	line = skip_double(line);
 	line = skip_spaces(line);
 	if (*line != '\n')
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:52:51 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/01 13:46:33 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 09:50:23 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	get_data(char *file, t_data *data)
 	int		i;
 	int		retval;
 
+	retval = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (0);
@@ -46,7 +47,7 @@ int	get_data(char *file, t_data *data)
 	{
 		retval = parse_line(line, data);
 		free(line);
-		if (!retval)
+		if (retval)
 		{
 			mrt_error_message(ERR_LINE_FORMAT, i);
 			break ;
