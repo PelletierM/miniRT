@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:00:57 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 14:17:34 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/04 14:21:49 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ char	*skip_double(char *line)
 
 char	*skip_coord(char *line)
 {
-	if (*line == '+')
+	if (*line == '+' || *line == '-')
 		line++;
 	line = skip_double(line);
 	line++;
