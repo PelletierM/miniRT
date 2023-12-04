@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_value_checker.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
+/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:08:12 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 14:39:45 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 15:18:56 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
