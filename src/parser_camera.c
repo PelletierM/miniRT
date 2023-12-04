@@ -6,11 +6,13 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:08:08 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 15:01:40 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/04 16:24:24 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
+
+int	set_camera2(char *line, t_data *data);
 
 int	set_camera(char *line, t_data *data)
 {
@@ -30,6 +32,11 @@ int	set_camera(char *line, t_data *data)
 		return (1);
 	if (get_coord(line, &data->camera.orientation))
 		return (1);
+	return (set_camera2(line, data));
+}
+
+int	set_camera2(char *line, t_data *data)
+{
 	line = skip_coord(line);
 	line = skip_spaces(line);
 	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
