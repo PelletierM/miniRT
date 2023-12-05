@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:00:04 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/05 09:33:23 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/05 10:34:45 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	fill_bg(t_data *data)
 	int	green;
 
 	x = 0;
-	while (x < WIN_WIDTH)
+	while (x < data->width)
 	{
 		y = 0;
-		while (y < WIN_HEIGHT)
+		while (y < data->height)
 		{
-			red = x * 255 / WIN_WIDTH;
-			green = y * 255 / WIN_HEIGHT;
+			red = x * 255 / data->width;
+			green = y * 255 / data->height;
 			put_pixel(data, x, y, get_rgba(red, green, 0, 255));
 			y++;
 		}
@@ -36,7 +36,7 @@ void	fill_bg(t_data *data)
 
 void	put_pixel(t_data *data, float x, float y, unsigned int color)
 {
-	if (x >= WIN_WIDTH || x < 0 || y >= WIN_HEIGHT || y < 0)
+	if (x >= data->width || x < 0 || y >= data->height || y < 0)
 		return ;
 	mlx_put_pixel(data->img, x, y, color);
 }

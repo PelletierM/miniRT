@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:45:11 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/05 09:29:56 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/05 10:02:37 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ int	mrt_error_message(int error, int line)
 		ft_dprintf(2, "Invalid line format (%d)\n", line);
 	if (error == ERR_MLX_INIT)
 		ft_dprintf(2, "Could not initiate MLX image\n");
+	if (error == ERR_DIV_ZERO)
+		ft_dprintf(2, "Division by zero\n");
 	return (1);
 }
