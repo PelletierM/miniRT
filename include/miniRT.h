@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/05 09:32:53 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/05 09:36:32 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define WIN_WIDTH 1920
 # define BG_COLOR 0x000000FF
 
-# define MAX_LINES 1024
-# define MAX_FIGURE 256
+# define MAX_LINES	128
+# define MAX_FIGURE 24
 
 # define VALID_CHARS "+-., 0123456789\n"
 # define ERR_ARGC 0
