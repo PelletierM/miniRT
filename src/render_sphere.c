@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_sphere.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
+/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:08:46 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/05 13:48:57 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/05 16:19:57 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ float get_closest_t_value(float a, float b, float dis)
 
 	t1 = (-b + dis) / (2 *a);
 	t2 = (-b - dis) / (2 *a);
-	if (t1 > t2 && t2 > 0)
+	if (t1 < 0 && t2 < 0)
 		return (t2);
-	else
-		return (t1);
+	else if (t2 < 0)
+		return (t2);
+	return (t1);
 }
 
 	/*

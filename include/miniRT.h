@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/05 13:35:11 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/05 15:36:15 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,13 @@ typedef struct s_ray
 	float		t;
 }	t_ray;
 
+typedef struct s_hit
+{
+	int		shape;
+	int 	i;
+	float	t;
+}	t_hit;
+
 typedef struct s_data
 {
 	t_ambient	ambient;
@@ -156,9 +163,12 @@ void			render(void *param);
 // Vector operations
 float			op_vect_dot(t_vector v1, t_vector v2);
 t_vector		op_vect_cross(t_vector v1, t_vector v2);
+t_vector		op_vect_normalize(t_vector v1);
 t_vector		op_vect_add(t_vector v1, t_vector v2);
 t_vector		op_vect_sub(t_vector v1, t_vector v2);
 t_vector		op_vect_mul(t_vector v1, t_vector v2);
 t_vector		op_vect_scalar_mul(t_vector v1, float factor);
+t_vector		op_vect_scalar_div(t_vector v1, float factor);
+t_vector		op_vect_scalar_add(t_vector v1, float factor);
 
 #endif

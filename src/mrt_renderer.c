@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/05 13:44:05 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/05 16:15:15 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	render(void *param)
 		while (y < data->height)
 		{
 			ray = get_current_ray(data, x, y);
+			ray.orientation.x *= data->ratio;
 			color = trace_pixel(data, ray);
 			mlx_put_pixel(data->img, x, y, get_vect_rgba(color));
 			y++;
@@ -56,27 +57,43 @@ t_ray	get_current_ray(t_data *data, int x, int y)
 t_vector	trace_pixel(t_data *data, t_ray ray)
 {
 	t_vector	color;
+	t_hit		hit;
 	int			i;
 	float		t;
-	float		tmp;
 
 	i = 0;
-	t = 10000;
-	tmp = 0;
+	hit.t = -1000;
+	hit.i = 0;
+	t = 0;
 	color.x = 0;
 	color.y = 0;
 	color.z = 0;
 	while (i < data->num_spheres)
 	{
-		tmp = check_hit_sphere(data->spheres[i], ray);
-		if (tmp < t )
+		t = check_hit_sphere(data->spheres[i], ray);
+		if (t < 0 && t > hit.t)
 		{
 			color.x = data->spheres[i].color.x;
 			color.y = data->spheres[i].color.y;
 			color.z = data->spheres[i].color.z;
-			tmp = t;
+			hit.t = t;
+			hit.shape = 1;
+			hit.i = i;
 		}
 		i++;
+	}
+	if (hit.t != -1000)
+	{
+		t_vector hit_pos = op_vect_add(ray.position, op_vect_scalar_mul(ray.orientation, hit.t)); 
+		t_vector normal = op_vect_sub(hit_pos, data->spheres[hit.i].position);
+		normal = op_vect_scalar_div(normal, data->spheres[hit.i].diameter / 2);
+		t_vector light_direction = op_vect_sub(hit_pos, data->light.position);
+		light_direction = op_vect_normalize(light_direction);
+		light_direction = op_vect_scalar_mul(light_direction, -1);
+		float light = op_vect_dot(normal, light_direction);
+		if (light < 0)
+			light = 0;
+		color = op_vect_scalar_mul(color, light);
 	}
 	return (color);
 }
