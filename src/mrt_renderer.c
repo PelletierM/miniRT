@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/05 13:07:43 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/05 13:44:05 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 	float		tmp;
 
 	i = 0;
-	t = 0;
+	t = 10000;
 	tmp = 0;
 	color.x = 0;
 	color.y = 0;
@@ -69,7 +69,7 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 	while (i < data->num_spheres)
 	{
 		tmp = check_hit_sphere(data->spheres[i], ray);
-		if (tmp < t && t > 0)
+		if (tmp < t )
 		{
 			color.x = data->spheres[i].color.x;
 			color.y = data->spheres[i].color.y;
