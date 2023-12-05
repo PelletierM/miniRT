@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/05 12:00:59 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/05 13:03:22 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "libft.h"
 # include "MLX42.h"
+# include <math.h>
+# include <stdio.h>
 
 # define WIN_HEIGHT 1080
 # define WIN_WIDTH 1920
@@ -139,6 +141,7 @@ int				get_coord(char *line, t_vector *vector);
 float			get_float(char *line);
 
 unsigned int	get_rgba(int r, int g, int b, int a);
+unsigned int	get_vect_rgba(t_vector c);
 int				get_alpha(unsigned int color);
 int				get_red(unsigned int color);
 int				get_green(unsigned int color);
@@ -146,8 +149,7 @@ int				get_blue(unsigned int color);
 
 int				mrt_error_message(int error, int line);
 
-void			fill_bg(t_data *data);
-void			put_pixel(t_data *data, float x, float y, unsigned int color);
+float			check_hit_sphere(t_sphere sp, t_ray ray);
 
 void			render(void *param);
 

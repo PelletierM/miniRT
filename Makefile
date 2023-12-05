@@ -2,7 +2,7 @@ PROGNAME = miniRT
 PROGNAME_BONUS = miniRT_bonus
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -lm
 
 LIB_DIR = ./lib
 LIBFT = libft.a
@@ -16,7 +16,8 @@ SRCDIR = ./src
 SRC = main.c parser.c parser_check.c parser_checker_line.c parser_value_setter.c \
 	  errors.c parser_utils.c parser_ambient.c color.c parser_camera.c \
 	  parser_light.c parser_sphere.c parser_plane.c parser_cylinder.c init.c parser_value_checker.c \
-	  parser_value_checker2.c parser_utils2.c mrt_renderer.c
+	  parser_value_checker2.c parser_utils2.c mrt_renderer.c render_sphere.c \
+	  op_vectors1.c op_vectors2.c
 
 
 SRC_BONUS = 
