@@ -41,13 +41,13 @@ int	set_cylinder_part(char *line, t_data *data)
 {
 	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
 		return (1);
-	data->cylinders[data->num_cylinders].diameter = get_float(line);
-	line = skip_float(line);
+	data->cylinders[data->num_cylinders].diameter = get_double(line);
+	line = skip_double(line);
 	line = skip_spaces(line);
 	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
 		return (1);
-	data->cylinders[data->num_cylinders].height = get_float(line);
-	line = skip_float(line);
+	data->cylinders[data->num_cylinders].height = get_double(line);
+	line = skip_double(line);
 	line = skip_spaces(line);
 	if (get_coord(line, &data->cylinders[data->num_cylinders].color))
 		return (1);

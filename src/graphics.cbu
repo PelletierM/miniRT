@@ -6,13 +6,13 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:00:04 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/05 09:33:23 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/05 09:30:10 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	fill_bg(t_data *data)
+void	ft_fill_bg(t_data *data)
 {
 	int	x;
 	int	y;
@@ -27,14 +27,14 @@ void	fill_bg(t_data *data)
 		{
 			red = x * 255 / WIN_WIDTH;
 			green = y * 255 / WIN_HEIGHT;
-			put_pixel(data, x, y, get_rgba(red, green, 0, 255));
+			ft_put_pixel(data, x, y, get_rgba(red, green, 0, 255));
 			y++;
 		}
 		x++;
 	}
 }
 
-void	put_pixel(t_data *data, float x, float y, unsigned int color)
+void	ft_put_pixel(t_data *data, float x, float y, unsigned int color)
 {
 	if (x >= WIN_WIDTH || x < 0 || y >= WIN_HEIGHT || y < 0)
 		return ;

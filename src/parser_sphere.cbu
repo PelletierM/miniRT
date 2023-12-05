@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_cylinder.c                                  :+:      :+:    :+:   */
+/*   parser_sphere.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 12:54:44 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/04 15:30:59 by eguefif          ###   ########.fr       */
+/*   Created: 2023/12/04 12:34:59 by maxpelle          #+#    #+#             */
+/*   Updated: 2023/12/04 15:34:57 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	set_cylinder_part(char *line, t_data *data);
-
-int	set_cylinder(char *line, t_data *data)
+int	set_sphere(char *line, t_data *data)
 {
 	line += 2;
 	if (*line != ' ')
@@ -22,39 +20,23 @@ int	set_cylinder(char *line, t_data *data)
 	line = skip_spaces(line);
 	if (!*line)
 		return (1);
-	if (get_coord(line, &data->cylinders[data->num_cylinders].position))
+	if (get_coord(line, &data->spheres[data->num_spheres].position))
 		return (1);
 	line = skip_coord(line);
 	line = skip_spaces(line);
 	if (!*line)
 		return (1);
-	if (get_coord(line, &data->cylinders[data->num_cylinders].orientation))
-		return (1);
-	line = skip_coord(line);
-	line = skip_spaces(line);
-	if (!*line)
-		return (1);
-	return (set_cylinder_part(line, data));
-}
-
-int	set_cylinder_part(char *line, t_data *data)
-{
 	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
 		return (1);
-	data->cylinders[data->num_cylinders].diameter = get_float(line);
-	line = skip_float(line);
+	data->spheres[data->num_spheres].diameter = get_double(line);
+	line = skip_double(line);
 	line = skip_spaces(line);
-	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
-		return (1);
-	data->cylinders[data->num_cylinders].height = get_float(line);
-	line = skip_float(line);
-	line = skip_spaces(line);
-	if (get_coord(line, &data->cylinders[data->num_cylinders].color))
+	if (get_coord(line, &data->spheres[data->num_spheres].color))
 		return (1);
 	line = skip_coord(line);
 	line = skip_spaces(line);
 	if (*line != '\n')
 		return (1);
-	data->num_cylinders++;
+	data->num_spheres++;
 	return (0);
 }

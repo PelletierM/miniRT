@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 17:13:08 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/05 09:32:53 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@
 
 typedef struct s_vector
 {
-	double	x;
-	double	y;
-	double	z;
+	float	x;
+	float	y;
+	float	z;
 }			t_vector;
 
 typedef struct s_ambient
 {
-	double			ratio;
+	float			ratio;
 	t_vector		color;
 }			t_ambient;
 
@@ -47,20 +47,20 @@ typedef struct s_camera
 {
 	t_vector	position;
 	t_vector	orientation;
-	double		fov;
+	float		fov;
 }				t_camera;
 
 typedef struct s_light
 {
 	t_vector		position;
-	double			ratio;
+	float			ratio;
 	t_vector		color;
 }				t_light;
 
 typedef struct s_sphere
 {
 	t_vector		position;
-	double			diameter;
+	float			diameter;
 	t_vector		color;
 }				t_sphere;
 
@@ -75,8 +75,8 @@ typedef struct s_cylinder
 {
 	t_vector		position;
 	t_vector		orientation;
-	double			diameter;
-	double			height;
+	float			diameter;
+	float			height;
 	t_vector		color;
 }				t_cylinder;
 
@@ -102,7 +102,7 @@ void			mrt_init_data(t_data *data);
 int				set_values(char *line, t_data *data);
 int				check_line(char *line);
 char			*skip_spaces(char *line);
-char			*skip_double(char *line);
+char			*skip_float(char *line);
 char			*skip_digits(char *line);
 char			*skip_coord(char *line);
 
@@ -118,9 +118,9 @@ int				set_sphere(char *line, t_data *data);
 int				set_plane(char *line, t_data *data);
 int				set_cylinder(char *line, t_data *data);
 
-int				get_ratio(char *line, double *ratio);
+int				get_ratio(char *line, float *ratio);
 int				get_coord(char *line, t_vector *vector);
-double			get_double(char *line);
+float			get_float(char *line);
 
 unsigned int	get_rgba(int r, int g, int b, int a);
 int				get_alpha(unsigned int color);
@@ -130,9 +130,8 @@ int				get_blue(unsigned int color);
 
 int				mrt_error_message(int error, int line);
 
-void			ft_fill_bg(t_data *data);
-void			ft_put_pixel(t_data *data, double x,
-					double y, unsigned int color);
+void			fill_bg(t_data *data);
+void			put_pixel(t_data *data, float x, float y, unsigned int color);
 
 void			render(void *param);
 

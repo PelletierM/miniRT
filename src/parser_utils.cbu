@@ -12,15 +12,15 @@
 
 #include "miniRT.h"
 
-static float	get_decimal_for_float(char *line);
+static double	get_decimal_for_double(char *line);
 
-int	get_ratio(char *line, float *ratio)
+int	get_ratio(char *line, double *ratio)
 {
-	float	value;
+	double	value;
 
 	if (!*line && !*(line + 1))
 		return (1);
-	value = get_float(line);
+	value = get_double(line);
 	if (value >= 0 && value <= 1)
 		*ratio = value;
 	else
@@ -28,11 +28,11 @@ int	get_ratio(char *line, float *ratio)
 	return (0);
 }
 
-float	get_float(char *line)
+double	get_double(char *line)
 {
 	int		integer;
-	float	retval;
-	float	neg;
+	double	retval;
+	double	neg;
 
 	neg = 1;
 	if (*line == '-')
@@ -45,22 +45,22 @@ float	get_float(char *line)
 	while (*line && ft_isdigit(*line))
 		line++;
 	if (*line != '.')
-		return (neg * (float) integer);
+		return (neg * (double) integer);
 	line++;
-	retval = get_decimal_for_float(line);
-	return (neg * ((float) integer + retval));
+	retval = get_decimal_for_double(line);
+	return (neg * ((double) integer + retval));
 }
 
-static float	get_decimal_for_float(char *line)
+static double	get_decimal_for_double(char *line)
 {
-	float	retval;
+	double	retval;
 	int		div;
 
 	div = 10;
 	retval = 0;
 	while (ft_isdigit(*line) && div < 10000)
 	{
-		retval += (float)(*line - '0') / div;
+		retval += (double)(*line - '0') / div;
 		line++;
 		div *= 10;
 	}
@@ -70,17 +70,17 @@ static float	get_decimal_for_float(char *line)
 int	get_coord(char *line, t_vector *vector)
 {
 	int				i;
-	float			v[3];
+	double			v[3];
 
 	i = 0;
 	while (i < 3)
 	{
 		if (!ft_isdigit(*line) && *line != '-' && *line != '+')
 			return (1);
-		v[i] = get_float(line);
+		v[i] = get_double(line);
 		if (*line == '+')
 			line++;
-		line = skip_float(line);
+		line = skip_double(line);
 		if (*line != ',' && i < 2)
 			return (1);
 		if (i < 2)

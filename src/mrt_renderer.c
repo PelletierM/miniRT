@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 17:15:53 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/05 09:33:36 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ void	render(void *param)
 	t_data	*data;
 
 	data = (t_data *) param;
-	ft_fill_bg(data);
+	fill_bg(data);
 }

@@ -41,8 +41,8 @@ int	set_camera2(char *line, t_data *data)
 	line = skip_spaces(line);
 	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
 		return (1);
-	data->camera.fov = get_double(line);
-	line = skip_double(line);
+	data->camera.fov = get_float(line);
+	line = skip_float(line);
 	line = skip_spaces(line);
 	if (*line != '\n')
 		return (1);

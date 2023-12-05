@@ -28,8 +28,8 @@ int	set_sphere(char *line, t_data *data)
 		return (1);
 	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
 		return (1);
-	data->spheres[data->num_spheres].diameter = get_double(line);
-	line = skip_double(line);
+	data->spheres[data->num_spheres].diameter = get_float(line);
+	line = skip_float(line);
 	line = skip_spaces(line);
 	if (get_coord(line, &data->spheres[data->num_spheres].color))
 		return (1);

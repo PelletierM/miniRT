@@ -26,7 +26,7 @@ char	*skip_digits(char *line)
 	return (line);
 }
 
-char	*skip_float(char *line)
+char	*skip_double(char *line)
 {
 	if (*line && (*line == '+' || *line == '-'))
 		line++;
@@ -42,10 +42,10 @@ char	*skip_coord(char *line)
 {
 	if (*line == '+' || *line == '-')
 		line++;
-	line = skip_float(line);
+	line = skip_double(line);
 	line++;
-	line = skip_float(line);
+	line = skip_double(line);
 	line++;
-	line = skip_float(line);
+	line = skip_double(line);
 	return (line);
 }
