@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:00:04 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/04 17:07:23 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/05 08:58:09 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	ft_fill_bg(t_data *data)
 {
-	int				x;
-	int				y;
+	int	x;
+	int	y;
+	int	red;
+	int	green;
 
 	x = 0;
 	while (x < WIN_WIDTH)
@@ -23,7 +25,9 @@ void	ft_fill_bg(t_data *data)
 		y = 0;
 		while (y < WIN_HEIGHT)
 		{
-			ft_put_pixel(data, x, y, BG_COLOR);
+			red = x * 255 / WIN_WIDTH;
+			green = y * 255 / WIN_HEIGHT;
+			ft_put_pixel(data, x, y, get_rgba(red, green, 0, 255));
 			y++;
 		}
 		x++;
