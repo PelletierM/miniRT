@@ -6,14 +6,15 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/12/05 10:11:47 by eguefif          ###   ########.fr       */
+=======
+/*   Updated: 2023/12/05 10:37:09 by maxpelle         ###   ########.fr       */
+>>>>>>> e17a80590e40dedf20d2533f954c09c7269a58a2
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-
-int		ft_mlx_init(t_data *data);
-void	ft_keyhook(mlx_key_data_t keydata, void *param);
 
 int	main(int argc, char *argv[])
 {
@@ -29,32 +30,4 @@ int	main(int argc, char *argv[])
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
 	return (0);
-}
-
-int	ft_mlx_init(t_data *data)
-{
-	mlx_t		*mlx;
-	mlx_image_t	*img;
-
-	mlx_set_setting(MLX_MAXIMIZED, false);
-	mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "fdf", true);
-	data->mlx = mlx;
-	mlx_set_window_limit(data->mlx, WIN_WIDTH, WIN_HEIGHT,
-		WIN_WIDTH, WIN_HEIGHT);
-	img = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT); 
-	data->img = img;
-	if (!(data->img) 
-		|| (mlx_image_to_window(data->mlx, data->img, 0, 0) < 0))
-		return (1);
-	mlx_key_hook(data->mlx, &ft_keyhook, data);
-	return (0);
-}
-
-void	ft_keyhook(mlx_key_data_t keydata, void *param)
-{
-	t_data	*data;
-
-	data = (t_data *) param;
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		mlx_close_window(data->mlx);
 }

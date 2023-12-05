@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/05 10:54:52 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/05 10:56:42 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 # define WIN_HEIGHT 1080
 # define WIN_WIDTH 1920
+# define RES_MAX_HEIGHT 1440
+# define RES_MAX_WIDTH 2560
 # define BG_COLOR 0x000000FF
 
 # define MAX_LINES	128
@@ -29,6 +31,7 @@
 # define ERR_NO_FILE 2
 # define ERR_LINE_FORMAT 3
 # define ERR_MLX_INIT 4
+# define ERR_DIV_ZERO 5
 
 typedef struct s_vector
 {
@@ -80,6 +83,13 @@ typedef struct s_cylinder
 	t_vector		color;
 }				t_cylinder;
 
+typedef struct s_ray
+{
+	t_vector	position;
+	t_vector	direction;
+	float		t;
+}	t_ray;
+
 typedef struct s_data
 {
 	t_ambient	ambient;
@@ -94,11 +104,17 @@ typedef struct s_data
 	int			num_cylinders;
 	mlx_image_t	*img;
 	mlx_t		*mlx;
+	int32_t		width;
+	int32_t		height;
+	float		ratio;
 }				t_data;
 
 int				mrt_parser(char *file, t_data *data);
 int				mrt_check_argv(int argc, char **argv);
 void			mrt_init_data(t_data *data);
+int				ft_mlx_init(t_data *data);
+void			ft_keyhook(mlx_key_data_t keydata, void *param);
+void			ft_resize_hook(int32_t width, int32_t height, void *param);
 int				set_values(char *line, t_data *data);
 int				check_line(char *line);
 char			*skip_spaces(char *line);
@@ -134,5 +150,13 @@ void			fill_bg(t_data *data);
 void			put_pixel(t_data *data, float x, float y, unsigned int color);
 
 void			render(void *param);
+
+// Vector operations
+float			op_vect_dot(t_vector v1, t_vector v2);
+t_vector		op_vect_cross(t_vector v1, t_vector v2);
+t_vector		op_vect_add(t_vector v1, t_vector v2);
+t_vector		op_vect_sub(t_vector v1, t_vector v2);
+t_vector		op_vect_mul(t_vector v1, t_vector v2);
+t_vector		op_vect_scalar_mul(t_vector v1, float factor);
 
 #endif
