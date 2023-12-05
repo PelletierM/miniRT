@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 09:10:26 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/05 12:03:11 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/05 15:32:29 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,10 @@ t_vector	op_vect_cross(t_vector v1, t_vector v2)
 	return (result);
 }
 
+t_vector	op_vect_normalize(t_vector v1)
+{
+	float		length;
+
+	length = sqrt(op_vect_dot(v1, v1));
+	return (op_vect_scalar_div(v1, length));
+}
