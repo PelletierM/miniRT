@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:42:07 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/05 10:36:10 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:10:44 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	mrt_init_data(t_data *data)
 	data->num_cylinders = 0;
 	data->width = WIN_WIDTH;
 	data->height = WIN_HEIGHT;
-	data->ratio = data->width / data->height;
+	data->ratio = (float) data->width / (float) data->height;
 }
 
 int	ft_mlx_init(t_data *data)
@@ -76,5 +76,5 @@ void	ft_resize_hook(int32_t width, int32_t height, void *param)
 	data = (t_data *) param;
 	data->width = width;
 	data->height = height;
-	data->ratio = width / height;
+	data->ratio = (float) width / (float) height;
 }

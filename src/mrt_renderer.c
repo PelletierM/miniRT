@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/05 13:44:05 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/05 16:20:01 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	render(void *param)
 		while (y < data->height)
 		{
 			ray = get_current_ray(data, x, y);
+			ray.orientation.x *= data->ratio;
 			color = trace_pixel(data, ray);
 			mlx_put_pixel(data->img, x, y, get_vect_rgba(color));
 			y++;
@@ -80,4 +81,3 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 	}
 	return (color);
 }
-
