@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 07:39:51 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/05 10:54:58 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:26:47 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ unsigned int	get_rgba(int r, int g, int b, int a)
 
 unsigned int	get_vect_rgba(t_vector c)
 {
-	return (c.x << 24 | c.y << 16 | c.z << 8 | 255);
+	return ((int) c.x << 24 | (int) c.y << 16 | (int) c.z << 8 | 255);
 }
 
 int	get_alpha(unsigned int color)

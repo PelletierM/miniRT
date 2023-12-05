@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/05 10:36:41 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:30:16 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ typedef struct s_cylinder
 typedef struct s_ray
 {
 	t_vector	position;
-	t_vector	direction;
+	t_vector	orientation;
 	float		t;
 }	t_ray;
 
@@ -139,6 +139,7 @@ int				get_coord(char *line, t_vector *vector);
 float			get_float(char *line);
 
 unsigned int	get_rgba(int r, int g, int b, int a);
+unsigned int	get_vect_rgba(t_vector c);
 int				get_alpha(unsigned int color);
 int				get_red(unsigned int color);
 int				get_green(unsigned int color);
