@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/05 10:56:42 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/05 12:00:59 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ typedef struct s_cylinder
 typedef struct s_ray
 {
 	t_vector	position;
-	t_vector	direction;
+	t_vector	orientation;
 	float		t;
 }	t_ray;
 
