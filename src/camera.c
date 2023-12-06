@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 08:34:22 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/06 12:28:46 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:52:45 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,4 @@ void	mrt_create_camera(t_data *data)
 	data->camera.focal_len = (float) VP_DIAG / (tanf(data->camera.fov / 2) * 2);
 	data->camera.vp_vert_len = sqrt(pow(VP_DIAG, 2) / (pow(data->ratio, 2) + 1));
 	data->camera.vp_horiz_len = data->camera.vp_vert_len * data->ratio;
-	printf("Focal length: %f\nSensor height: %f\nSensor width: %f\n", data->camera.focal_len, data->camera.vp_vert_len, data->camera.vp_horiz_len);
 }
