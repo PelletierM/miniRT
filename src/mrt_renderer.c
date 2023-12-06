@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 11:21:30 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 12:33:30 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	render(void *param)
 
 	data = (t_data *) param;
 	x = 0;
+	mrt_create_camera(data);
 	while (x < data->width)
 	{
 		y = 0;
@@ -43,13 +44,24 @@ void	render(void *param)
 t_ray	get_current_ray(t_data *data, int x, int y)
 {
 		t_ray		ray;
+		t_vector	camera_x;
+		t_vector	camera_y;
+		t_vector	camera_z;
+		float		x_scale;
+		float		y_scale;
 
 		ray.position.x = data->camera.position.x;
 		ray.position.y = data->camera.position.y;
 		ray.position.z = data->camera.position.z;
-		ray.orientation.x = ((float) x / data->width) * 2 - 1;
-		ray.orientation.y = ((float) y / data->height) * 2 - 1;
-		ray.orientation.z = data->camera.orientation.z;
+
+
+		x_scale = ((float) x / data->width - (data->camera.vp_horiz_len / 2));
+		camera_x = vsmul(data->camera.x_axis, x_scale);
+		y_scale = ((float) y / data->height - (data->camera.vp_vert_len / 2));
+		camera_y = vsmul(data->camera.y_axis, y_scale);
+		camera_z = vsmul(data->camera.z_axis, data->camera.focal_len);
+
+		ray.orientation = vadd(vadd(camera_z, camera_y), camera_x);
 		return (ray);
 }
 
@@ -61,7 +73,7 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 	float		t;
 
 	i = 0;
-	hit.t = 1000000;
+	hit.t = 10000000;
 	hit.i = 0;
 	t = 0;
 	color.x = 0;

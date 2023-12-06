@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 10:37:39 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 12:25:59 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 # include "MLX42.h"
 # include <math.h>
 # include <stdio.h>
+# include <float.h>
 
-# define WIN_HEIGHT 1080
-# define WIN_WIDTH 1920
+# define VP_DIAG 0.04327
+# define WIN_HEIGHT 768
+# define WIN_WIDTH	1024 
 # define RES_MAX_HEIGHT 1440
 # define RES_MAX_WIDTH 2560
 # define BG_COLOR 0x000000FF
@@ -51,7 +53,12 @@ typedef struct s_ambient
 typedef struct s_camera
 {
 	t_vector	position;
-	t_vector	orientation;
+	t_vector	z_axis;
+	t_vector	y_axis;
+	t_vector	x_axis;
+	float		focal_len;
+	float		vp_horiz_len;
+	float		vp_vert_len;
 	float		fov;
 }				t_camera;
 
@@ -159,6 +166,7 @@ int				mrt_error_message(int error, int line);
 float			check_hit_sphere(t_sphere sp, t_ray ray);
 
 void			render(void *param);
+void			mrt_create_camera(t_data *data);
 
 // Vector operations
 float			vdot(t_vector v1, t_vector v2);

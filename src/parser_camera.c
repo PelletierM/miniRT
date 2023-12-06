@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:08:08 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 08:57:03 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 11:16:14 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	set_camera(char *line, t_data *data)
 	line = skip_spaces(line);
 	if (!*line)
 		return (1);
-	if (get_coord(line, &data->camera.orientation))
+	if (get_coord(line, &data->camera.z_axis))
 		return (1);
 	return (set_camera2(line, data));
 }
