@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 08:09:49 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 08:56:42 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "MLX42.h"
 # include <math.h>
 # include <stdio.h>
-# include <float.h>
 
 # define WIN_HEIGHT 1080
 # define WIN_WIDTH 1920

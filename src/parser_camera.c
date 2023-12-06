@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:08:08 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 16:24:24 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 08:57:03 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	set_camera2(char *line, t_data *data)
 	line = skip_spaces(line);
 	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
 		return (1);
-	data->camera.fov = get_float(line);
+	data->camera.fov = M_PI * get_float(line) / 180;
 	line = skip_float(line);
 	line = skip_spaces(line);
 	if (*line != '\n')

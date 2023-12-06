@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 08:11:56 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 08:57:50 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ t_ray	get_current_ray(t_data *data, int x, int y)
 		ray.position.y = data->camera.position.y;
 		ray.position.z = data->camera.position.z;
 		
-		ray.orientation.x = ((float) x / data->width - 0.5) * 2;
-		ray.orientation.y = ((float) y / data->height - 0.5) * 2;
+		ray.orientation.x = ((float) x / data->width) * 2 - 1;
+		ray.orientation.y = ((float) y / data->height) * 2 - 1;
 		ray.orientation.z = data->camera.orientation.z;
 		return (ray);
 }
@@ -62,8 +62,8 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 	float		t;
 
 	i = 0;
-	hit.t = FLT_MAX;
-	hit.i = 0;
+	hit.t = 0;
+	hit.i = 1000000;
 	t = 0;
 	color.x = 0;
 	color.y = 0;
@@ -82,7 +82,7 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 		}
 		i++;
 	}
-	if (hit.t != FLT_MAX)
+	if (hit.t != 1000000)
 	{
 		t_vector hit_pos = op_vect_add(ray.position, op_vect_scalar_mul(ray.orientation, hit.t)); 
 		t_vector normal = op_vect_sub(hit_pos, data->spheres[hit.i].position);
