@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 08:57:50 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 11:46:17 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	render(void *param)
 
 	data = (t_data *) param;
 	x = 0;
+	mrt_create_camera(data);
 	while (x < data->width)
 	{
 		y = 0;
@@ -42,15 +43,25 @@ void	render(void *param)
 
 t_ray	get_current_ray(t_data *data, int x, int y)
 {
-		t_ray	ray;
-		
+		t_ray		ray;
+		t_vector	camera_x;
+		t_vector	camera_y;
+		t_vector	camera_z;
+		float		x_scale;
+		float		y_scale;
+
 		ray.position.x = data->camera.position.x;
 		ray.position.y = data->camera.position.y;
 		ray.position.z = data->camera.position.z;
-		
-		ray.orientation.x = ((float) x / data->width) * 2 - 1;
-		ray.orientation.y = ((float) y / data->height) * 2 - 1;
-		ray.orientation.z = data->camera.orientation.z;
+
+
+		x_scale = ((float) x / data->width - (data->camera.vp_horiz_len / 2));
+		camera_x = vsmul(data->camera.x_axis, x_scale);
+		y_scale = ((float) y / data->height - (data->camera.vp_vert_len / 2));
+		camera_y = vsmul(data->camera.y_axis, y_scale);
+		camera_z = vsmul(data->camera.z_axis, data->camera.focal_len);
+
+		ray.orientation = vadd(vadd(camera_z, camera_y), camera_x);
 		return (ray);
 }
 
@@ -62,8 +73,8 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 	float		t;
 
 	i = 0;
-	hit.t = 0;
-	hit.i = 1000000;
+	hit.t = 10000000;
+	hit.i = 0;
 	t = 0;
 	color.x = 0;
 	color.y = 0;
@@ -84,16 +95,57 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 	}
 	if (hit.t != 1000000)
 	{
-		t_vector hit_pos = op_vect_add(ray.position, op_vect_scalar_mul(ray.orientation, hit.t)); 
-		t_vector normal = op_vect_sub(hit_pos, data->spheres[hit.i].position);
-		normal = op_vect_scalar_div(normal, data->spheres[hit.i].diameter / 2);
-		t_vector light_direction = op_vect_sub(hit_pos, data->light.position);
-		light_direction = op_vect_normalize(light_direction);
-		light_direction = op_vect_scalar_mul(light_direction, -1);
-		float light = op_vect_dot(normal, light_direction);
+		t_vector hit_pos = vadd(ray.position, vsmul(ray.orientation, hit.t)); 
+		t_vector normal = vsub(hit_pos, data->spheres[hit.i].position);
+		normal = vsdiv(normal, data->spheres[hit.i].diameter / 2);
+		t_vector light_direction = vsub(hit_pos, data->light.position);
+		light_direction = vnormalize(light_direction);
+		light_direction = vsmul(light_direction, -1);
+		float light = vdot(normal, light_direction);
 		if (light < data->ambient.ratio)
 			light = data->ambient.ratio;
-		color = op_vect_scalar_mul(color, light);
+		color = vsmul(color, light);
 	}
 	return (color);
 }
+/*
+		float		viewport_height;
+		float		viewport_width;
+		t_vector	viewport_u;
+		t_vector	viewport_v;
+		t_vector	pixel_delta_u;
+		t_vector	pixel_delta_v;
+		t_vector	viewport_upper_left;
+		t_vector	pixel00_loc;
+		float		focal_length;
+		
+		focal_length = data->camera.orientation.z;
+		viewport_height = 2.0;
+		viewport_width = viewport_height * (float)((float) data->width / (float) data->height);
+
+		viewport_u.x = viewport_width;
+		viewport_u.y = 0;
+		viewport_u.z = 0;
+
+		viewport_v.x = 0;
+		viewport_v.y = -viewport_height;
+		viewport_v.z = 0;
+
+		pixel_delta_u = vsdiv(viewport_u, (float) data->width);
+		pixel_delta_v = vsdiv(viewport_v, (float) data->height);
+		
+		t_vector tmp;
+		tmp.x = 0;
+		tmp.y = 0;
+		tmp.z = focal_length;
+		viewport_upper_left = vsub(data->camera.position, tmp);
+		viewport_upper_left = vsub(viewport_upper_left,
+				vsdiv(viewport_v, 2));
+		viewport_upper_left = vsub(viewport_upper_left,
+				vsdiv(viewport_u, 2));
+		pixel00_loc = vadd(viewport_upper_left, vsmul(
+					vadd(pixel_delta_u, pixel_delta_v), 0.5));
+		t_vector c = vadd(pixel00_loc, vadd(vsmul(pixel_delta_u, x),
+					vsmul(pixel_delta_v, y)));
+		ray.orientation = vsub(c, ray.position);
+		*/

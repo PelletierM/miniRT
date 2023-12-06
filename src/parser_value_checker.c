@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:08:12 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 15:18:56 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 11:16:37 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	check_camera(t_data data)
 {
 	if (data.camera.fov < 0 || data.camera.fov > 180)
 		return (1);
-	if (check_normalized_vector(data.camera.orientation))
+	if (check_normalized_vector(data.camera.z_axis))
 		return (1);
 	return (0);
 }

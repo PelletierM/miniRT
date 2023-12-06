@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:42:07 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/05 16:21:43 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 11:15:35 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	mrt_init_data(t_data *data)
 	data->camera.position.x = 0;
 	data->camera.position.y = 0;
 	data->camera.position.z = 0;
-	data->camera.orientation.x = 0;
-	data->camera.orientation.y = 0;
-	data->camera.orientation.z = 0;
+	data->camera.z_axis.x = 0;
+	data->camera.z_axis.y = 0;
+	data->camera.z_axis.z = 0;
 	data->camera.fov = 55;
 	data->light.position.x = 0;
 	data->light.position.y = 0;

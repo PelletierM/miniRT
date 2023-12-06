@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 11:05:09 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:48:18 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <float.h>
 
 # define VP_DIAG 0.04327
-# define WIN_HEIGHT 1080
-# define WIN_WIDTH 1920
+# define WIN_HEIGHT 480
+# define WIN_WIDTH	720 
 # define RES_MAX_HEIGHT 1440
 # define RES_MAX_WIDTH 2560
 # define BG_COLOR 0x000000FF
@@ -166,16 +166,17 @@ int				mrt_error_message(int error, int line);
 float			check_hit_sphere(t_sphere sp, t_ray ray);
 
 void			render(void *param);
+void			mrt_create_camera(t_data *data);
 
 // Vector operations
-float			op_vect_dot(t_vector v1, t_vector v2);
-t_vector		op_vect_cross(t_vector v1, t_vector v2);
-t_vector		op_vect_normalize(t_vector v1);
-t_vector		op_vect_add(t_vector v1, t_vector v2);
-t_vector		op_vect_sub(t_vector v1, t_vector v2);
-t_vector		op_vect_mul(t_vector v1, t_vector v2);
-t_vector		op_vect_scalar_mul(t_vector v1, float factor);
-t_vector		op_vect_scalar_div(t_vector v1, float factor);
-t_vector		op_vect_scalar_add(t_vector v1, float factor);
+float			vdot(t_vector v1, t_vector v2);
+t_vector		vcross(t_vector v1, t_vector v2);
+t_vector		vnormalize(t_vector v1);
+t_vector		vadd(t_vector v1, t_vector v2);
+t_vector		vsub(t_vector v1, t_vector v2);
+t_vector		vmul(t_vector v1, t_vector v2);
+t_vector		vsmul(t_vector v1, float factor);
+t_vector		vsdiv(t_vector v1, float factor);
+t_vector		vsadd(t_vector v1, float factor);
 
 #endif
