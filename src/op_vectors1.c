@@ -6,18 +6,18 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 09:10:26 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/05 15:32:29 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:20:53 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-float	op_vect_dot(t_vector v1, t_vector v2)
+float	vdot(t_vector v1, t_vector v2)
 {
 	return ((v1.x * v2.x) + (v1.y * v2.y) + (v1.z * v2.z));
 }
 
-t_vector	op_vect_cross(t_vector v1, t_vector v2)
+t_vector	vcross(t_vector v1, t_vector v2)
 {
 	t_vector	result;
 
@@ -27,10 +27,10 @@ t_vector	op_vect_cross(t_vector v1, t_vector v2)
 	return (result);
 }
 
-t_vector	op_vect_normalize(t_vector v1)
+t_vector	vnormalize(t_vector v1)
 {
 	float		length;
 
-	length = sqrt(op_vect_dot(v1, v1));
-	return (op_vect_scalar_div(v1, length));
+	length = sqrt(vdot(v1, v1));
+	return (vsdiv(v1, length));
 }
