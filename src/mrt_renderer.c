@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 11:12:33 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 11:13:51 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,55 +43,13 @@ void	render(void *param)
 t_ray	get_current_ray(t_data *data, int x, int y)
 {
 		t_ray		ray;
-		float		viewport_height;
-		float		viewport_width;
-		t_vector	viewport_u;
-		t_vector	viewport_v;
-		t_vector	pixel_delta_u;
-		t_vector	pixel_delta_v;
-		t_vector	viewport_upper_left;
-		t_vector	pixel00_loc;
-		float		focal_length;
-		
-		focal_length = data->camera.orientation.z;
-		viewport_height = 2.0;
-		viewport_width = viewport_height * (float)((float) data->width / (float) data->height);
+
 		ray.position.x = data->camera.position.x;
 		ray.position.y = data->camera.position.y;
 		ray.position.z = data->camera.position.z;
-
-		viewport_u.x = viewport_width;
-		viewport_u.y = 0;
-		viewport_u.z = 0;
-
-		viewport_v.x = 0;
-		viewport_v.y = -viewport_height;
-		viewport_v.z = 0;
-
-		pixel_delta_u = vsdiv(viewport_u, (float) data->width);
-		pixel_delta_v = vsdiv(viewport_v, (float) data->height);
-		
-		t_vector tmp;
-		tmp.x = 0;
-		tmp.y = 0;
-		tmp.z = focal_length;
-		viewport_upper_left = vsub(data->camera.position, tmp);
-		viewport_upper_left = vsub(viewport_upper_left,
-				vsdiv(viewport_v, 2));
-		viewport_upper_left = vsub(viewport_upper_left,
-				vsdiv(viewport_u, 2));
-		pixel00_loc = vadd(viewport_upper_left, vsmul(
-					vadd(pixel_delta_u, pixel_delta_v), 0.5));
-		t_vector c = vadd(pixel00_loc, vadd(vsmul(pixel_delta_u, x),
-					vsmul(pixel_delta_v, y)));
-		ray.orientation = vsub(c, ray.position);
-		//ray.orientation.x = ((float) x / data->width) * 2 - 1;
-		//ray.orientation.y = ((float) y / data->height) * 2 - 1;
-		//ray.orientation.z = data->camera.orientation.z;
-		///printf("p%f %f %f\n", pixel00_loc.x, pixel00_loc.y, pixel00_loc.z);
-		//printf("du%f %f %f\n", pixel_delta_u.x, pixel_delta_u.y, pixel_delta_u.z);
-		//printf("dv%f %f %f\n", pixel_delta_v.x, pixel_delta_v.y, pixel_delta_v.z);
-		//printf("rayd %f %f %f\n", ray.orientation.x, ray.orientation.y, ray.orientation.z);
+		ray.orientation.x = ((float) x / data->width) * 2 - 1;
+		ray.orientation.y = ((float) y / data->height) * 2 - 1;
+		ray.orientation.z = data->camera.orientation.z;
 		return (ray);
 }
 
@@ -138,3 +96,44 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 	}
 	return (color);
 }
+/*
+		float		viewport_height;
+		float		viewport_width;
+		t_vector	viewport_u;
+		t_vector	viewport_v;
+		t_vector	pixel_delta_u;
+		t_vector	pixel_delta_v;
+		t_vector	viewport_upper_left;
+		t_vector	pixel00_loc;
+		float		focal_length;
+		
+		focal_length = data->camera.orientation.z;
+		viewport_height = 2.0;
+		viewport_width = viewport_height * (float)((float) data->width / (float) data->height);
+
+		viewport_u.x = viewport_width;
+		viewport_u.y = 0;
+		viewport_u.z = 0;
+
+		viewport_v.x = 0;
+		viewport_v.y = -viewport_height;
+		viewport_v.z = 0;
+
+		pixel_delta_u = vsdiv(viewport_u, (float) data->width);
+		pixel_delta_v = vsdiv(viewport_v, (float) data->height);
+		
+		t_vector tmp;
+		tmp.x = 0;
+		tmp.y = 0;
+		tmp.z = focal_length;
+		viewport_upper_left = vsub(data->camera.position, tmp);
+		viewport_upper_left = vsub(viewport_upper_left,
+				vsdiv(viewport_v, 2));
+		viewport_upper_left = vsub(viewport_upper_left,
+				vsdiv(viewport_u, 2));
+		pixel00_loc = vadd(viewport_upper_left, vsmul(
+					vadd(pixel_delta_u, pixel_delta_v), 0.5));
+		t_vector c = vadd(pixel00_loc, vadd(vsmul(pixel_delta_u, x),
+					vsmul(pixel_delta_v, y)));
+		ray.orientation = vsub(c, ray.position);
+		*/
