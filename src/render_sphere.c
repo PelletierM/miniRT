@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:08:46 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/05 16:44:31 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 08:07:44 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ float get_closest_t_value(float a, float b, float dis)
 
 	t1 = (-b + dis) / (2 *a);
 	t2 = (-b - dis) / (2 *a);
-	if (t1 < 0 && t2 < 0)
-		return (t2);
-	else if (t2 < 0)
+	if (t1 > 0 && t2 > 0)
 		return (t2);
 	return (t1);
 }
