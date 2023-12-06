@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 12:25:59 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 15:22:19 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,9 @@ int				get_blue(unsigned int color);
 
 int				mrt_error_message(int error, int line);
 
+float			check_hit_cylinder(t_cylinder sp, t_ray ray);
 float			check_hit_sphere(t_sphere sp, t_ray ray);
+float			check_hit_cylinders(t_cylinder cy, t_ray ray);
 
 void			render(void *param);
 void			mrt_create_camera(t_data *data);

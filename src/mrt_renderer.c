@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 12:54:22 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 15:32:41 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_vector	trace_pixel(t_data *data, t_ray ray);
 t_ray		get_current_ray(t_data *data, int x, int y);
+float		check_hit_planes(t_plane plane, t_ray ray);
 
 void	render(void *param)
 {
@@ -79,6 +80,7 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 	color.x = 0;
 	color.y = 0;
 	color.z = 0;
+	hit.shape = 0;
 	while (i < data->num_spheres)
 	{
 		t = check_hit_sphere(data->spheres[i], ray);
@@ -93,11 +95,59 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 		}
 		i++;
 	}
+	i = 0;
+	while (i < data->num_planes)
+	{
+		t = check_hit_planes(data->planes[i], ray);
+		if (t > 0 && t < hit.t)
+		{
+			color.x = data->planes[i].color.x;
+			color.y = data->planes[i].color.y;
+			color.z = data->planes[i].color.z;
+			hit.t = t;
+			hit.shape = 2;
+			hit.i = i;
+		}
+		i++;
+	}
+	i = 0;
+	while (i < data->num_cylinders)
+	{
+		t = check_hit_cylinders(data->cylinders[i], ray);
+		if (t > 0 && t < hit.t)
+		{
+			color.x = data->cylinders[i].color.x;
+			color.y = data->cylinders[i].color.y;
+			color.z = data->cylinders[i].color.z;
+			hit.t = t;
+			hit.shape = 3;
+			hit.i = i;
+		}
+		i++;
+	}
+	t_vector	normal;
 	if (hit.t != 1000000)
 	{
-		t_vector hit_pos = vadd(ray.position, vsmul(ray.orientation, hit.t)); 
-		t_vector normal = vsub(hit_pos, data->spheres[hit.i].position);
-		normal = vsdiv(normal, data->spheres[hit.i].diameter / 2);
+		t_vector hit_pos = vadd(ray.position, vsmul(ray.orientation, hit.t));
+		if (hit.shape == 1)
+		{
+			normal = vsub(hit_pos, data->spheres[hit.i].position);
+			normal = vsdiv(normal, data->spheres[hit.i].diameter / 2);
+		}
+		else if (hit.shape == 2)
+			normal = vnormalize(data->planes[hit.i].orientation);
+		else if (hit.shape == 3)
+		{
+			t_vector	x;
+
+			x = vsub(ray.position, data->cylinders[hit.i].position);
+			float m = vdot(ray.orientation, data->cylinders[hit.i].orientation) * hit.t + vdot(x, data->cylinders[hit.i].orientation);
+			normal = vnormalize(
+					(vsub(hit_pos, vsub(data->cylinders[hit.i].position, vsmul(
+												data->cylinders[hit.i].orientation, m)))));
+		}
+		else
+			return (color);
 		t_vector light_direction = vsub(hit_pos, data->light.position);
 		light_direction = vnormalize(light_direction);
 		light_direction = vsmul(light_direction, -1);
@@ -107,4 +157,16 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 		color = vsmul(color, light);
 	}
 	return (color);
+}
+
+float		check_hit_planes(t_plane plane, t_ray ray)
+{
+	float	denominator;
+	float	numerator;
+
+	denominator = vdot(ray.orientation, plane.orientation);
+	if (denominator == 0)
+		return (0);
+	numerator = vdot(plane.orientation, vsub(plane.position, ray.position));
+	return (numerator / denominator);
 }
