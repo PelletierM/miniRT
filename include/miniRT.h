@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 08:56:42 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 10:37:39 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,14 +161,14 @@ float			check_hit_sphere(t_sphere sp, t_ray ray);
 void			render(void *param);
 
 // Vector operations
-float			op_vect_dot(t_vector v1, t_vector v2);
-t_vector		op_vect_cross(t_vector v1, t_vector v2);
-t_vector		op_vect_normalize(t_vector v1);
-t_vector		op_vect_add(t_vector v1, t_vector v2);
-t_vector		op_vect_sub(t_vector v1, t_vector v2);
-t_vector		op_vect_mul(t_vector v1, t_vector v2);
-t_vector		op_vect_scalar_mul(t_vector v1, float factor);
-t_vector		op_vect_scalar_div(t_vector v1, float factor);
-t_vector		op_vect_scalar_add(t_vector v1, float factor);
+float			vdot(t_vector v1, t_vector v2);
+t_vector		vcross(t_vector v1, t_vector v2);
+t_vector		vnormalize(t_vector v1);
+t_vector		vadd(t_vector v1, t_vector v2);
+t_vector		vsub(t_vector v1, t_vector v2);
+t_vector		vmul(t_vector v1, t_vector v2);
+t_vector		vsmul(t_vector v1, float factor);
+t_vector		vsdiv(t_vector v1, float factor);
+t_vector		vsadd(t_vector v1, float factor);
 
 #endif

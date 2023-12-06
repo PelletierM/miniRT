@@ -6,13 +6,13 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 09:45:20 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/05 15:26:49 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:16:19 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_vector	op_vect_add(t_vector v1, t_vector v2)
+t_vector	vadd(t_vector v1, t_vector v2)
 {
 	t_vector	result;
 
@@ -22,7 +22,7 @@ t_vector	op_vect_add(t_vector v1, t_vector v2)
 	return (result);
 }
 
-t_vector	op_vect_sub(t_vector v1, t_vector v2)
+t_vector	vsub(t_vector v1, t_vector v2)
 {
 	t_vector	result;
 
@@ -32,7 +32,7 @@ t_vector	op_vect_sub(t_vector v1, t_vector v2)
 	return (result);
 }
 
-t_vector	op_vect_mul(t_vector v1, t_vector v2)
+t_vector	vmul(t_vector v1, t_vector v2)
 {
 	t_vector	result;
 
@@ -42,7 +42,7 @@ t_vector	op_vect_mul(t_vector v1, t_vector v2)
 	return (result);
 }
 
-t_vector	op_vect_scalar_add(t_vector v1, float factor)
+t_vector	vsadd(t_vector v1, float factor)
 {
 	t_vector	result;
 
@@ -52,7 +52,7 @@ t_vector	op_vect_scalar_add(t_vector v1, float factor)
 	return (result);
 }
 
-t_vector	op_vect_scalar_mul(t_vector v1, float factor)
+t_vector	vsmul(t_vector v1, float factor)
 {
 	t_vector	result;
 
@@ -62,7 +62,7 @@ t_vector	op_vect_scalar_mul(t_vector v1, float factor)
 	return (result);
 }
 
-t_vector	op_vect_scalar_div(t_vector v1, float factor)
+t_vector	vsdiv(t_vector v1, float factor)
 {
 	t_vector	result;
 

@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:08:46 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 08:07:44 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 10:21:30 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ float	check_hit_sphere(t_sphere sp, t_ray ray)
 	float	c;
 	float	dis;
 
-	a = op_vect_dot(ray.orientation, ray.orientation);
-	b = op_vect_dot(op_vect_scalar_mul(ray.orientation,
-				(float) 2), op_vect_sub(ray.position, sp.position));
-	c = op_vect_dot(op_vect_sub(ray.position, sp.position),
-			op_vect_sub(ray.position, sp.position)) - powf(sp.diameter / 2, 2);
+	a = vdot(ray.orientation, ray.orientation);
+	b = vdot(vsmul(ray.orientation,
+				(float) 2), vsub(ray.position, sp.position));
+	c = vdot(vsub(ray.position, sp.position),
+			vsub(ray.position, sp.position)) - powf(sp.diameter / 2, 2);
 
 	dis = sqrt(powf(b, 2) - 4 * a * c);
 	if (dis < 0 )
