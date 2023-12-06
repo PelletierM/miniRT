@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 12:33:30 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 12:45:20 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	render(void *param)
 			ray = get_current_ray(data, x, y);
 			ray.orientation.x *= data->ratio;
 			color = trace_pixel(data, ray);
-			mlx_put_pixel(data->img, x, (data->height - y), get_vect_rgba(color));
+			mlx_put_pixel(data->img, x, y, get_vect_rgba(color));
 			y++;
 		}
 		x++;
@@ -54,14 +54,14 @@ t_ray	get_current_ray(t_data *data, int x, int y)
 		ray.position.y = data->camera.position.y;
 		ray.position.z = data->camera.position.z;
 
-
-		x_scale = ((float) x / data->width - (data->camera.vp_horiz_len / 2));
+		x_scale = ((float) x / data->width - 0.5);
 		camera_x = vsmul(data->camera.x_axis, x_scale);
-		y_scale = ((float) y / data->height - (data->camera.vp_vert_len / 2));
+		y_scale = ((float) y / data->height - 0.5);
 		camera_y = vsmul(data->camera.y_axis, y_scale);
 		camera_z = vsmul(data->camera.z_axis, data->camera.focal_len);
 
 		ray.orientation = vadd(vadd(camera_z, camera_y), camera_x);
+		if (x == data->width / 2 && y == data->height / 2)
 		return (ray);
 }
 
