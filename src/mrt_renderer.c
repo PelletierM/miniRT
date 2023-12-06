@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 11:13:51 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 11:19:49 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 	float		t;
 
 	i = 0;
-	hit.t = 0;
+	hit.t = 1000000;
 	hit.i = 0;
 	t = 0;
 	color.x = 0;
