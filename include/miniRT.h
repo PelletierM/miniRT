@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 15:22:19 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/06 16:20:00 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_camera
 	float		vp_horiz_len;
 	float		vp_vert_len;
 	float		fov;
+	char		mv_flag;
 }				t_camera;
 
 typedef struct s_light
@@ -169,6 +170,12 @@ float			check_hit_cylinders(t_cylinder cy, t_ray ray);
 
 void			render(void *param);
 void			mrt_create_camera(t_data *data);
+
+// MLX hooks
+void			ft_gen_hook(void *ptr);
+void			ft_keyhook(mlx_key_data_t keydata, void *param);
+void			ft_resize_hook(int32_t width, int32_t height, void *param);
+void			ft_keyhook_move_camera(mlx_key_data_t keydata, t_data *data);
 
 // Vector operations
 float			vdot(t_vector v1, t_vector v2);

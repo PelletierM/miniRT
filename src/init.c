@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:42:07 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/06 11:15:35 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:20:47 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,4 @@ int	ft_mlx_init(t_data *data)
 	mlx_key_hook(data->mlx, &ft_keyhook, data);
 	mlx_resize_hook(data->mlx, &ft_resize_hook, data);
 	return (0);
-}
-
-void	ft_keyhook(mlx_key_data_t keydata, void *param)
-{
-	t_data	*data;
-
-	data = (t_data *) param;
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		mlx_close_window(data->mlx);
-}
-
-void	ft_resize_hook(int32_t width, int32_t height, void *param)
-{
-	t_data	*data;
-	
-	data = (t_data *) param;
-	data->width = width;
-	data->height = height;
-	data->ratio = (float) width / (float) height;
 }
