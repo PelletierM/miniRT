@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:08:46 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/07 11:43:40 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/07 13:37:05 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,36 +79,34 @@ float	check_hit_cylinders(t_cylinder cy, t_ray ray, int *flag)
 	if (m2 >= 0 && m2 <= cy.height)
 		return (t2);
 	/*
-	printf("%f %f %f, %f %f %f\n",
-			cy.top.position.x,
-			cy.top.position.y,
-			cy.top.position.z,
-			cy.top.orientation.z,
-			cy.top.orientation.z,
-			cy.top.orientation.z);
-	printf("%f %f %f, %f %f %f\n",
+	printf("Bot: %f %f %f\n",
 			cy.bottom.position.x,
 			cy.bottom.position.y,
-			cy.bottom.position.z,
-			cy.bottom.orientation.z,
-			cy.bottom.orientation.z,
-			cy.bottom.orientation.z);
+			cy.bottom.position.z);
+	printf("Top: %f %f %f\n",
+			cy.top.position.x,
+			cy.top.position.y,
+			cy.top.position.z);
 			*/
 	t1 = check_hit_planes(cy.bottom, ray);
 	t2 = check_hit_planes(cy.top, ray);
-	if (t1)
+	if (t1 < t2)
 	{
-		*flag = 1;
 		t_vector hit_pos = vadd(ray.position, vsmul(ray.orientation, t1));
 		if (vdistance(hit_pos, cy.bottom.position) < cy.diameter)
+		{
+			*flag = 1;
 			return (t1);
+		}
 	}
-	else if (t2)
+	else 
 	{
-		*flag = 2;
 		t_vector hit_pos = vadd(ray.position, vsmul(ray.orientation, t2));
 		if (vdistance(hit_pos, cy.top.position) < cy.diameter)
+		{
+			*flag = 2;
 			return (t2);
+		}
 	}
 	return (0);
 }

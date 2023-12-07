@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/07 11:43:39 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/07 13:32:13 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 			normal = vnormalize(data->planes[hit.i].orientation);
 		else if (hit.shape == 3)
 		{
-			return (color);
+		//	return (color);
 			t_vector	x;
 			float		m;
 			if (flag == 1)
@@ -179,5 +179,5 @@ float		check_hit_planes(t_plane plane, t_ray ray)
 	if ((numerator / denominator) > 0)
 		return (numerator / denominator);
 	else
-		return (-(numerator / denominator));
+		return ((numerator / denominator));
 }
