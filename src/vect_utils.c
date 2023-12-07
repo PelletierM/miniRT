@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 07:41:54 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/07 11:45:39 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/07 15:03:46 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,5 @@ float	vlength(t_vector v1)
 
 float	vdistance(t_vector v1, t_vector v2)
 {
-	t_vector	dist;
-
-	dist = vsub(v1, v2);
-	return (vlength(dist));
+	return (sqrt(pow(v1.x - v2.x, 2) + pow(v1.y - v2.y, 2) + pow(v1.z - v2.z, 2)));
 }
