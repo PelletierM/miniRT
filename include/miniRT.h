@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/07 08:25:24 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/07 11:54:26 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ typedef struct s_cylinder
 	float			diameter;
 	float			height;
 	t_vector		color;
+	t_plane			bottom;
+	t_plane			top;
 }				t_cylinder;
 
 typedef struct s_ray
@@ -164,9 +166,8 @@ int				get_blue(unsigned int color);
 
 int				mrt_error_message(int error, int line);
 
-float			check_hit_cylinder(t_cylinder sp, t_ray ray);
 float			check_hit_sphere(t_sphere sp, t_ray ray);
-float			check_hit_cylinders(t_cylinder cy, t_ray ray);
+float			check_hit_cylinders(t_cylinder cy, t_ray ray, int *flag);
 float			check_hit_planes(t_plane plane, t_ray ray);
 
 void			render(void *param);

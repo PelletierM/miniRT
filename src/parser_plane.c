@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:51:30 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/04 15:55:11 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/07 09:17:20 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	set_plane(char *line, t_data *data)
 		return (1);
 	if (get_coord(line, &data->planes[data->num_planes].orientation))
 		return (1);
+	data->planes[data->num_planes].orientation = vnormalize(
+			data->planes[data->num_planes].orientation);
 	return (set_plane_2(line, data));
 }
 

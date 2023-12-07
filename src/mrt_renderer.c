@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/07 08:25:27 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/07 11:43:39 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,10 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 		i++;
 	}
 	i = 0;
+	int	flag = 0;
 	while (i < data->num_cylinders)
 	{
-		t = check_hit_cylinders(data->cylinders[i], ray);
+		t = check_hit_cylinders(data->cylinders[i], ray, &flag);
 		if (t > 0 && t < hit.t)
 		{
 			color.x = data->cylinders[i].color.x;
@@ -137,13 +138,21 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 			normal = vnormalize(data->planes[hit.i].orientation);
 		else if (hit.shape == 3)
 		{
+			return (color);
 			t_vector	x;
-
-			x = vsub(ray.position, data->cylinders[hit.i].position);
-			float m = vdot(ray.orientation, data->cylinders[hit.i].orientation) * hit.t + vdot(x, data->cylinders[hit.i].orientation);
-			normal = vnormalize(
-					(vsub(hit_pos, vsub(data->cylinders[hit.i].position, vsmul(
-												data->cylinders[hit.i].orientation, m)))));
+			float		m;
+			if (flag == 1)
+				normal = vnormalize(data->cylinders[hit.i].bottom.orientation);
+			else if (flag == 2)
+				normal = vnormalize(data->cylinders[hit.i].top.orientation);
+			else
+			{
+				x = vsub(ray.position, data->cylinders[hit.i].position);
+				m = vdot(ray.orientation, vsmul(data->cylinders[hit.i].orientation, hit.t)) + vdot(x, data->cylinders[hit.i].orientation);
+				normal = vnormalize(
+						(vsub(hit_pos, vsub(data->cylinders[hit.i].position, vsmul(
+													data->cylinders[hit.i].orientation, m)))));
+			}
 		}
 		else
 			return (color);
@@ -167,5 +176,8 @@ float		check_hit_planes(t_plane plane, t_ray ray)
 	if (denominator == 0)
 		return (0);
 	numerator = vdot(plane.orientation, vsub(plane.position, ray.position));
-	return (numerator / denominator);
+	if ((numerator / denominator) > 0)
+		return (numerator / denominator);
+	else
+		return (-(numerator / denominator));
 }

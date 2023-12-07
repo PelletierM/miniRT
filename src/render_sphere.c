@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:08:46 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/07 09:03:19 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/07 11:43:40 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,56 +47,68 @@ float get_closest_t_value(float a, float b, float dis)
 	return (t1);
 }
 
-float	check_hit_cylinders(t_cylinder cy, t_ray ray)
+float	check_hit_cylinders(t_cylinder cy, t_ray ray, int *flag)
 {
-	float	a;
-	float	b;
-	float	c;
-	float	dis;
+	float		a;
+	float		b;
+	float		c;
+	float		dis;
 	t_vector	x;
-
+	float		m1;
+	float		m2;
+	float 		t1;
+	float 		t2;
 
 	x = vsub(ray.position, cy.position);
 	a = vdot(ray.orientation, ray.orientation) - pow(vdot(ray.orientation, cy.orientation), 2);
-	b = 2 * (vdot(ray.orientation, x) - vdot(ray.orientation, cy.position) * vdot(x, cy.orientation));
+	b = 2 * (vdot(ray.orientation, x) - vdot(ray.orientation, cy.orientation) * vdot(x, cy.orientation));
 	c = vdot(x, x) - pow(vdot(x, cy.orientation), 2) - pow(cy.diameter / 2, 2);
 
 	dis = powf(b, 2) - 4 * a * c;
 	if (dis < 0 )
 		return (0);
-	float t;
-	float t1 = (-b + sqrt(dis)) / (2 *a);
-	float t2 = (-b - sqrt(dis)) / (2 *a);
-	if (t1 > 0 && t2 > 0)
-		t = t2;
-	else
-		t = t1;
+	if (dis == 0)
+		return (-b / (2 * a));
+	t1 = (-b + sqrt(dis)) / (2 *a);
+	t2 = (-b - sqrt(dis)) / (2 *a);
 	x = vsub(ray.position, cy.position);
-
-	float m = vdot(ray.orientation, cy.orientation) * t + vdot(x, cy.orientation);
-	if (m > 0 && m < cy.height)
-		return (t);
+	m1 = vdot(ray.orientation, vsmul(cy.orientation, t1)) + vdot(x, cy.orientation);
+	m2 = vdot(ray.orientation, vsmul(cy.orientation, t2)) + vdot(x, cy.orientation);
+	if (m1 >= 0 && m1 <= cy.height)
+		return (t1);
+	if (m2 >= 0 && m2 <= cy.height)
+		return (t2);
 	/*
-	t_plane	bottom;
-	t_plane	top;
-	bottom.position = cy.position;
-	bottom.orientation = vsmul(cy.orientation, -1);
-	top.orientation = cy.orientation;
-	top.position = translate_point(cy.position, cy.diameter, cy.orientation);
-	t1 = check_hit_planes(bottom, ray);
-	t2 = check_hit_planes(bottom, ray);
+	printf("%f %f %f, %f %f %f\n",
+			cy.top.position.x,
+			cy.top.position.y,
+			cy.top.position.z,
+			cy.top.orientation.z,
+			cy.top.orientation.z,
+			cy.top.orientation.z);
+	printf("%f %f %f, %f %f %f\n",
+			cy.bottom.position.x,
+			cy.bottom.position.y,
+			cy.bottom.position.z,
+			cy.bottom.orientation.z,
+			cy.bottom.orientation.z,
+			cy.bottom.orientation.z);
+			*/
+	t1 = check_hit_planes(cy.bottom, ray);
+	t2 = check_hit_planes(cy.top, ray);
 	if (t1)
 	{
+		*flag = 1;
 		t_vector hit_pos = vadd(ray.position, vsmul(ray.orientation, t1));
-		if (vdistance(hit_pos, bottom.position) < cy.diameter)
+		if (vdistance(hit_pos, cy.bottom.position) < cy.diameter)
 			return (t1);
 	}
-	if (t2)
+	else if (t2)
 	{
+		*flag = 2;
 		t_vector hit_pos = vadd(ray.position, vsmul(ray.orientation, t2));
-		if (vdistance(hit_pos, top.position) < cy.diameter)
+		if (vdistance(hit_pos, cy.top.position) < cy.diameter)
 			return (t2);
 	}
-	*/
 	return (0);
 }

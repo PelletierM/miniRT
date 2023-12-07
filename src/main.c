@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/06 16:08:42 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/07 11:47:42 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ int	main(int argc, char *argv[])
 		return (1);
 	if (ft_mlx_init(&data) == 1)
 		return (mrt_error_message(ERR_MLX_INIT, 0));
+	printf("MAIN: %f %f %f %f %f %f\n",
+			data.cylinders[0].position.x,
+			data.cylinders[0].position.y,
+			data.cylinders[0].position.z,
+			data.cylinders[0].orientation.z,
+			data.cylinders[0].orientation.z,
+			data.cylinders[0].orientation.z);
 	render(&data);
 	mlx_loop_hook(data.mlx, ft_gen_hook, &data);
 	mlx_loop(data.mlx);
