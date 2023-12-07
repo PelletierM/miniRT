@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/07 13:32:13 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/07 16:21:56 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,16 +142,24 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 			t_vector	x;
 			float		m;
 			if (flag == 1)
+			{
 				normal = vnormalize(data->cylinders[hit.i].bottom.orientation);
+				//normal = vsmul(normal, -1);
+			}
 			else if (flag == 2)
+			{
 				normal = vnormalize(data->cylinders[hit.i].top.orientation);
+				//normal = vsmul(normal, -1);
+			}
 			else
 			{
 				x = vsub(ray.position, data->cylinders[hit.i].position);
 				m = vdot(ray.orientation, vsmul(data->cylinders[hit.i].orientation, hit.t)) + vdot(x, data->cylinders[hit.i].orientation);
 				normal = vnormalize(
-						(vsub(hit_pos, vsub(data->cylinders[hit.i].position, vsmul(
-													data->cylinders[hit.i].orientation, m)))));
+						(vsub(hit_pos, vadd(data->cylinders[hit.i].position,
+											vsmul(data->cylinders[hit.i].orientation, m)))));
+				if (flag == 3)
+					normal = vsmul(normal, -1);
 			}
 		}
 		else
@@ -175,9 +183,6 @@ float		check_hit_planes(t_plane plane, t_ray ray)
 	denominator = vdot(ray.orientation, plane.orientation);
 	if (denominator == 0)
 		return (0);
-	numerator = vdot(plane.orientation, vsub(plane.position, ray.position));
-	if ((numerator / denominator) > 0)
-		return (numerator / denominator);
-	else
-		return ((numerator / denominator));
+	numerator = vdot(plane.orientation, vsub(vsmul(plane.position, 1), ray.position));
+	return (numerator / denominator);
 }
