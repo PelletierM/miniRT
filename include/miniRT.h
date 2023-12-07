@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 16:20:00 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/07 08:25:24 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ int				mrt_error_message(int error, int line);
 float			check_hit_cylinder(t_cylinder sp, t_ray ray);
 float			check_hit_sphere(t_sphere sp, t_ray ray);
 float			check_hit_cylinders(t_cylinder cy, t_ray ray);
+float			check_hit_planes(t_plane plane, t_ray ray);
 
 void			render(void *param);
 void			mrt_create_camera(t_data *data);
@@ -187,5 +188,13 @@ t_vector		vmul(t_vector v1, t_vector v2);
 t_vector		vsmul(t_vector v1, float factor);
 t_vector		vsdiv(t_vector v1, float factor);
 t_vector		vsadd(t_vector v1, float factor);
+t_vector		vssub(t_vector v1, float factor);
+t_vector		vcopy(t_vector v);
+t_vector		translate_point(t_vector position,
+								float t,
+								t_vector orientation);
+float			vlength(t_vector v1);
+t_vector		create_v_from_points(t_vector p1, t_vector p2);
+float			vdistance(t_vector v1, t_vector v2);
 
 #endif

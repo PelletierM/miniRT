@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/06 15:32:41 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/07 08:25:27 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 t_vector	trace_pixel(t_data *data, t_ray ray);
 t_ray		get_current_ray(t_data *data, int x, int y);
-float		check_hit_planes(t_plane plane, t_ray ray);
 
 void	render(void *param)
 {

@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:54:44 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/04 15:30:59 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/07 08:36:33 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	set_cylinder(char *line, t_data *data)
 		return (1);
 	line = skip_coord(line);
 	line = skip_spaces(line);
+	//data->cylinders[data->num_cylinders].orientation = vnormalize(
+	//		data->cylinders[data->num_cylinders].orientation);
 	if (!*line)
 		return (1);
 	return (set_cylinder_part(line, data));
