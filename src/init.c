@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:42:07 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/07 11:17:04 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/08 09:15:17 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_mlx_init(t_data *data)
 	mlx_set_setting(MLX_MAXIMIZED, false);
 	mlx = mlx_init(data->width, data->height, "fdf", true);
 	data->mlx = mlx;
-	mlx_set_window_limit(data->mlx, 0, 0, RES_MAX_WIDTH, RES_MAX_HEIGHT);	
+	mlx_set_window_limit(data->mlx, 0, 0, RES_MAX_WIDTH, RES_MAX_HEIGHT);
 	img = mlx_new_image(data->mlx, RES_MAX_WIDTH, RES_MAX_HEIGHT); 
 	data->img = img;
 	if (!(data->img) 

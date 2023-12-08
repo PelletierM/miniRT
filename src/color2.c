@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   color2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
+/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 07:39:51 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 09:15:18 by eguefif          ###   ########.fr       */
+/*   Created: 2023/12/08 09:13:42 by eguefif           #+#    #+#             */
+/*   Updated: 2023/12/08 09:14:09 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-unsigned int	get_rgba(int r, int g, int b, int a)
+int	get_alpha(unsigned int color)
 {
-	return (r << 24 | g << 16 | b << 8 | a);
+	return ((color >> 24) & 0xFF);
 }
 
-unsigned int	get_vect_rgba(t_vector c)
+int	get_red(unsigned int color)
 {
-	return ((int) c.x << 24 | (int) c.y << 16 | (int) c.z << 8 | 255);
+	return ((color >> 16) & 0xFF);
+}
+
+int	get_green(unsigned int color)
+{
+	return ((color >> 8) & 0xFF);
+}
+
+int	get_blue(unsigned int color)
+{
+	return ((color >> 0) & 0xFF);
 }

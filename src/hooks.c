@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:48:22 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/07 16:03:18 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/08 11:11:05 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_keyhook(mlx_key_data_t keydata, void *param)
 		mlx_close_window(data->mlx);
 	ft_keyhook_move_camera(keydata, data);
 	ft_keyhook_rotate_camera(keydata, data);
+	ft_keyhook_zoom_camera(keydata, data);
 }
 
 void	ft_resize_hook(int32_t width, int32_t height, void *param)
@@ -72,6 +73,26 @@ void	ft_keyhook_rotate_camera(mlx_key_data_t keydata, t_data *data)
 		data->camera.mv_flag += CAM_ROT_RIGHT;
 	if (keydata.key == MLX_KEY_RIGHT && (keydata.action == MLX_RELEASE))
 		data->camera.mv_flag -= CAM_ROT_RIGHT;
+	if (keydata.key == MLX_KEY_UP && (keydata.action == MLX_PRESS))
+		data->camera.mv_flag += CAM_ROT_UP;
+	if (keydata.key == MLX_KEY_UP && (keydata.action == MLX_RELEASE))
+		data->camera.mv_flag -= CAM_ROT_UP;
+	if (keydata.key == MLX_KEY_DOWN && (keydata.action == MLX_PRESS))
+		data->camera.mv_flag += CAM_ROT_DOWN;
+	if (keydata.key == MLX_KEY_DOWN && (keydata.action == MLX_RELEASE))
+		data->camera.mv_flag -= CAM_ROT_DOWN;
+}
+
+void	ft_keyhook_zoom_camera(mlx_key_data_t keydata, t_data *data)
+{
+	if (keydata.key == MLX_KEY_P && (keydata.action == MLX_PRESS))
+		data->camera.mv_flag += CAM_ZOOM_IN;
+	if (keydata.key == MLX_KEY_P && (keydata.action == MLX_RELEASE))
+		data->camera.mv_flag -= CAM_ZOOM_IN;
+	if (keydata.key == MLX_KEY_O && (keydata.action == MLX_PRESS))
+		data->camera.mv_flag += CAM_ZOOM_OUT;
+	if (keydata.key == MLX_KEY_O && (keydata.action == MLX_RELEASE))
+		data->camera.mv_flag -= CAM_ZOOM_OUT;
 }
 
 void	ft_gen_hook(void *ptr)
@@ -97,6 +118,15 @@ void	ft_gen_hook(void *ptr)
 		if (data->camera.mv_flag & i)
 		{
 			rotate_camera(data, i);
+			change = 1;
+		}
+		i *= 2;
+	}
+	while (i <= 2048)
+	{
+		if (data->camera.mv_flag & i)
+		{
+			zoom_camera(data, i);
 			change = 1;
 		}
 		i *= 2;
