@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <float.h>
 
+# define MAX_DIST 1000000
 // Camera and viewport settings 
 # define VP_DIAG 0.04327
 # define WIN_HEIGHT 768
@@ -54,6 +55,13 @@
 # define ERR_LINE_FORMAT 3
 # define ERR_MLX_INIT 4
 # define ERR_DIV_ZERO 5
+
+typedef struct s_quadratic
+{
+	float	dis;
+	float	t1;
+	float	t2;
+}	t_quadratic;
 
 typedef struct s_vector
 {
@@ -122,9 +130,13 @@ typedef struct s_ray
 
 typedef struct s_hit
 {
-	int		shape;
-	int 	i;
-	float	t;
+	int			shape;
+	int 		i;
+	int			flag;
+	float		t;
+	t_vector	position;
+	t_vector	normal;
+	t_vector	color;
 }	t_hit;
 
 typedef struct s_data
@@ -219,8 +231,16 @@ t_vector		vcopy(t_vector v);
 t_vector		translate_point(t_vector position,
 								float t,
 								t_vector orientation);
+int				is_vect_negative(t_vector vector);
 float			vlength(t_vector v1);
 t_vector		create_v_from_points(t_vector p1, t_vector p2);
-float			vdistance(t_vector v1, t_vector v2);
 
+float			vdistance(t_vector v1, t_vector v2);
+t_quadratic		solve_quadratic_cylinder(t_cylinder cy, t_ray ray);
+t_quadratic		solve_quadratic_sphere(t_sphere sp, t_ray ray);
+
+void			set_cylinders_disk(t_cylinder	*cy);
+t_hit			get_closest_hit(t_data *data, t_ray ray);
+void			get_normal_hit(t_data *data, t_ray, t_hit *hit);
+t_hit			get_light(t_hit hit, t_data *data);
 #endif

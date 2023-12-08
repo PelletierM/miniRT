@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 09:45:20 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/07 19:11:04 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/08 09:06:35 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,5 @@ t_vector	vsmul(t_vector v1, float factor)
 	result.x = v1.x * factor;
 	result.y = v1.y * factor;
 	result.z = v1.z * factor;
-	return (result);
-}
-
-t_vector	vsdiv(t_vector v1, float factor)
-{
-	t_vector	result;
-
-	if (factor == 0)
-	{
-		result.x = 0;
-		result.y = 0;
-		result.z = 0;
-		mrt_error_message(ERR_DIV_ZERO, 0);
-		return (result);
-	}
-	result.x = v1.x / factor;
-	result.y = v1.y / factor;
-	result.z = v1.z / factor;
 	return (result);
 }
