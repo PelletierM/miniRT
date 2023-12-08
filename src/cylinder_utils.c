@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 09:07:33 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 11:09:50 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/08 13:17:55 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 void	set_cylinders_disk(t_cylinder	*cy)
 {
-	cy->bottom.position = vcopy(cy->position);
+	cy->cap = translate_point(
+			cy->position,
+			cy->height / 2,
+			vsmul(cy->orientation, -1));
+	cy->bottom.position = vcopy(cy->cap);
 	cy->bottom.orientation = vsmul(cy->orientation, -1);
 	cy->top.orientation = vsmul(cy->orientation, 1);
 	cy->top.position = translate_point(
-			cy->position,
+			cy->cap,
 			cy->height,
 			cy->orientation);
 }

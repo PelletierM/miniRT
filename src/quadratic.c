@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 08:35:05 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 09:12:56 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/08 13:44:43 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_quadratic	solve_quadratic_cylinder(t_cylinder cy, t_ray ray)
 	float		b;
 	float		c;
 
-	x = vsub(ray.position, cy.position);
+	x = vsub(ray.position, cy.cap);
 	a = vdot(ray.orientation, ray.orientation) - pow(
 			vdot(ray.orientation, cy.orientation), 2);
 	b = 2 * (vdot(ray.orientation, x) - vdot(

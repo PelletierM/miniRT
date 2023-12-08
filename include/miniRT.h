@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 12:58:23 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/08 13:46:54 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ typedef struct s_plane
 typedef struct s_cylinder
 {
 	t_vector		position;
+	t_vector		cap;
 	t_vector		orientation;
 	float			diameter;
 	float			height;
@@ -134,6 +135,7 @@ typedef struct s_hit
 	int 		i;
 	int			flag;
 	float		t;
+	int			pos_hit_number;
 	t_vector	position;
 	t_vector	normal;
 	t_vector	color;
@@ -196,7 +198,7 @@ int				get_blue(unsigned int color);
 
 int				mrt_error_message(int error, int line);
 
-float			check_hit_sphere(t_sphere sp, t_ray ray);
+float			check_hit_sphere(t_sphere sp, t_ray ray, t_hit *hit);
 float			check_hit_cylinders(t_cylinder cy, t_ray ray, int *flag);
 float			check_hit_planes(t_plane plane, t_ray ray);
 

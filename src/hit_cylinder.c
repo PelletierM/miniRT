@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 08:30:35 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 12:58:25 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/08 13:16:43 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ float	get_cyl_t(t_quadratic s_cyl, t_cylinder cy, t_ray ray, int *flag)
 	float		m;
 	t_vector	x;
 
-	x = vsub(ray.position, cy.position);
+	x = vsub(ray.position, cy.cap);
 	if (s_cyl.t2 > 0 && s_cyl.t1 > 0)
 	{
 		*flag = 4;
@@ -54,7 +54,7 @@ float	get_t_from_inside(t_cylinder cy, float t1, t_ray ray, int *flag)
 	float		m;
 	t_vector	x;
 
-	x = vsub(ray.position, cy.position);
+	x = vsub(ray.position, cy.cap);
 	t3 = get_hit_disk(cy.bottom, cy.diameter / 2, ray);
 	t4 = get_hit_disk(cy.top, cy.diameter / 2, ray);
 	if (t3 < t1 && t3 < t4)
@@ -113,7 +113,7 @@ float	get_hit_disk(t_plane p, float r, t_ray ray)
 
 	t = check_hit_planes(p, ray);
 	hit_pos = vadd(ray.position, vsmul(ray.orientation, t));
-	if (vdistance(hit_pos, p.position) <= r)
+	if (vdistance(hit_pos, p.position) <= r && t > 0)
 		return (t);
 	return (MAX_DIST);
 }

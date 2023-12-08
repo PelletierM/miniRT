@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 09:17:58 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 11:44:43 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/08 13:46:56 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_spheres_hit(t_data *data, t_ray ray, t_hit *hit)
 	i = 0;
 	while (i < data->num_spheres)
 	{
-		t = check_hit_sphere(data->spheres[i], ray);
+		t = check_hit_sphere(data->spheres[i], ray, hit);
 		if (t > 0 && t < hit->t)
 		{
 			hit->color = vcopy(data->spheres[i].color);
