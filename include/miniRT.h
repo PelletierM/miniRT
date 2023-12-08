@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/07 14:57:05 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/08 11:10:56 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define BG_COLOR 0x000000FF
 
 // Camera transformation flags
+# define CAM_MV_RATIO 0.5
 # define CAM_MV_LEFT 1
 # define CAM_MV_RIGHT 2
 # define CAM_MV_FORWARD 4
@@ -39,6 +40,9 @@
 # define CAM_ROT_RIGHT 128
 # define CAM_ROT_UP 256
 # define CAM_ROT_DOWN 512
+# define CAM_ZOOM_IN 1024
+# define CAM_ZOOM_OUT 2048
+# define CAM_ZOOM_RATIO 0.0872665
 
 # define MAX_LINES	128
 # define MAX_FIGURE 24
@@ -190,6 +194,7 @@ void			render(void *param);
 void			mrt_create_camera(t_data *data);
 void			move_camera(t_data *data, int direction);
 void			rotate_camera(t_data *data, int direction);
+void			zoom_camera(t_data *data, int direction);
 
 // MLX hooks
 void			ft_gen_hook(void *ptr);
@@ -197,6 +202,7 @@ void			ft_keyhook(mlx_key_data_t keydata, void *param);
 void			ft_resize_hook(int32_t width, int32_t height, void *param);
 void			ft_keyhook_move_camera(mlx_key_data_t keydata, t_data *data);
 void			ft_keyhook_rotate_camera(mlx_key_data_t keydata, t_data *data);
+void			ft_keyhook_zoom_camera(mlx_key_data_t keydata, t_data *data);
 
 // Vector operations
 float			vdot(t_vector v1, t_vector v2);
