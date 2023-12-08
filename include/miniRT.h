@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 11:10:56 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/08 11:57:08 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,10 +203,10 @@ float			check_hit_planes(t_plane plane, t_ray ray);
 void			render(void *param);
 
 // Camera functions
-void			mrt_create_camera(t_data *data);
-void			move_camera(t_data *data, int direction);
-void			rotate_camera(t_data *data, int direction);
-void			zoom_camera(t_data *data, int direction);
+void			mrt_create_cam(t_data *data);
+void			move_cam(t_data *data, int direction);
+void			rot_cam(t_data *data, int direction);
+void			zoom_cam(t_data *data, int direction);
 
 // MLX hooks
 void			ft_gen_hook(void *ptr);
