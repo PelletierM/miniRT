@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 08:30:35 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 09:05:22 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/08 11:00:31 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ float	check_hit_cylinders(t_cylinder cy, t_ray ray, int *flag)
 	t_quadratic	s_cyl;
 
 	s_cyl = solve_quadratic_cylinder(cy, ray);
+	*flag = 4;
 	if (s_cyl.dis < 0)
 		return (0);
 	return (get_cyl_t(s_cyl, cy, ray, flag));
@@ -45,7 +46,10 @@ float	get_cyl_t(t_quadratic s_cyl, t_cylinder cy, t_ray ray, int *flag)
 		m1 = vdot(ray.orientation, cy.orientation) * s_cyl.t1 + vdot(
 				x, cy.orientation);
 		if (m1 >= 0 && m1 <= cy.height)
+		{
+			*flag = 3;
 			return (s_cyl.t1);
+		}
 		return (get_disk_t(cy, ray, flag));
 	}
 	return (0);

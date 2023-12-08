@@ -18,7 +18,8 @@ SRC = main.c parser.c parser_check.c parser_checker_line.c parser_value_setter.c
 	  parser_light.c parser_sphere.c parser_plane.c parser_cylinder.c init.c parser_value_checker.c \
 	  parser_value_checker2.c parser_utils2.c mrt_renderer.c hit_sphere.c \
 	  op_vectors1.c op_vectors2.c camera.c hooks.c vect_utils.c hit_cylinder.c \
-	  quadratic.c cylinder_utils.c color2.c
+	  quadratic.c cylinder_utils.c color2.c object_hit.c hit_plane.c \
+	  object_normal_hit.c light.c
 
 SRC_BONUS = 
 
