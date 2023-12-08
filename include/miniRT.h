@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/07 14:57:05 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/08 09:11:15 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@
 # define ERR_LINE_FORMAT 3
 # define ERR_MLX_INIT 4
 # define ERR_DIV_ZERO 5
+
+typedef struct s_quadratic
+{
+	float	dis;
+	float	t1;
+	float	t2;
+}	t_quadratic;
 
 typedef struct s_vector
 {
@@ -118,9 +125,11 @@ typedef struct s_ray
 
 typedef struct s_hit
 {
-	int		shape;
-	int 	i;
-	float	t;
+	int			shape;
+	int 		i;
+	float		t;
+	t_vector	position;
+	t_vector	normal;
 }	t_hit;
 
 typedef struct s_data
@@ -216,5 +225,8 @@ t_vector		translate_point(t_vector position,
 float			vlength(t_vector v1);
 t_vector		create_v_from_points(t_vector p1, t_vector p2);
 float			vdistance(t_vector v1, t_vector v2);
+t_quadratic		solve_quadratic_cylinder(t_cylinder cy, t_ray ray);
+t_quadratic		solve_quadratic_sphere(t_sphere sp, t_ray ray);
 
+void			set_cylinders_disk(t_cylinder	*cy);
 #endif

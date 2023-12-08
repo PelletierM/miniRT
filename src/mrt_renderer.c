@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/07 16:21:56 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/08 08:30:06 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,18 +138,15 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 			normal = vnormalize(data->planes[hit.i].orientation);
 		else if (hit.shape == 3)
 		{
-		//	return (color);
 			t_vector	x;
 			float		m;
 			if (flag == 1)
 			{
 				normal = vnormalize(data->cylinders[hit.i].bottom.orientation);
-				//normal = vsmul(normal, -1);
 			}
 			else if (flag == 2)
 			{
 				normal = vnormalize(data->cylinders[hit.i].top.orientation);
-				//normal = vsmul(normal, -1);
 			}
 			else
 			{

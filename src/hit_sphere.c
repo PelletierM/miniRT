@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   render_sphere.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 07:39:51 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 09:15:18 by eguefif          ###   ########.fr       */
+/*   Created: 2023/12/05 12:08:46 by eguefif           #+#    #+#             */
+/*   Updated: 2023/12/08 09:14:33 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-unsigned int	get_rgba(int r, int g, int b, int a)
+float	check_hit_sphere(t_sphere sp, t_ray ray)
 {
-	return (r << 24 | g << 16 | b << 8 | a);
-}
+	t_quadratic	s;
 
-unsigned int	get_vect_rgba(t_vector c)
-{
-	return ((int) c.x << 24 | (int) c.y << 16 | (int) c.z << 8 | 255);
+	s = solve_quadratic_sphere(sp, ray);
+	if (s.dis < 0)
+		return (0);
+	if (s.t1 > 0 && s.t2 > 0)
+		return (s.t2);
+	return (s.t1);
 }

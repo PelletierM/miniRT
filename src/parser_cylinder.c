@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:54:44 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/07 15:36:33 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/08 09:10:30 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,7 @@ int	set_cylinder_part(char *line, t_data *data)
 		return (1);
 	data->cylinders[data->num_cylinders].orientation = vnormalize(
 			data->cylinders[data->num_cylinders].orientation);
-	data->cylinders[data->num_cylinders].bottom.position = vcopy(
-				data->cylinders[data->num_cylinders].position);
-	
-	data->cylinders[data->num_cylinders].bottom.orientation = vsmul(
-			data->cylinders[data->num_cylinders].orientation, -1);
-
-	data->cylinders[data->num_cylinders].top.orientation = vsmul(
-			data->cylinders[data->num_cylinders].orientation, 1);
-
-	data->cylinders[data->num_cylinders].top.position = translate_point(
-			data->cylinders[data->num_cylinders].position,
-			data->cylinders[data->num_cylinders].height,
-			data->cylinders[data->num_cylinders].orientation);
+	set_cylinders_disk(&data->cylinders[data->num_cylinders]);
 	data->num_cylinders++;
 	return (0);
 }
