@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 10:24:08 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/08 11:57:22 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	render(void *param)
 
 	data = (t_data *) param;
 	x = 0;
-	mrt_create_camera(data);
+	mrt_create_cam(data);
 	while (x < data->width)
 	{
 		y = 0;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vect_utils.c                                       :+:      :+:    :+:   */
+/*   vect_utils1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
+/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 07:41:54 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 10:54:31 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/08 12:14:45 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ t_vector	vcopy(t_vector v)
 	return (cpy);
 }
 
-t_vector	translate_point(t_vector position,
-								float t,
-								t_vector orientation)
+t_vector	translate_point(t_vector position, float t, t_vector orientation)
 {
 	t_vector	translation;
 
@@ -50,9 +48,4 @@ float	vdistance(t_vector v1, t_vector v2)
 {
 	return (sqrt(pow(v1.x - v2.x, 2) + pow(
 				v1.y - v2.y, 2) + pow(v1.z - v2.z, 2)));
-}
-
-int	is_vect_negative(t_vector vector)
-{
-	return (vector.x < 0 || vector.y < 0 || vector.z < 0);
 }
