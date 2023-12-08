@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 08:30:35 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 13:16:43 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/08 15:28:32 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ float	get_t_from_inside(t_cylinder cy, float t1, t_ray ray, int *flag)
 		*flag = 2;
 		return (t4);
 	}
-	m = vdot(ray.orientation, cy.orientation) * t1 + vdot(
-			x, cy.orientation);
+	m = vdot(ray.orientation, cy.orientation) * t1 + vdot(x, cy.orientation);
 	if (m > 0 && m < cy.height)
 	{
 		*flag = 3;
