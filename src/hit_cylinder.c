@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 08:30:35 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 11:00:31 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/08 11:44:42 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,25 @@ float	get_cyl_t(t_quadratic s_cyl, t_cylinder cy, t_ray ray, int *flag)
 	float		m1;
 	float		m2;
 	t_vector	x;
+	float		t3;
+	float		t4;
 
+	t3 = check_hit_planes(cy.bottom, ray);
+	t4 = check_hit_planes(cy.top, ray);
 	x = vsub(ray.position, cy.position);
-	if (s_cyl.t1 > 0 && s_cyl.t2 > 0)
+	if (s_cyl.t2 > 0)
 	{
 		m2 = vdot(ray.orientation, cy.orientation) * s_cyl.t2 + vdot(
 				x, cy.orientation);
-		if (m2 >= 0 && m2 <= cy.height)
+		if (m2 > 0 && m2 < cy.height)
 			return (s_cyl.t2);
 		return (get_disk_t(cy, ray, flag));
 	}
-	else
+	else if (s_cyl.t1 > 0)
 	{
 		m1 = vdot(ray.orientation, cy.orientation) * s_cyl.t1 + vdot(
 				x, cy.orientation);
-		if (m1 >= 0 && m1 <= cy.height)
+		if (m1 > 0 && m1 < cy.height)
 		{
 			*flag = 3;
 			return (s_cyl.t1);
@@ -63,7 +67,7 @@ float	get_disk_t(t_cylinder cy, t_ray ray, int *flag)
 
 	t3 = check_hit_planes(cy.bottom, ray);
 	t4 = check_hit_planes(cy.top, ray);
-	if (t3 < t4)
+	if (t3 <= t4)
 	{
 		hit_pos = vadd(ray.position, vsmul(ray.orientation, t3));
 		if (vdistance(hit_pos, cy.bottom.position) <= cy.diameter / 2)

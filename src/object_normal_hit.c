@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 09:38:22 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 11:00:30 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/08 11:44:43 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,15 @@ void	get_normal_cylinder(t_hit *hit, t_ray ray, t_data *data)
 	float		m;
 
 	if (hit->flag == 1)
+	{
 		hit->normal = data->cylinders[hit->i].bottom.orientation;
+		hit->color.x = 255;
+	}
 	else if (hit->flag == 2)
+	{
+		hit->color.x = 0;
 		hit->normal = data->cylinders[hit->i].top.orientation;
+	}
 	else
 	{
 		x = vsub(ray.position, data->cylinders[hit->i].position);
