@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 13:50:14 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 14:00:49 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,9 +240,9 @@ void			rot_cam(t_data *data, int direction);
 void			zoom_cam(t_data *data, int direction);
 
 // Obj move functions
-void	move_obj(t_data *data, int i);
-void	rot_obj(t_data *data, int i);
-void	scale_obj(t_data *data, int i);
+void			move_obj(t_data *data, int i);
+void			rot_obj(t_data *data, int i);
+void			scale_obj(t_data *data, int i);
 
 // MLX hooks
 void			ft_gen_hook(void *ptr);
@@ -254,6 +254,7 @@ void			ft_keyhook_move_obj(mlx_key_data_t keydata, t_data *data);
 void			ft_keyhook_rotate_obj(mlx_key_data_t keydata, t_data *data);
 void			ft_keyhook_scale_obj(mlx_key_data_t keydata, t_data *data);
 int				check_cam_hook(t_data *data, int i);
+int				check_obj_hook(t_data *data, int i);
 void			ft_get_click_target(t_data *data);
 
 // Vector operations
@@ -268,7 +269,7 @@ t_vector		vsdiv(t_vector v1, float factor);
 t_vector		vsadd(t_vector v1, float factor);
 t_vector		vssub(t_vector v1, float factor);
 t_vector		vcopy(t_vector v);
-t_vector		translate_point(t_vector position,
+t_vector		translate_pt(t_vector position,
 								float t,
 								t_vector orientation);
 t_vector		rotate_figure(t_vector target, t_vector axe, int direction);

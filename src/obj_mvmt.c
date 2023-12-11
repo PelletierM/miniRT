@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:22:35 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 13:55:08 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 14:01:35 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 t_vector	get_new_orientation_rot(t_vector, t_camera camera, int i);
 
-void	move_obj(t_data *data, int i)
+void	move_obj(t_data *data, int direction)
 {
+	t_vector	*pos;
 	if (data->nav_mode.obj == OBJ_SPHERE)
 		pos = &(data->spheres[data->nav_mode.i].position);
 	else if (data->nav_mode.obj == OBJ_PLANE)
@@ -40,7 +41,6 @@ void	move_obj(t_data *data, int i)
 
 void	rot_obj(t_data *data, int i)
 {
-	printf("test\n");
 	if (data->nav_mode.obj == OBJ_CYL)
 		data->cylinders[data->nav_mode.i].orientation = get_new_orientation_rot(
 			data->cylinders[data->nav_mode.i].orientation,
