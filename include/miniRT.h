@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 11:12:07 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:41:14 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@
 # include <math.h>
 # include <stdio.h>
 # include <float.h>
+# include <pthread.h>
+# include <sys/time.h>
 
 # define MAX_DIST 1000000
+# define THREAD_MAX 12
 // Camera and viewport settings 
 # define VP_DIAG 0.04327
 # define WIN_HEIGHT 768
@@ -173,6 +176,15 @@ typedef struct s_data
 	float		ratio;
 }				t_data;
 
+typedef struct s_thread
+{
+	int			id;
+	t_data		*data;
+	pthread_t	thread;
+
+}	t_thread;
+
+
 int				mrt_parser(char *file, t_data *data);
 int				mrt_check_argv(int argc, char **argv);
 void			mrt_init_data(t_data *data);
@@ -215,9 +227,10 @@ float			check_hit_sphere(t_sphere sp, t_ray ray, t_hit *hit);
 float			check_hit_cylinders(t_cylinder cy, t_ray ray, int *flag);
 float			check_hit_planes(t_plane plane, t_ray ray);
 
-void			render(void *param);
 t_hit			trace_pixel(t_data *data, t_ray ray);
 t_ray			get_current_ray(t_data *data, int x, int y);
+void			render(t_data *data);
+void			*render_thread(void *param);
 
 // Camera functions
 void			mrt_create_cam(t_data *data);
@@ -257,7 +270,7 @@ t_vector		translate_point(t_vector position,
 								t_vector orientation);
 int				is_vect_negative(t_vector vector);
 float			vlength(t_vector v1);
-t_vector		create_v_from_points(t_vector p1, t_vector p2);
+t_vector		create_vector_from_points(t_vector p1, t_vector p2);
 
 float			vdistance(t_vector v1, t_vector v2);
 t_quadratic		solve_quadratic_cylinder(t_cylinder cy, t_ray ray);

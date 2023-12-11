@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 09:38:22 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 09:36:50 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 09:42:40 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	get_normal_hit(t_data *data, t_ray ray, t_hit *hit)
 		get_normal_spheres(hit, data);
 	else if (hit->shape == OBJ_PLANE)
 	{
+		hit->normal = vcopy(data->planes[hit->i].orientation);
 		if (vdot(data->planes[hit->i].orientation, ray.orientation) < 0)
 			hit->normal = vcopy(data->planes[hit->i].orientation);
 		else
