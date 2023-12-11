@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:48:22 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 11:10:03 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 13:11:26 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	ft_keyhook(mlx_key_data_t keydata, void *param)
 	data = (t_data *) param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(data->mlx);
-	ft_keyhook_move(keydata, data);
-	ft_keyhook_rotate(keydata, data);
-	ft_keyhook_scale(keydata, data);
+	ft_keyhook_move_obj(keydata, data);
+	ft_keyhook_rotate_obj(keydata, data);
+	ft_keyhook_scale_obj(keydata, data);
 }
 
 void	ft_mouse_hook(enum mouse_key mouse_key, enum action action,
@@ -58,7 +58,7 @@ void	ft_gen_hook(void *ptr)
 	i = 1;
 	while (i <= 2048)
 	{
-		if (check_cam_hook(data, i))
+		if ((data->nav_mode.obj == OBJ_CAM && check_cam_hook(data, i)))
 			change = 1;
 		i *= 2;
 	}
