@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 13:09:13 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 13:24:07 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,6 +238,11 @@ void			mrt_create_cam(t_data *data);
 void			move_cam(t_data *data, int direction);
 void			rot_cam(t_data *data, int direction);
 void			zoom_cam(t_data *data, int direction);
+
+// Obj move functions
+void	move_obj(t_data *data, int i);
+void	rot_obj(t_data *data, int i);
+void	scale_obj(t_data *data, int i);
 
 // MLX hooks
 void			ft_gen_hook(void *ptr);
