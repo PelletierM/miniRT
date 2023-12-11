@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 15:34:55 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:39:11 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ void	*render_thread(void *param)
 	max = i + div;
 	if (remaining > thread->id)
 		max += 1;
-	//i = thread->id * div;
-	//max = i + div;
-	printf("TH ID: %d start: %d  end:%d\n", thread->id, i, max);
 	while (i < max)
 	{
 		perpixel((i % data->width), (i / data->width), data);
