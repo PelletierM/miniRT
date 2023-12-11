@@ -6,37 +6,47 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 11:12:08 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:41:27 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 t_hit	miss(void);
+void	perpixel(int x, int y, t_data *data);
 
-void	render(void *param)
+void	*render_thread(void *param)
 {
+	t_thread	*thread;
 	t_data		*data;
+	int			i;
+	int			max;
+	int			div;
+
+	thread = (t_thread *) param;
+	data = thread->data;
+	div = 1;
+	if (THREAD_MAX > 0)
+		div = (int) ((data->width * data->height) / THREAD_MAX);
+	mrt_create_cam(data);
+	i = thread->id * div;
+	max = i + div;
+	while (i < max)
+	{
+		perpixel((i % data->width), (i / data->width), data);
+		i++;
+	}
+	return (NULL);
+}
+
+void	perpixel(int x, int y, t_data *data)
+{
 	t_ray		ray;
 	t_hit		hit;
-	int			x;
-	int			y;
 
-	data = (t_data *) param;
-	x = 0;
-	mrt_create_cam(data);
-	while (x < data->width)
-	{
-		y = 0;
-		while (y < data->height)
-		{
-			ray = get_current_ray(data, x, y);
-			hit = trace_pixel(data, ray);
-			mlx_put_pixel(data->img, x, y, get_vect_rgba(hit.color));
-			y++;
-		}
-		x++;
-	}
+	ray = get_current_ray(data, x, y);
+	hit = trace_pixel(data, ray);
+	mlx_put_pixel(data->img, x, y, get_vect_rgba(hit.color));
 }
 
 t_ray	get_current_ray(t_data *data, int x, int y)

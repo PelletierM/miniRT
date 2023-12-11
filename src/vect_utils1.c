@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 07:41:54 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 12:14:45 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 09:40:05 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_vector	translate_point(t_vector position, float t, t_vector orientation)
 	return (position);
 }
 
-t_vector	create_v_from_points(t_vector p1, t_vector p2)
+t_vector	create_vector_from_points(t_vector p1, t_vector p2)
 {
 	t_vector	retval;
 
