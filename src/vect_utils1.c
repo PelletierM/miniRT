@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 07:41:54 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 13:04:10 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 13:40:56 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_vector	vcopy(t_vector v)
 	return (cpy);
 }
 
-t_vector	translate_point(t_vector position, float t, t_vector orientation)
+t_vector	translate_pt(t_vector position, float t, t_vector orientation)
 {
 	t_vector	translation;
 
