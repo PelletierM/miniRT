@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 11:12:07 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 12:40:07 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,23 @@
 # define RES_MAX_WIDTH 2560
 # define BG_COLOR 0x000000FF
 
-// Camera transformation flags
-# define CAM_MV_RATIO 0.5
-# define CAM_MV_LEFT 1
-# define CAM_MV_RIGHT 2
-# define CAM_MV_FORWARD 4
-# define CAM_MV_BACK 8
-# define CAM_MV_DOWN 16
-# define CAM_MV_UP 32
-# define CAM_ROT_ANGLE 0.0872665
-# define CAM_ROT_LEFT 64
-# define CAM_ROT_RIGHT 128
-# define CAM_ROT_UP 256
-# define CAM_ROT_DOWN 512
-# define CAM_ZOOM_IN 1024
-# define CAM_ZOOM_OUT 2048
-# define CAM_ZOOM_RATIO 0.0872665
+// Transformation flags
+# define OBJ_MV_RATIO 0.5
+# define OBJ_MV_LEFT 1
+# define OBJ_MV_RIGHT 2
+# define OBJ_MV_FORWARD 4
+# define OBJ_MV_BACK 8
+# define OBJ_MV_DOWN 16
+# define OBJ_MV_UP 32
+# define OBJ_ROT_ANGLE 0.0872665
+# define OBJ_ROT_LEFT 64
+# define OBJ_ROT_RIGHT 128
+# define OBJ_ROT_UP 256
+# define OBJ_ROT_DOWN 512
+# define OBJ_SCALE_UP 1024
+# define OBJ_SCALE_DOWN 2048
+# define OBJ_ZOOM_RATIO 0.0872665
+# define OBJ_SCALE_RATIO 0.05
 
 # define MAX_LINES	128
 # define MAX_FIGURE 24
