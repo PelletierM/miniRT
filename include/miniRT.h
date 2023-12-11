@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 15:34:58 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 16:02:59 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "MLX42.h"
 # include <math.h>
 # include <stdio.h>
-# include <float.h>
 # include <pthread.h>
 # include <sys/time.h>
 
@@ -143,7 +142,7 @@ typedef struct s_ray
 typedef struct s_hit
 {
 	int			shape;
-	int 		i;
+	int			i;
 	int			flag;
 	float		t;
 	int			pos_hit_number;
@@ -186,7 +185,6 @@ typedef struct s_thread
 	pthread_t	thread;
 
 }	t_thread;
-
 
 int				mrt_parser(char *file, t_data *data);
 int				mrt_check_argv(int argc, char **argv);
@@ -273,8 +271,8 @@ t_vector		vsadd(t_vector v1, float factor);
 t_vector		vssub(t_vector v1, float factor);
 t_vector		vcopy(t_vector v);
 t_vector		translate_pt(t_vector position,
-								float t,
-								t_vector orientation);
+					float t,
+					t_vector orientation);
 t_vector		rotate_figure(t_vector target, t_vector axe, int direction);
 int				is_vect_negative(t_vector vector);
 float			vlength(t_vector v1);
