@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 14:13:42 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 09:42:39 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,7 +235,7 @@ t_vector		translate_point(t_vector position,
 								t_vector orientation);
 int				is_vect_negative(t_vector vector);
 float			vlength(t_vector v1);
-t_vector		create_v_from_points(t_vector p1, t_vector p2);
+t_vector		create_vector_from_points(t_vector p1, t_vector p2);
 
 float			vdistance(t_vector v1, t_vector v2);
 t_quadratic		solve_quadratic_cylinder(t_cylinder cy, t_ray ray);
