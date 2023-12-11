@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 09:26:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 15:57:42 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 16:10:10 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	is_shadow(t_hit hit, t_data *data)
 	t_hit	new_hit;
 
 	ray.position = vcopy(translate_pt(hit.position, 0.01, hit.normal));
-	ray.orientation = create_vector_from_points(
-			hit.position, data->light.position);
+	ray.orientation = create_vector_from_points(hit.position,
+			data->light.position);
 	new_hit = get_closest_hit(data, ray);
 	if (new_hit.t > 1)
 		return (0);

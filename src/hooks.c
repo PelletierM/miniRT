@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:48:22 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 15:22:23 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:48:36 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void	ft_keyhook(mlx_key_data_t keydata, void *param)
 void	ft_mouse_hook(enum mouse_key mouse_key, enum action action,
 		enum modifier_key modifier_key, void *param)
 {
-	t_data *data;
+	t_data	*data;
 
 	(void) modifier_key;
 	data = (t_data *) param;
 	if (mouse_key == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
 		ft_get_click_target(data);
-	return;
+	return ;
 }
 
 void	ft_resize_hook(int32_t width, int32_t height, void *param)

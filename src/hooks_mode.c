@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:31:07 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 14:48:43 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:58:11 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,4 @@ void	ft_keyhook_mode(mlx_key_data_t keydata, t_data *data)
 		data->nav_mode.i = 0;
 		data->nav_flag = 0;
 	}
-
 }
-
