@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:22:35 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 14:52:50 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:16:01 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void	rot_obj(t_data *data, int i)
 t_vector	get_new_orientation_rot(t_vector v, t_camera camera, int i)
 {
 	if (i == OBJ_ROT_LEFT)
-		return (vnormalize(rotate_figure(v, camera.z_axis, -1)));
-	else if (i == OBJ_ROT_RIGHT)
 		return (vnormalize(rotate_figure(v, camera.z_axis, 1)));
+	else if (i == OBJ_ROT_RIGHT)
+		return (vnormalize(rotate_figure(v, camera.z_axis, -1)));
 	else if (i == OBJ_ROT_UP)
 		return (vnormalize(rotate_figure(v, camera.x_axis, 1)));
 	else if (i == OBJ_ROT_DOWN)
@@ -78,6 +78,24 @@ void	scale_obj(t_data *data, int i)
 		if (i == OBJ_SCALE_DOWN)
 			data->spheres[data->nav_mode.i].diameter *= OBJ_SCALE_RATIO;
 		if (i == OBJ_SCALE_UP)
-			data->spheres[data->nav_mode.i].diameter /= OBJ_SCALE_RATIO;
+			if (data->spheres[data->nav_mode.i].diameter > 0.05)
+				data->spheres[data->nav_mode.i].diameter /= OBJ_SCALE_RATIO;
+	}
+	if (data->nav_mode.obj == OBJ_CYL)
+	{
+		if (i == OBJ_SCALE_DOWN)
+				data->cylinders[data->nav_mode.i].diameter *= OBJ_SCALE_RATIO;
+		if (i == OBJ_SCALE_UP)
+			if (data->cylinders[data->nav_mode.i].diameter > 0.05)
+				data->cylinders[data->nav_mode.i].diameter /= OBJ_SCALE_RATIO;
+		if (i == OBJ_SCALE_DOWN_B)
+		{
+			if (data->cylinders[data->nav_mode.i].height < 0.05)
+				return ;
+			data->cylinders[data->nav_mode.i].height *= OBJ_SCALE_RATIO;
+		}
+		if (i == OBJ_SCALE_UP_B)
+			data->cylinders[data->nav_mode.i].height /= OBJ_SCALE_RATIO;
+		set_cylinders_disk(&data->cylinders[data->nav_mode.i]);
 	}
 }
