@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks_camera.c                                     :+:      :+:    :+:   */
+/*   hooks_obj.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:54:24 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 13:04:06 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 13:06:45 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_keyhook_rotate_obj(mlx_key_data_t keydata, t_data *data)
 		data->nav_flag = data->nav_flag &~OBJ_ROT_DOWN;
 }
 
-void	ft_keyhook_zoom_obj(mlx_key_data_t keydata, t_data *data)
+void	ft_keyhook_scale_obj(mlx_key_data_t keydata, t_data *data)
 {
 	if (keydata.key == MLX_KEY_P && (keydata.action == MLX_PRESS))
 		data->nav_flag += OBJ_SCALE_UP;
@@ -92,6 +92,7 @@ int	check_cam_hook(t_data *data, int i)
 	return (0);
 }
 
+/*
 int	check_obj_hook(t_data *data, int i)
 {
 	if (i <= 32 && data->nav_flag & i)
@@ -111,4 +112,4 @@ int	check_obj_hook(t_data *data, int i)
 	}
 	return (0);
 }
-
+*/

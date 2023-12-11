@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 11:51:36 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/08 11:52:23 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 12:42:04 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@ void		rot_cam_horiz(t_data *data, int direction, float cs, float sn);
 
 void	move_cam(t_data *data, int direction)
 {
-	if (direction == CAM_MV_LEFT)
+	if (direction == OBJ_MV_LEFT)
 		data->camera.position = vsub(data->camera.position,
-				vsmul(data->camera.x_axis, CAM_MV_RATIO));
-	else if (direction == CAM_MV_RIGHT)
+				vsmul(data->camera.x_axis, OBJ_MV_RATIO));
+	else if (direction == OBJ_MV_RIGHT)
 		data->camera.position = vadd(data->camera.position,
-				vsmul(data->camera.x_axis, CAM_MV_RATIO));
-	else if (direction == CAM_MV_FORWARD)
+				vsmul(data->camera.x_axis, OBJ_MV_RATIO));
+	else if (direction == OBJ_MV_FORWARD)
 		data->camera.position = vadd(data->camera.position,
-				vsmul(data->camera.z_axis, CAM_MV_RATIO));
-	else if (direction == CAM_MV_BACK)
+				vsmul(data->camera.z_axis, OBJ_MV_RATIO));
+	else if (direction == OBJ_MV_BACK)
 		data->camera.position = vsub(data->camera.position,
-				vsmul(data->camera.z_axis, CAM_MV_RATIO));
-	else if (direction == CAM_MV_DOWN)
+				vsmul(data->camera.z_axis, OBJ_MV_RATIO));
+	else if (direction == OBJ_MV_DOWN)
 		data->camera.position = vadd(data->camera.position,
-				vsmul(data->camera.y_axis, CAM_MV_RATIO));
-	else if (direction == CAM_MV_UP)
+				vsmul(data->camera.y_axis, OBJ_MV_RATIO));
+	else if (direction == OBJ_MV_UP)
 		data->camera.position = vsub(data->camera.position,
-				vsmul(data->camera.y_axis, CAM_MV_RATIO));
+				vsmul(data->camera.y_axis, OBJ_MV_RATIO));
 }
 
 void	rot_cam(t_data *data, int direction)
@@ -42,17 +42,17 @@ void	rot_cam(t_data *data, int direction)
 	float	cs;
 	float	sn;
 
-	cs = cosf((float) CAM_ROT_ANGLE);
-	sn = sinf((float) CAM_ROT_ANGLE);
-	if (direction == CAM_ROT_LEFT || direction == CAM_ROT_RIGHT)
+	cs = cosf((float) OBJ_ROT_ANGLE);
+	sn = sinf((float) OBJ_ROT_ANGLE);
+	if (direction == OBJ_ROT_LEFT || direction == OBJ_ROT_RIGHT)
 		rot_cam_horiz(data, direction, cs, sn);
-	else if (direction == CAM_ROT_UP || direction == CAM_ROT_DOWN)
+	else if (direction == OBJ_ROT_UP || direction == OBJ_ROT_DOWN)
 		rot_cam_vert(data, direction, cs, sn);
 }
 
 void	rot_cam_vert(t_data *data, int direction, float cs, float sn)
 {
-	if (direction == CAM_ROT_UP)
+	if (direction == OBJ_ROT_UP)
 	{
 		data->camera.z_axis = vadd(vadd(vsmul(data->camera.z_axis, cs),
 					vsmul(vcross(data->camera.x_axis, data->camera.z_axis),
@@ -61,7 +61,7 @@ void	rot_cam_vert(t_data *data, int direction, float cs, float sn)
 							vdot(data->camera.x_axis, data->camera.z_axis)),
 						1 - cs)));
 	}
-	if (direction == CAM_ROT_DOWN)
+	if (direction == OBJ_ROT_DOWN)
 	{
 		data->camera.z_axis = vadd(vadd(vsmul(data->camera.z_axis, cs),
 					vsmul(vcross(data->camera.x_axis, data->camera.z_axis),
@@ -76,7 +76,7 @@ void	rot_cam_horiz(t_data *data, int direction, float cs, float sn)
 	float	new_x;
 	float	new_z;
 
-	if (direction == CAM_ROT_LEFT)
+	if (direction == OBJ_ROT_LEFT)
 	{
 		new_x = cs * data->camera.z_axis.x - sn * data->camera.z_axis.z;
 		new_z = sn * data->camera.z_axis.x + cs * data->camera.z_axis.z;
@@ -93,8 +93,8 @@ void	rot_cam_horiz(t_data *data, int direction, float cs, float sn)
 
 void	zoom_cam(t_data *data, int direction)
 {
-	if (direction == CAM_ZOOM_IN)
-		data->camera.fov -= CAM_ZOOM_RATIO;
-	else if (direction == CAM_ZOOM_OUT)
-		data->camera.fov += CAM_ZOOM_RATIO;
+	if (direction == OBJ_SCALE_UP)
+		data->camera.fov -= OBJ_ZOOM_RATIO;
+	else if (direction == OBJ_SCALE_DOWN)
+		data->camera.fov += OBJ_ZOOM_RATIO;
 }

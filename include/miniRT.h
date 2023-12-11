@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 13:20:27 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 13:22:05 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,23 @@
 # define RES_MAX_WIDTH 2560
 # define BG_COLOR 0x000000FF
 
-// Camera transformation flags
-# define CAM_MV_RATIO 0.5
-# define CAM_MV_LEFT 1
-# define CAM_MV_RIGHT 2
-# define CAM_MV_FORWARD 4
-# define CAM_MV_BACK 8
-# define CAM_MV_DOWN 16
-# define CAM_MV_UP 32
-# define CAM_ROT_ANGLE 0.0872665
-# define CAM_ROT_LEFT 64
-# define CAM_ROT_RIGHT 128
-# define CAM_ROT_UP 256
-# define CAM_ROT_DOWN 512
-# define CAM_ZOOM_IN 1024
-# define CAM_ZOOM_OUT 2048
-# define CAM_ZOOM_RATIO 0.0872665
+// Transformation flags
+# define OBJ_MV_RATIO 0.5
+# define OBJ_MV_LEFT 1
+# define OBJ_MV_RIGHT 2
+# define OBJ_MV_FORWARD 4
+# define OBJ_MV_BACK 8
+# define OBJ_MV_DOWN 16
+# define OBJ_MV_UP 32
+# define OBJ_ROT_ANGLE 0.0872665
+# define OBJ_ROT_LEFT 64
+# define OBJ_ROT_RIGHT 128
+# define OBJ_ROT_UP 256
+# define OBJ_ROT_DOWN 512
+# define OBJ_SCALE_UP 1024
+# define OBJ_SCALE_DOWN 2048
+# define OBJ_ZOOM_RATIO 0.0872665
+# define OBJ_SCALE_RATIO 0.05
 
 # define MAX_LINES	128
 # define MAX_FIGURE 24
@@ -244,12 +245,9 @@ void			ft_keyhook(mlx_key_data_t keydata, void *param);
 void			ft_mouse_hook(enum mouse_key mouse_key, enum action action,
 					enum modifier_key modifier_key, void *param);
 void			ft_resize_hook(int32_t width, int32_t height, void *param);
-void			ft_keyhook_move(mlx_key_data_t keydata, t_data *data);
-void			ft_keyhook_rotate(mlx_key_data_t keydata, t_data *data);
-void			ft_keyhook_scale(mlx_key_data_t keydata, t_data *data);
-void			ft_keyhook_move_cam(mlx_key_data_t keydata, t_data *data);
-void			ft_keyhook_rotate_cam(mlx_key_data_t keydata, t_data *data);
-void			ft_keyhook_zoom_cam(mlx_key_data_t keydata, t_data *data);
+void			ft_keyhook_move_obj(mlx_key_data_t keydata, t_data *data);
+void			ft_keyhook_rotate_obj(mlx_key_data_t keydata, t_data *data);
+void			ft_keyhook_scale_obj(mlx_key_data_t keydata, t_data *data);
 int				check_cam_hook(t_data *data, int i);
 void			ft_get_click_target(t_data *data);
 

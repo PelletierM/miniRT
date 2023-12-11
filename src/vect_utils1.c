@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 07:41:54 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 13:20:26 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 13:22:03 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ t_vector	rotate_figure(t_vector target, t_vector axe, int direction)
 	float		cs;
 	float		sn;
 
-	cs = cosf((float) CAM_ROT_ANGLE);
-	sn = sinf((float) CAM_ROT_ANGLE);
+	cs = cosf((float) OBJ_ROT_ANGLE);
+	sn = sinf((float) OBJ_ROT_ANGLE);
 	sn *= direction;
 	retval = vadd(vsadd(vsmul(target, cs),
 		   vdot(target, axe) * (1 - cs)),
