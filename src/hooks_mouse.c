@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:10:15 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 12:42:29 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 12:46:22 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ void	ft_get_click_target(t_data *data)
 		data->nav_mode.obj = hit.shape;
 		data->nav_mode.i = hit.i;
 	}
-	else
+	else if (data->nav_mode.obj != OBJ_CAM)
 	{
 		data->nav_mode.obj = OBJ_CAM;
 		data->nav_mode.i = 0;
+		data->nav_flag = 0;
 	}
 }

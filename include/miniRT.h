@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 12:44:21 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 13:09:13 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,12 +245,9 @@ void			ft_keyhook(mlx_key_data_t keydata, void *param);
 void			ft_mouse_hook(enum mouse_key mouse_key, enum action action,
 					enum modifier_key modifier_key, void *param);
 void			ft_resize_hook(int32_t width, int32_t height, void *param);
-void			ft_keyhook_move(mlx_key_data_t keydata, t_data *data);
-void			ft_keyhook_rotate(mlx_key_data_t keydata, t_data *data);
-void			ft_keyhook_scale(mlx_key_data_t keydata, t_data *data);
-void			ft_keyhook_move_cam(mlx_key_data_t keydata, t_data *data);
-void			ft_keyhook_rotate_cam(mlx_key_data_t keydata, t_data *data);
-void			ft_keyhook_zoom_cam(mlx_key_data_t keydata, t_data *data);
+void			ft_keyhook_move_obj(mlx_key_data_t keydata, t_data *data);
+void			ft_keyhook_rotate_obj(mlx_key_data_t keydata, t_data *data);
+void			ft_keyhook_scale_obj(mlx_key_data_t keydata, t_data *data);
 int				check_cam_hook(t_data *data, int i);
 void			ft_get_click_target(t_data *data);
 
