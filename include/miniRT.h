@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 14:28:47 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:04:36 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@
 # define OBJ_ROT_DOWN 512
 # define OBJ_SCALE_UP 1024
 # define OBJ_SCALE_DOWN 2048
+# define OBJ_SCALE_UP_B 4096
+# define OBJ_SCALE_DOWN_B 8192
 # define OBJ_ZOOM_RATIO 0.0872665
 # define OBJ_SCALE_RATIO 1.05
 
@@ -253,6 +255,7 @@ void			ft_resize_hook(int32_t width, int32_t height, void *param);
 void			ft_keyhook_move_obj(mlx_key_data_t keydata, t_data *data);
 void			ft_keyhook_rotate_obj(mlx_key_data_t keydata, t_data *data);
 void			ft_keyhook_scale_obj(mlx_key_data_t keydata, t_data *data);
+void			ft_keyhook_mode(mlx_key_data_t keydata, t_data *data);
 int				check_cam_hook(t_data *data, int i);
 int				check_obj_hook(t_data *data, int i);
 void			ft_get_click_target(t_data *data);
