@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:54:24 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 13:06:45 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 13:23:11 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ int	check_cam_hook(t_data *data, int i)
 	return (0);
 }
 
-/*
 int	check_obj_hook(t_data *data, int i)
 {
 	if (i <= 32 && data->nav_flag & i)
@@ -107,9 +106,8 @@ int	check_obj_hook(t_data *data, int i)
 	}
 	if (i <= 2048 && data->nav_flag & i)
 	{
-		zoom_obj(data, i);
+		scale_obj(data, i);
 		return (1);
 	}
 	return (0);
 }
-*/
