@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:22:35 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 14:21:27 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:03:50 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	move_obj(t_data *data, int direction)
 		pos = &(data->planes[data->nav_mode.i].position);
 	else if (data->nav_mode.obj == OBJ_CYL)
 		pos = &(data->cylinders[data->nav_mode.i].position);
+	else if (data->nav_mode.obj == OBJ_LIGHT)
+		pos = &(data->light.position);
 	if (direction == OBJ_MV_LEFT)
 		*pos = translate_pt(*pos, -1 * OBJ_MV_RATIO, data->camera.x_axis);
 	else if (direction == OBJ_MV_RIGHT)
@@ -54,7 +56,6 @@ void	rot_obj(t_data *data, int i)
 			data->planes[data->nav_mode.i].orientation,
 			data->camera,
 			i);
-
 }
 
 t_vector	get_new_orientation_rot(t_vector v, t_camera camera, int i)
