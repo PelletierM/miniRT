@@ -6,13 +6,14 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:22:35 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 15:16:01 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:52:59 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 t_vector	get_new_orientation_rot(t_vector, t_camera camera, int i);
+void		scale_light(t_data *data, int i);;
 
 void	move_obj(t_data *data, int direction)
 {
@@ -98,4 +99,26 @@ void	scale_obj(t_data *data, int i)
 			data->cylinders[data->nav_mode.i].height /= OBJ_SCALE_RATIO;
 		set_cylinders_disk(&data->cylinders[data->nav_mode.i]);
 	}
+	if (data->nav_mode.obj == OBJ_LIGHT)
+		scale_light(data, i);
+}
+
+void	scale_light(t_data *data, int i)
+{
+	if (i == OBJ_SCALE_DOWN)
+		data->light.ratio += LIGHT_RATIO;
+	if (i == OBJ_SCALE_UP)
+		data->light.ratio -= LIGHT_RATIO;
+	if (i == OBJ_SCALE_DOWN_B)
+		data->ambient.ratio += LIGHT_RATIO;
+	if (i == OBJ_SCALE_UP_B)
+		data->ambient.ratio -= LIGHT_RATIO;
+	if (data->light.ratio > 1)
+		data->light.ratio = 1;
+	if (data->light.ratio < 0)
+		data->light.ratio = 0;
+	if (data->ambient.ratio > 1)
+		data->ambient.ratio = 1;
+	if (data->ambient.ratio < 0)
+		data->ambient.ratio = 0;
 }
