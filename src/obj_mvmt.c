@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:22:35 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 14:21:27 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 14:28:46 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,18 @@ void	scale_obj(t_data *data, int i)
 		if (i == OBJ_SCALE_DOWN)
 			data->spheres[data->nav_mode.i].diameter *= OBJ_SCALE_RATIO;
 		if (i == OBJ_SCALE_UP)
-			data->spheres[data->nav_mode.i].diameter /= OBJ_SCALE_RATIO;
+			if (data->spheres[data->nav_mode.i].diameter > 0.05)
+				data->spheres[data->nav_mode.i].diameter /= OBJ_SCALE_RATIO;
 	}
 
 	if (data->nav_mode.obj == OBJ_CYL)
 	{
-		printf("%f\n",data->cylinders[data->nav_mode.i].diameter);
+		printf("%f scale: %d\n",data->cylinders[data->nav_mode.i].diameter, i);
 		if (i == OBJ_SCALE_DOWN)
-		{
-			if (data->cylinders[data->nav_mode.i].diameter < 0.1)
-				return ;
-			data->cylinders[data->nav_mode.i].diameter *= OBJ_SCALE_RATIO;
-		}
+				data->cylinders[data->nav_mode.i].diameter *= OBJ_SCALE_RATIO;
 		if (i == OBJ_SCALE_UP)
-			data->cylinders[data->nav_mode.i].diameter /= OBJ_SCALE_RATIO;
+			if (data->cylinders[data->nav_mode.i].diameter > 0.05)
+				data->cylinders[data->nav_mode.i].diameter /= OBJ_SCALE_RATIO;
 		/*
 		if (i == OBJ_SCALE_DOWN_B)
 		{
