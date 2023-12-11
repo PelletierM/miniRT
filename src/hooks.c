@@ -6,16 +6,11 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:48:22 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/08 12:09:13 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:03:45 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-
-void	ft_keyhook_move_camera(mlx_key_data_t keydata, t_data *data);
-void	ft_keyhook_rotate_camera(mlx_key_data_t keydata, t_data *data);
-void	ft_keyhook_zoom_camera(mlx_key_data_t keydata, t_data *data);
-int		check_camera_hook(t_data *data, int i);
 
 void	ft_keyhook(mlx_key_data_t keydata, void *param)
 {
@@ -24,9 +19,21 @@ void	ft_keyhook(mlx_key_data_t keydata, void *param)
 	data = (t_data *) param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(data->mlx);
-	ft_keyhook_move_camera(keydata, data);
-	ft_keyhook_rotate_camera(keydata, data);
-	ft_keyhook_zoom_camera(keydata, data);
+	ft_keyhook_move(keydata, data);
+	ft_keyhook_rotate(keydata, data);
+	ft_keyhook_scale(keydata, data);
+}
+
+void	ft_mouse_hook(enum mouse_key mouse_key, enum action action,
+		enum modifier_key modifier_key, void *param)
+{
+	t_data *data;
+
+	(void) modifier_key;
+	data = (t_data *) param;
+	if (mouse_key == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
+		ft_get_click_target(data);
+	return;
 }
 
 void	ft_resize_hook(int32_t width, int32_t height, void *param)
@@ -51,7 +58,7 @@ void	ft_gen_hook(void *ptr)
 	i = 1;
 	while (i <= 2048)
 	{
-		if (check_camera_hook(data, i))
+		if (check_cam_hook(data, i))
 			change = 1;
 		i *= 2;
 	}

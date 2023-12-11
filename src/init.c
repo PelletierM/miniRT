@@ -6,11 +6,13 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:42:07 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/08 09:15:17 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 11:11:14 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
+
+static void	mrt_init_data_2(t_data *data);
 
 void	mrt_init_data(t_data *data)
 {
@@ -25,6 +27,11 @@ void	mrt_init_data(t_data *data)
 	data->camera.z_axis.y = 0;
 	data->camera.z_axis.z = 0;
 	data->camera.fov = 55;
+	mrt_init_data_2(data);
+}
+
+static void	mrt_init_data_2(t_data *data)
+{
 	data->light.position.x = 0;
 	data->light.position.y = 0;
 	data->light.position.z = 0;
@@ -36,6 +43,9 @@ void	mrt_init_data(t_data *data)
 	data->num_spheres = 0;
 	data->num_planes = 0;
 	data->num_cylinders = 0;
+	data->nav_mode.obj = OBJ_CAM;
+	data->nav_mode.i = 0;
+	data->nav_flag = 0;
 	data->width = WIN_WIDTH;
 	data->height = WIN_HEIGHT;
 	data->ratio = (float) data->width / (float) data->height;
@@ -56,6 +66,7 @@ int	ft_mlx_init(t_data *data)
 		|| (mlx_image_to_window(data->mlx, data->img, 0, 0) < 0))
 		return (1);
 	mlx_key_hook(data->mlx, &ft_keyhook, data);
+	mlx_mouse_hook(data->mlx, &ft_mouse_hook, data);
 	mlx_resize_hook(data->mlx, &ft_resize_hook, data);
 	return (0);
 }

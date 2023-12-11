@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object_normal_hit.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
+/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 09:38:22 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 14:13:43 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 09:36:50 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void	get_normal_spheres(t_hit *hit, t_data *data);
 void	get_normal_hit(t_data *data, t_ray ray, t_hit *hit)
 {
 	hit->position = vadd(ray.position, vsmul(ray.orientation, hit->t));
-	if (hit->shape == 1)
+	if (hit->shape == OBJ_SPHERE)
 		get_normal_spheres(hit, data);
-	else if (hit->shape == 2)
+	else if (hit->shape == OBJ_PLANE)
 	{
 		if (vdot(data->planes[hit->i].orientation, ray.orientation) < 0)
 			hit->normal = vcopy(data->planes[hit->i].orientation);
 		else
 			hit->normal = vsmul(data->planes[hit->i].orientation, -1);
 	}
-	else if (hit->shape == 3)
+	else if (hit->shape == OBJ_CYL)
 		get_normal_cylinder(hit, ray, data);
 }
 

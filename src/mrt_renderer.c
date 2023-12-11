@@ -6,14 +6,12 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 11:57:22 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:12:08 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_hit	trace_pixel(t_data *data, t_ray ray);
-t_ray	get_current_ray(t_data *data, int x, int y);
 t_hit	miss(void);
 
 void	render(void *param)
