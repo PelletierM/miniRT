@@ -49,6 +49,7 @@
 # define OBJ_SCALE_DOWN_B 8192
 # define OBJ_ZOOM_RATIO 0.0872665
 # define OBJ_SCALE_RATIO 1.05
+# define LIGHT_RATIO 0.01
 
 # define MAX_LINES	128
 # define MAX_FIGURE 24
