@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:54:24 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 13:04:06 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:58:00 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,27 @@ void	ft_keyhook_move_obj(mlx_key_data_t keydata, t_data *data)
 	if (keydata.key == MLX_KEY_A && (keydata.action == MLX_PRESS))
 		data->nav_flag += OBJ_MV_LEFT;
 	if (keydata.key == MLX_KEY_A && (keydata.action == MLX_RELEASE))
-		data->nav_flag = data->nav_flag &~OBJ_MV_LEFT;
+		data->nav_flag = data->nav_flag & ~OBJ_MV_LEFT;
 	if (keydata.key == MLX_KEY_D && (keydata.action == MLX_PRESS))
 		data->nav_flag += OBJ_MV_RIGHT;
 	if (keydata.key == MLX_KEY_D && (keydata.action == MLX_RELEASE))
-		data->nav_flag = data->nav_flag &~OBJ_MV_RIGHT;
+		data->nav_flag = data->nav_flag & ~OBJ_MV_RIGHT;
 	if (keydata.key == MLX_KEY_W && (keydata.action == MLX_PRESS))
 		data->nav_flag += OBJ_MV_FORWARD;
 	if (keydata.key == MLX_KEY_W && (keydata.action == MLX_RELEASE))
-		data->nav_flag = data->nav_flag &~OBJ_MV_FORWARD;
+		data->nav_flag = data->nav_flag & ~OBJ_MV_FORWARD;
 	if (keydata.key == MLX_KEY_S && (keydata.action == MLX_PRESS))
 		data->nav_flag += OBJ_MV_BACK;
 	if (keydata.key == MLX_KEY_S && (keydata.action == MLX_RELEASE))
-		data->nav_flag = data->nav_flag &~OBJ_MV_BACK;
+		data->nav_flag = data->nav_flag & ~OBJ_MV_BACK;
 	if (keydata.key == MLX_KEY_Q && (keydata.action == MLX_PRESS))
 		data->nav_flag += OBJ_MV_DOWN;
 	if (keydata.key == MLX_KEY_Q && (keydata.action == MLX_RELEASE))
-		data->nav_flag = data->nav_flag &~OBJ_MV_DOWN;
+		data->nav_flag = data->nav_flag & ~OBJ_MV_DOWN;
 	if (keydata.key == MLX_KEY_E && (keydata.action == MLX_PRESS))
 		data->nav_flag += OBJ_MV_UP;
 	if (keydata.key == MLX_KEY_E && (keydata.action == MLX_RELEASE))
-		data->nav_flag = data->nav_flag &~OBJ_MV_UP;
+		data->nav_flag = data->nav_flag & ~OBJ_MV_UP;
 }
 
 void	ft_keyhook_rotate_obj(mlx_key_data_t keydata, t_data *data)
@@ -45,19 +45,19 @@ void	ft_keyhook_rotate_obj(mlx_key_data_t keydata, t_data *data)
 	if (keydata.key == MLX_KEY_LEFT && (keydata.action == MLX_PRESS))
 		data->nav_flag += OBJ_ROT_LEFT;
 	if (keydata.key == MLX_KEY_LEFT && (keydata.action == MLX_RELEASE))
-		data->nav_flag = data->nav_flag &~OBJ_ROT_LEFT;
+		data->nav_flag = data->nav_flag & ~OBJ_ROT_LEFT;
 	if (keydata.key == MLX_KEY_RIGHT && (keydata.action == MLX_PRESS))
 		data->nav_flag += OBJ_ROT_RIGHT;
 	if (keydata.key == MLX_KEY_RIGHT && (keydata.action == MLX_RELEASE))
-		data->nav_flag = data->nav_flag &~OBJ_ROT_RIGHT;
+		data->nav_flag = data->nav_flag & ~OBJ_ROT_RIGHT;
 	if (keydata.key == MLX_KEY_UP && (keydata.action == MLX_PRESS))
 		data->nav_flag += OBJ_ROT_UP;
 	if (keydata.key == MLX_KEY_UP && (keydata.action == MLX_RELEASE))
-		data->nav_flag = data->nav_flag &~OBJ_ROT_UP;
+		data->nav_flag = data->nav_flag & ~OBJ_ROT_UP;
 	if (keydata.key == MLX_KEY_DOWN && (keydata.action == MLX_PRESS))
 		data->nav_flag += OBJ_ROT_DOWN;
 	if (keydata.key == MLX_KEY_DOWN && (keydata.action == MLX_RELEASE))
-		data->nav_flag = data->nav_flag &~OBJ_ROT_DOWN;
+		data->nav_flag = data->nav_flag & ~OBJ_ROT_DOWN;
 }
 
 void	ft_keyhook_zoom_obj(mlx_key_data_t keydata, t_data *data)
@@ -65,11 +65,11 @@ void	ft_keyhook_zoom_obj(mlx_key_data_t keydata, t_data *data)
 	if (keydata.key == MLX_KEY_P && (keydata.action == MLX_PRESS))
 		data->nav_flag += OBJ_SCALE_UP;
 	if (keydata.key == MLX_KEY_P && (keydata.action == MLX_RELEASE))
-		data->nav_flag = data->nav_flag &~OBJ_SCALE_UP;
+		data->nav_flag = data->nav_flag & ~OBJ_SCALE_UP;
 	if (keydata.key == MLX_KEY_O && (keydata.action == MLX_PRESS))
 		data->nav_flag += OBJ_SCALE_DOWN;
 	if (keydata.key == MLX_KEY_O && (keydata.action == MLX_RELEASE))
-		data->nav_flag = data->nav_flag &~OBJ_SCALE_DOWN;
+		data->nav_flag = data->nav_flag & ~OBJ_SCALE_DOWN;
 }
 
 int	check_cam_hook(t_data *data, int i)
@@ -111,4 +111,3 @@ int	check_obj_hook(t_data *data, int i)
 	}
 	return (0);
 }
-

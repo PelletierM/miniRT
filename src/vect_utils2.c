@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 07:41:54 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 12:14:52 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:47:32 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,19 @@
 int	is_vect_negative(t_vector vector)
 {
 	return (vector.x < 0 || vector.y < 0 || vector.z < 0);
+}
+
+t_vector	rotate_figure(t_vector target, t_vector axe, int direction)
+{
+	t_vector	retval;
+	float		cs;
+	float		sn;
+
+	cs = cosf((float) OBJ_ROT_ANGLE);
+	sn = sinf((float) OBJ_ROT_ANGLE);
+	sn *= direction;
+	retval = vadd(vsadd(vsmul(target, cs),
+				vdot(target, axe) * (1 - cs)),
+			vsmul(vcross(axe, target), sn));
+	return (retval);
 }
