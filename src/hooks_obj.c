@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:54:24 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 13:23:11 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 14:25:32 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,14 @@ void	ft_keyhook_scale_obj(mlx_key_data_t keydata, t_data *data)
 		data->nav_flag += OBJ_SCALE_DOWN;
 	if (keydata.key == MLX_KEY_O && (keydata.action == MLX_RELEASE))
 		data->nav_flag = data->nav_flag &~OBJ_SCALE_DOWN;
+	if (keydata.key == MLX_KEY_I && (keydata.action == MLX_PRESS))
+		data->nav_flag += OBJ_SCALE_UP_B;
+	if (keydata.key == MLX_KEY_I && (keydata.action == MLX_RELEASE))
+		data->nav_flag = data->nav_flag &~OBJ_SCALE_UP_B;
+	if (keydata.key == MLX_KEY_U && (keydata.action == MLX_PRESS))
+		data->nav_flag += OBJ_SCALE_DOWN_B;
+	if (keydata.key == MLX_KEY_U && (keydata.action == MLX_RELEASE))
+		data->nav_flag = data->nav_flag &~OBJ_SCALE_DOWN_B;
 }
 
 int	check_cam_hook(t_data *data, int i)
@@ -104,7 +112,7 @@ int	check_obj_hook(t_data *data, int i)
 		rot_obj(data, i);
 		return (1);
 	}
-	if (i <= 2048 && data->nav_flag & i)
+	if (i <= 8192 && data->nav_flag & i)
 	{
 		scale_obj(data, i);
 		return (1);
