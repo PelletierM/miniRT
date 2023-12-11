@@ -6,14 +6,14 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:22:35 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 16:00:45 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:17:24 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 t_vector	get_new_orientation_rot(t_vector, t_camera camera, int i);
-void		scale_light(t_data *data, int i);;
+void		scale_light(t_data *data, int i);
 
 void	move_obj(t_data *data, int direction)
 {
@@ -85,19 +85,16 @@ void	scale_obj(t_data *data, int i)
 	}
 	if (data->nav_mode.obj == OBJ_CYL)
 	{
-		if (i == OBJ_SCALE_DOWN)
-			data->cylinders[data->nav_mode.i].diameter *= OBJ_SCALE_RATIO;
 		if (i == OBJ_SCALE_UP)
+			data->cylinders[data->nav_mode.i].diameter *= OBJ_SCALE_RATIO;
+		if (i == OBJ_SCALE_DOWN)
 			if (data->cylinders[data->nav_mode.i].diameter > 0.05)
 				data->cylinders[data->nav_mode.i].diameter /= OBJ_SCALE_RATIO;
-		if (i == OBJ_SCALE_DOWN_B)
-		{
-			if (data->cylinders[data->nav_mode.i].height < 0.05)
-				return ;
-			data->cylinders[data->nav_mode.i].height *= OBJ_SCALE_RATIO;
-		}
 		if (i == OBJ_SCALE_UP_B)
-			data->cylinders[data->nav_mode.i].height /= OBJ_SCALE_RATIO;
+			data->cylinders[data->nav_mode.i].height *= OBJ_SCALE_RATIO;
+		if (i == OBJ_SCALE_DOWN_B)
+			if (data->cylinders[data->nav_mode.i].height > 0.05)
+				data->cylinders[data->nav_mode.i].height /= OBJ_SCALE_RATIO;
 		set_cylinders_disk(&data->cylinders[data->nav_mode.i]);
 	}
 	if (data->nav_mode.obj == OBJ_LIGHT)

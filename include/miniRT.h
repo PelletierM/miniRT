@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 16:02:59 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:10:36 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,6 +233,7 @@ t_hit			trace_pixel(t_data *data, t_ray ray);
 t_ray			get_current_ray(t_data *data, int x, int y);
 void			render(t_data *data);
 void			*render_thread(void *param);
+void			perpixel(int x, int y, t_data *data);
 
 // Camera functions
 void			mrt_create_cam(t_data *data);

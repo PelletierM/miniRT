@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 15:04:18 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:58:53 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	main(int argc, char *argv[])
 
 void	render(t_data *data)
 {
-	int 			i;
-	t_thread		threads[THREAD_MAX];
+	int			i;
+	t_thread	threads[THREAD_MAX];
 
 	i = 0;
 	while (i < THREAD_MAX)
@@ -43,13 +43,13 @@ void	render(t_data *data)
 		threads[i].id = i;
 		threads[i].data = data;
 		if (pthread_create(&threads[i].thread,
-					NULL, render_thread, &threads[i]) != 0)
+				NULL, render_thread, &threads[i]) != 0)
 		{
 			printf("Error thread\n");
 			return ;
 		}
 		i++;
-	}	
+	}
 	i = 0;
 	while (i < THREAD_MAX)
 	{
