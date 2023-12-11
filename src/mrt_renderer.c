@@ -12,8 +12,6 @@
 
 #include "miniRT.h"
 
-t_hit	trace_pixel(t_data *data, t_ray ray);
-t_ray	get_current_ray(t_data *data, int x, int y);
 t_hit	miss(void);
 void	perpixel(int x, int y, t_data *data);
 

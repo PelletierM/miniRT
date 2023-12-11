@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:08:08 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/08 14:18:32 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 11:10:58 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,5 @@ int	set_camera2(char *line, t_data *data)
 	if (*line != '\n')
 		return (1);
 	data->flag += 2;
-	data->camera.mv_flag = 0;
 	return (0);
 }

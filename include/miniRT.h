@@ -59,6 +59,12 @@
 # define ERR_MLX_INIT 4
 # define ERR_DIV_ZERO 5
 
+# define OBJ_CAM 0
+# define OBJ_SPHERE 1
+# define OBJ_PLANE 2
+# define OBJ_CYL 3
+# define OBJ_LIGHT 4
+
 typedef struct s_quadratic
 {
 	float	dis;
@@ -89,7 +95,6 @@ typedef struct s_camera
 	float		vp_horiz_len;
 	float		vp_vert_len;
 	float		fov;
-	int			mv_flag;
 }				t_camera;
 
 typedef struct s_light
@@ -144,6 +149,12 @@ typedef struct s_hit
 	t_vector	color;
 }	t_hit;
 
+typedef struct s_nav_mode
+{
+	int	obj;
+	int	i;	
+}	t_nav_mode;
+
 typedef struct s_data
 {
 	t_ambient	ambient;
@@ -158,6 +169,8 @@ typedef struct s_data
 	int			num_cylinders;
 	mlx_image_t	*img;
 	mlx_t		*mlx;
+	t_nav_mode	nav_mode;
+	int			nav_flag;
 	int32_t		width;
 	int32_t		height;
 	float		ratio;
@@ -214,6 +227,8 @@ float			check_hit_sphere(t_sphere sp, t_ray ray, t_hit *hit);
 float			check_hit_cylinders(t_cylinder cy, t_ray ray, int *flag);
 float			check_hit_planes(t_plane plane, t_ray ray);
 
+t_hit			trace_pixel(t_data *data, t_ray ray);
+t_ray			get_current_ray(t_data *data, int x, int y);
 void			render(t_data *data);
 void			*render_thread(void *param);
 
@@ -226,10 +241,17 @@ void			zoom_cam(t_data *data, int direction);
 // MLX hooks
 void			ft_gen_hook(void *ptr);
 void			ft_keyhook(mlx_key_data_t keydata, void *param);
+void			ft_mouse_hook(enum mouse_key mouse_key, enum action action,
+					enum modifier_key modifier_key, void *param);
 void			ft_resize_hook(int32_t width, int32_t height, void *param);
-void			ft_keyhook_move_camera(mlx_key_data_t keydata, t_data *data);
-void			ft_keyhook_rotate_camera(mlx_key_data_t keydata, t_data *data);
-void			ft_keyhook_zoom_camera(mlx_key_data_t keydata, t_data *data);
+void			ft_keyhook_move(mlx_key_data_t keydata, t_data *data);
+void			ft_keyhook_rotate(mlx_key_data_t keydata, t_data *data);
+void			ft_keyhook_scale(mlx_key_data_t keydata, t_data *data);
+void			ft_keyhook_move_cam(mlx_key_data_t keydata, t_data *data);
+void			ft_keyhook_rotate_cam(mlx_key_data_t keydata, t_data *data);
+void			ft_keyhook_zoom_cam(mlx_key_data_t keydata, t_data *data);
+int				check_cam_hook(t_data *data, int i);
+void			ft_get_click_target(t_data *data);
 
 // Vector operations
 float			vdot(t_vector v1, t_vector v2);

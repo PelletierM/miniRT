@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   object_hit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
+/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 09:17:58 by eguefif           #+#    #+#             */
 /*   Updated: 2023/12/11 09:42:39 by eguefif          ###   ########.fr       */
@@ -41,7 +41,7 @@ void	check_spheres_hit(t_data *data, t_ray ray, t_hit *hit)
 		{
 			hit->color = vcopy(data->spheres[i].color);
 			hit->t = t;
-			hit->shape = 1;
+			hit->shape = OBJ_SPHERE;
 			hit->i = i;
 		}
 		i++;
@@ -61,7 +61,7 @@ void	check_planes_hit(t_data *data, t_ray ray, t_hit *hit)
 		{
 			hit->color = vcopy(data->planes[i].color);
 			hit->t = t;
-			hit->shape = 2;
+			hit->shape = OBJ_PLANE;
 			hit->i = i;
 		}
 		i++;
@@ -81,7 +81,7 @@ void	check_cylinders_hit(t_data *data, t_ray ray, t_hit *hit)
 		{
 			hit->color = vcopy(data->cylinders[i].color);
 			hit->t = t;
-			hit->shape = 3;
+			hit->shape = OBJ_CYL;
 			hit->i = i;
 		}
 		i++;
