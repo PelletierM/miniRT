@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 09:26:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 13:41:16 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/11 13:51:03 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int	is_shadow(t_hit hit, t_data *data)
 {
 	t_ray	ray;
 	t_hit	new_hit;
-
-
 
 	ray.position = vcopy(translate_pt(hit.position, 0.01, hit.normal));
 	ray.orientation = create_vector_from_points(hit.position, data->light.position);
