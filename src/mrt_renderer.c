@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 15:04:17 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:06:47 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,19 @@ void	*render_thread(void *param)
 	int			i;
 	int			max;
 	int			div;
-	int			remaining;
+	//int			remaining;
 
 	thread = (t_thread *) param;
 	data = thread->data;
 	div = 1;
 	if (THREAD_MAX > 0)
 		div = (int) ((data->width * data->height) / THREAD_MAX);
-	remaining = (int) ((data->width * data->height) % THREAD_MAX);
+	//remaining = (int) ((data->width * data->height) % THREAD_MAX);
 	mrt_create_cam(data);
-	i = thread->id * div + (remaining - (THREAD_MAX - thread->id));
-	max = i + div + (remaining - (THREAD_MAX - thread->id));;
+	//i = thread->id * div + (remaining - (THREAD_MAX - thread->id));
+	//max = i + div + (remaining - (THREAD_MAX - thread->id));;
+	i = thread->id * div;
+	max = i + div;
 	while (i < max)
 	{
 		perpixel((i % data->width), (i / data->width), data);
