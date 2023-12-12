@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 16:19:09 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/12 09:14:00 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 # define MAX_DIST 1000000
 # define THREAD_MAX 12
+# define MAX_BOUNCE 5
 // Camera and viewport settings 
 # define VP_DIAG 0.04327
 # define WIN_HEIGHT 768
@@ -222,6 +223,7 @@ int				get_alpha(unsigned int color);
 int				get_red(unsigned int color);
 int				get_green(unsigned int color);
 int				get_blue(unsigned int color);
+t_vector		clamp_color(t_vector color);
 
 int				mrt_error_message(int error, int line);
 
@@ -229,7 +231,7 @@ float			check_hit_sphere(t_sphere sp, t_ray ray, t_hit *hit);
 float			check_hit_cylinders(t_cylinder cy, t_ray ray, int *flag);
 float			check_hit_planes(t_plane plane, t_ray ray);
 
-t_hit			trace_pixel(t_data *data, t_ray ray);
+t_vector		trace_pixel(t_data *data, t_ray ray);
 t_ray			get_current_ray(t_data *data, int x, int y);
 void			render(t_data *data);
 void			*render_thread(void *param);
@@ -279,6 +281,7 @@ t_vector		rotate_figure(t_vector target, t_vector axe, int direction);
 int				is_vect_negative(t_vector vector);
 float			vlength(t_vector v1);
 t_vector		create_vector_from_points(t_vector p1, t_vector p2);
+t_vector		vreflect(t_vector v, t_vector normal);
 
 float			vdistance(t_vector v1, t_vector v2);
 t_quadratic		solve_quadratic_cylinder(t_cylinder cy, t_ray ray);

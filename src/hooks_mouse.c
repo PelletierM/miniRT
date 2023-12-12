@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:10:15 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 12:46:22 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/12 08:14:17 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_get_click_target(t_data *data)
 	t_hit	hit;
 
 	mlx_get_mouse_pos(data->mlx, &x, &y);
-	hit = trace_pixel(data, get_current_ray(data, x, y));
+	hit = get_closest_hit(data, get_current_ray(data, x, y));
 	if (hit.t != -1)
 	{
 		data->nav_flag = 0;
