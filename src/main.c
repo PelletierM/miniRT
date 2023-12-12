@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 15:58:53 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/12 09:06:45 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ void	render(t_data *data)
 {
 	int			i;
 	t_thread	threads[THREAD_MAX];
+	struct timeval	start;
 
 	i = 0;
+	gettimeofday(&start, NULL);
 	while (i < THREAD_MAX)
 	{
 		threads[i].id = i;
@@ -56,6 +58,7 @@ void	render(t_data *data)
 		pthread_join(threads[i].thread, NULL);
 		i++;
 	}
+	display_delta(start);
 }
 
 void	display_delta(struct timeval t_start)

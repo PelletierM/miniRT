@@ -6,22 +6,24 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:06:59 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 16:08:35 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/12 09:10:15 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_hit	miss(void);
+t_vector	black_color(void);
+t_vector	get_ambient(t_data *data);
 
 void	perpixel(int x, int y, t_data *data)
 {
 	t_ray		ray;
-	t_hit		hit;
+	t_vector	color;
 
 	ray = get_current_ray(data, x, y);
-	hit = trace_pixel(data, ray);
-	mlx_put_pixel(data->img, x, y, get_vect_rgba(hit.color));
+	color = trace_pixel(data, ray);
+	color = clamp_color(color);
+	mlx_put_pixel(data->img, x, y, get_vect_rgba(color));
 }
 
 t_ray	get_current_ray(t_data *data, int x, int y)
@@ -46,27 +48,47 @@ t_ray	get_current_ray(t_data *data, int x, int y)
 	return (ray);
 }
 
-t_hit	trace_pixel(t_data *data, t_ray ray)
+t_vector	trace_pixel(t_data *data, t_ray ray)
 {
 	t_hit		hit;
+	t_vector	color;
+	float		multiplier;
+	int			i;
 
-	hit = get_closest_hit(data, ray);
-	if (hit.t == MAX_DIST)
-		return (miss());
-	get_normal_hit(data, ray, &hit);
-	hit = get_light(hit, data);
-	return (hit);
+	multiplier = 1.0;
+	color = black_color();
+	i = 0;
+	while (i < MAX_BOUNCE)
+	{
+		hit = get_closest_hit(data, ray);
+		if (hit.t == MAX_DIST)
+		{
+			color = vadd(color, vsmul(black_color(), multiplier));
+			break ;
+		}
+		get_normal_hit(data, ray, &hit);
+		hit = get_light(hit, data);
+		color = vadd(color, vsmul(hit.color, multiplier));
+		multiplier *= 0.5;
+		ray.position = translate_pt(hit.position, 0.00001, hit.normal);
+		ray.orientation = vreflect(ray.orientation, hit.normal);
+		i++;
+	}
+	return (color);
 }
 
-t_hit	miss(void)
-{
-	t_hit	hit;
 
-	hit.color.x = 0;
-	hit.color.y = 0;
-	hit.color.z = 0;
-	hit.t = -1;
-	hit.i = -1;
-	hit.shape = -1;
-	return (hit);
+t_vector	black_color(void)
+{
+	t_vector	color;
+
+	color.x = 0;
+	color.y = 0;
+	color.z = 0;
+	return (color);
+}
+
+t_vector	get_ambient(t_data *data)
+{
+	return (vsmul(data->ambient.color, data->ambient.ratio));
 }

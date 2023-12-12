@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 07:41:54 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/11 15:47:32 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/12 09:05:48 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,9 @@ t_vector	rotate_figure(t_vector target, t_vector axe, int direction)
 				vdot(target, axe) * (1 - cs)),
 			vsmul(vcross(axe, target), sn));
 	return (retval);
+}
+
+t_vector	vreflect(t_vector ray, t_vector normal)
+{
+	return (vsub(ray, vsmul(normal, (float) 2.0 * vdot(normal, ray))));
 }
