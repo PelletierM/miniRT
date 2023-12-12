@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/12 09:06:45 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/12 17:29:26 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	render(t_data *data)
 	struct timeval	start;
 
 	i = 0;
+	// remove this?
 	gettimeofday(&start, NULL);
 	while (i < THREAD_MAX)
 	{
@@ -47,7 +48,7 @@ void	render(t_data *data)
 		if (pthread_create(&threads[i].thread,
 				NULL, render_thread, &threads[i]) != 0)
 		{
-			printf("Error thread\n");
+			write(2, "Error thread\n", 13);
 			return ;
 		}
 		i++;
@@ -59,6 +60,7 @@ void	render(t_data *data)
 		i++;
 	}
 	display_delta(start);
+	data->samples++;
 }
 
 void	display_delta(struct timeval t_start)

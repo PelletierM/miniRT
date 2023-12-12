@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/12 09:14:00 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/12 17:07:53 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,7 @@ typedef struct s_data
 	int32_t		width;
 	int32_t		height;
 	float		ratio;
+	int			samples;
 }				t_data;
 
 typedef struct s_thread
@@ -219,10 +220,13 @@ float			get_float(char *line);
 
 unsigned int	get_rgba(int r, int g, int b, int a);
 unsigned int	get_vect_rgba(t_vector c);
+t_vector		get_rgb_vect(unsigned int color);
+t_vector		get_img_pixel(t_data *data, int x, int y);
 int				get_alpha(unsigned int color);
 int				get_red(unsigned int color);
 int				get_green(unsigned int color);
 int				get_blue(unsigned int color);
+t_vector		update_color(int samples, t_vector color, t_vector color_old);
 t_vector		clamp_color(t_vector color);
 
 int				mrt_error_message(int error, int line);
