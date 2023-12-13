@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 14:58:26 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 15:13:44 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,6 +295,7 @@ t_vector		translate_pt(t_vector position,
 					float t,
 					t_vector orientation);
 t_vector		rotate_figure(t_vector target, t_vector axe, int direction);
+float			vlength_squared(t_vector v);
 int				is_vect_negative(t_vector vector);
 float			vlength(t_vector v1);
 t_vector		create_vector_from_points(t_vector p1, t_vector p2);
@@ -316,7 +317,7 @@ t_vector	vrandom();
 float		random_double_range(float min, float max);
 float		random_double();
 t_vector	random_unit_vector();
-t_vector	random_in_unit_sphre();
+t_vector	random_in_unit_sphere();
 
 // Material
 float	get_roughness_factor(t_data *data, t_hit hit);
