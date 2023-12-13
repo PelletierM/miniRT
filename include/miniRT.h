@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 08:33:12 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 11:09:01 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define MAX_DIST 1000000
 # define THREAD_MAX 12
-# define MAX_BOUNCE 5
+# define MAX_BOUNCE 2
 // Camera and viewport settings 
 # define VP_DIAG 0.04327
 # define WIN_HEIGHT 768
@@ -69,6 +69,13 @@
 # define OBJ_CYL 3
 # define OBJ_LIGHT 4
 
+typedef struct s_material
+{
+	int		id;
+	float	roughness;
+	float	metalic;
+}	t_material;
+
 typedef struct s_quadratic
 {
 	float	dis;
@@ -113,6 +120,7 @@ typedef struct s_sphere
 	t_vector		position;
 	float			diameter;
 	t_vector		color;
+	int				material_id;
 }				t_sphere;
 
 typedef struct s_plane
@@ -120,6 +128,7 @@ typedef struct s_plane
 	t_vector		position;
 	t_vector		orientation;
 	t_vector		color;
+	int				material_id;
 }				t_plane;
 
 typedef struct s_cylinder
@@ -132,6 +141,7 @@ typedef struct s_cylinder
 	t_vector		color;
 	t_plane			bottom;
 	t_plane			top;
+	int				material_id;
 }				t_cylinder;
 
 typedef struct s_ray
@@ -171,6 +181,8 @@ typedef struct s_data
 	int			num_planes;
 	t_cylinder	cylinders[MAX_FIGURE];
 	int			num_cylinders;
+	t_material	materials[MAX_FIGURE];
+	int			num_materials;
 	mlx_image_t	*img;
 	mlx_t		*mlx;
 	t_nav_mode	nav_mode;
@@ -213,6 +225,7 @@ int				set_light(char *line, t_data *data);
 int				set_sphere(char *line, t_data *data);
 int				set_plane(char *line, t_data *data);
 int				set_cylinder(char *line, t_data *data);
+int				set_material(char *line, t_data *data);
 
 int				get_ratio(char *line, float *ratio);
 int				get_coord(char *line, t_vector *vector);
@@ -295,4 +308,5 @@ void			set_cylinders_disk(t_cylinder	*cy);
 t_hit			get_closest_hit(t_data *data, t_ray ray);
 void			get_normal_hit(t_data *data, t_ray, t_hit *hit);
 t_hit			get_light(t_hit hit, t_data *data);
+t_vector		get_material_normal(t_data *data, t_hit hit);
 #endif
