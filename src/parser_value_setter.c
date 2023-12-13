@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:39:29 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 16:21:19 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 10:44:11 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ int	set_values(char *line, t_data *data)
 		return (set_plane(line, data));
 	if (!ft_strncmp(line, "cy", 2) && data->num_cylinders < MAX_FIGURE)
 		return (set_cylinder(line, data));
+	if (!ft_strncmp(line, "mt", 2) && data->num_materials < MAX_FIGURE)
+		return (set_material(line, data));
 	return (0);
 }

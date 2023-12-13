@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:33:08 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 15:17:02 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 10:49:48 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ char	*is_valid_identifier(char *line)
 		line++;
 	else if (!ft_strncmp(&line[i], "sp", 2)
 		|| !ft_strncmp(&line[i], "cy", 2)
-		|| !ft_strncmp(&line[i], "pl", 2))
+		|| !ft_strncmp(&line[i], "pl", 2)
+		|| !ft_strncmp(&line[i], "mt", 2))
 		line += 2;
 	else
 		return (0);

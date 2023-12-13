@@ -6,11 +6,13 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:34:59 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/04 15:34:57 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 09:47:29 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
+
+int	set_sphere_part(char *line, t_data *data);
 
 int	set_sphere(char *line, t_data *data)
 {
@@ -34,6 +36,14 @@ int	set_sphere(char *line, t_data *data)
 	if (get_coord(line, &data->spheres[data->num_spheres].color))
 		return (1);
 	line = skip_coord(line);
+	line = skip_spaces(line);
+	return (set_sphere_part(line, data));
+}
+
+int	set_sphere_part(char *line, t_data *data)
+{
+	data->spheres[data->num_spheres].material_id = ft_atoi(line);	
+	line = skip_digits(line);
 	line = skip_spaces(line);
 	if (*line != '\n')
 		return (1);
