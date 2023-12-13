@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 14:43:38 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 14:58:26 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,7 +307,7 @@ t_quadratic		solve_quadratic_sphere(t_sphere sp, t_ray ray);
 void			set_cylinders_disk(t_cylinder	*cy);
 t_hit			get_closest_hit(t_data *data, t_ray ray);
 void			get_normal_hit(t_data *data, t_ray, t_hit *hit);
-t_hit			get_light(t_hit hit, t_data *data);
+t_vector		get_light(t_hit hit, t_data *data);
 t_vector		get_material_normal(t_data *data, t_hit hit, t_ray ray);
 
 // Random functions
