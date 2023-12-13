@@ -80,7 +80,7 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 		hit = get_light(hit, data);
 		color = vadd(color, vsmul(hit.color, multiplier));
 		multiplier *= 0.5;
-		ray.position = translate_pt(hit.position, 0.00001, hit.normal);
+		ray.position = translate_pt(hit.position, 0.001, hit.normal);
 		ray.orientation = vreflect(ray.orientation, hit.normal);
 		i++;
 	}
