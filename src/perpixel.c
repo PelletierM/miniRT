@@ -66,6 +66,7 @@ t_vector	trace_pixel(t_data *data, t_ray ray, int depth)
 	t_ray		next_ray;
 
 	color = black_color();
+
 	if (depth == MAX_BOUNCE)
 		return (color);
 	hit = get_closest_hit(data, ray);
@@ -74,8 +75,7 @@ t_vector	trace_pixel(t_data *data, t_ray ray, int depth)
 	get_normal_hit(data, ray, &hit);
 	light_color = get_light(hit, data);
 	next_ray.position = translate_pt(hit.position, 0.001, hit.normal);
-	next_ray.orientation = vreflect(ray.orientation, get_material_normal(data, hit));
-
+	next_ray.orientation = get_material_normal(data, hit);
 	light_color = vadd(light_color, vsmul(trace_pixel(data, next_ray, depth + 1), 0.5));
 	color = vmul(clamp_color(light_color), vsmul(hit.color, (float) 1 / 255));
 	color = clamp_color(color);
