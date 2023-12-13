@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:08:12 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 10:38:12 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 14:01:38 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ int	check_materials(t_data data)
 		if (data.materials[i].roughness < 0
 				&& data.materials[i].roughness > 1)
 			return (1);
-		if (data.materials[i].metalic < 0
-				&& data.materials[i].metalic > 1)
+		if (data.materials[i].metallic < 0
+				&& data.materials[i].metallic > 1)
 			return (1);
 		i++;
 	}
