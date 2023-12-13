@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 16:01:59 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 16:04:23 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -323,4 +323,5 @@ t_vector	random_in_unit_sphere();
 // Material
 float	get_roughness_factor(t_data *data, t_hit hit);
 float	get_metallic_factor(t_data *data, t_hit hit);
+float	get_emissive_ratio(t_data *data, t_hit hit);
 #endif

@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:11:30 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 16:00:28 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/13 16:33:19 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ t_vector	get_roughness_normal(t_hit hit, float roughness, t_ray ray)
 	t_vector	v;
 
 	v = vreflect(ray.orientation, vadd(hit.normal,
-				vsmul(random_unit_vector(), roughness)));
+				random_unit_vector()));
+	(void) roughness;
+	//			vsmul(random_unit_vector(), roughness)));
+
 	return (vnormalize(v));
 }
 
