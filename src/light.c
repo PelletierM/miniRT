@@ -6,14 +6,13 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 09:26:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 14:22:25 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:35:01 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 int			is_shadow(t_hit hit, t_data *data);
-t_vector	cap_light(t_vector color);
 
 t_vector get_light(t_hit hit, t_data *data)
 {
@@ -50,21 +49,4 @@ int	is_shadow(t_hit hit, t_data *data)
 	if (new_hit.t == MAX_DIST)
 		return (0);
 	return (1);
-}
-
-t_vector	cap_light(t_vector color)
-{
-	if (color.x < 0)
-		color.x = 0;
-	if (color .x > 255)
-		color.x = 255;
-	if (color.y < 0)
-		color.y = 0;
-	if (color .y > 255)
-		color.y = 255;
-	if (color.z < 0)
-		color.z = 0;
-	if (color .z > 255)
-		color.z = 255;
-	return (color);
 }

@@ -1,7 +1,6 @@
 PROGNAME = miniRT 
 PROGNAME_BONUS = miniRT_bonus
 
-CC = gcc
 CFLAGS = -Wall -Wextra -Werror -lm -O3 
 
 LIB_DIR = ./lib

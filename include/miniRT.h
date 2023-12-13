@@ -6,7 +6,11 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/12/13 14:02:34 by maxpelle         ###   ########.fr       */
+=======
+/*   Updated: 2023/12/13 13:57:22 by eguefif          ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -309,4 +313,16 @@ t_hit			get_closest_hit(t_data *data, t_ray ray);
 void			get_normal_hit(t_data *data, t_ray, t_hit *hit);
 t_vector		get_light(t_hit hit, t_data *data);
 t_vector		get_material_normal(t_data *data, t_hit hit);
+
+// Random functions
+t_vector	vrandom_range(double min, double max);
+t_vector	vrandom();
+float		random_double_range(float min, float max);
+float		random_double();
+t_vector	random_unit_vector();
+t_vector	random_in_unit_sphre();
+
+// Material
+float	get_roughness_factor(t_data *data, t_hit hit);
+float	get_metallic_factor(t_data *data, t_hit hit);
 #endif
