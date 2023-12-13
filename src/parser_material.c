@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_material.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
+/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:56:19 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 13:02:56 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 14:33:54 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	set_material(char *line, t_data *data)
 	line = skip_spaces(line);
 	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
 		return (1);
-	data->materials[data->num_materials].metalic = get_float(line);
+	data->materials[data->num_materials].metallic = get_float(line);
 	line = skip_float(line);
 	line = skip_spaces(line);
 	if (*line != '\n')

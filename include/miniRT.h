@@ -6,7 +6,11 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2023/12/13 14:02:34 by maxpelle         ###   ########.fr       */
+=======
 /*   Updated: 2023/12/13 13:57:22 by eguefif          ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +77,7 @@ typedef struct s_material
 {
 	int		id;
 	float	roughness;
-	float	metalic;
+	float	metallic;
 }	t_material;
 
 typedef struct s_quadratic
@@ -248,7 +252,7 @@ float			check_hit_sphere(t_sphere sp, t_ray ray, t_hit *hit);
 float			check_hit_cylinders(t_cylinder cy, t_ray ray, int *flag);
 float			check_hit_planes(t_plane plane, t_ray ray);
 
-t_vector		trace_pixel(t_data *data, t_ray ray);
+t_vector		trace_pixel(t_data *data, t_ray ray, int depth);
 t_ray			get_current_ray(t_data *data, int x, int y);
 void			render(t_data *data);
 void			*render_thread(void *param);
@@ -307,7 +311,7 @@ t_quadratic		solve_quadratic_sphere(t_sphere sp, t_ray ray);
 void			set_cylinders_disk(t_cylinder	*cy);
 t_hit			get_closest_hit(t_data *data, t_ray ray);
 void			get_normal_hit(t_data *data, t_ray, t_hit *hit);
-t_hit			get_light(t_hit hit, t_data *data);
+t_vector		get_light(t_hit hit, t_data *data);
 t_vector		get_material_normal(t_data *data, t_hit hit);
 
 // Random functions

@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:11:30 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 14:00:47 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 14:34:36 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_vector	get_material_normal(t_data *data, t_hit hit)
 	v.y = ((float) rand() / RAND_MAX) * roughness;
 	v.z = ((float) rand() / RAND_MAX) * roughness;
 	v = vnormalize(v);	
-	if (vdot(v, hit.normal) < 0)
+	if (vdot(hit.normal, v) < 0)
 		vsmul(v, -1);
 	return (v);
 }
