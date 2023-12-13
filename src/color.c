@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 07:39:51 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 08:33:47 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 14:41:54 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_vector	clamp_color(t_vector color)
 		color.y = 255;
 	if (color.z < 0)
 		color.z = 0;
-	if (color.y > 255)
+	if (color.z > 255)
 		color.z = 255;
 	return (color);
 }
