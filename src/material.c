@@ -48,7 +48,7 @@ t_vector	get_roughness_normal(t_hit hit, float roughness)
 	v.y = ((float) rand() / RAND_MAX) * roughness;
 	v.z = ((float) rand() / RAND_MAX) * roughness;
 	v = vnormalize(v);	
-	if (vdot(v, hit.normal) < 0)
+	if (vdot(hit.normal, v) < 0)
 		vsmul(v, -1);
 	return (v);
 }

@@ -21,7 +21,7 @@ void	perpixel(int x, int y, t_data *data)
 	t_vector	color;
 
 	ray = get_current_ray(data, x, y);
-	color = trace_pixel(data, ray);
+	color = trace_pixel(data, ray, 0);
 	color = clamp_color(color);
 	color = update_color(data->samples, color, get_img_pixel(data, x, y));
 	mlx_put_pixel(data->img, x, y, get_vect_rgba(color));
@@ -58,33 +58,30 @@ t_ray	get_current_ray(t_data *data, int x, int y)
 	return (ray);
 }
 
-t_vector	trace_pixel(t_data *data, t_ray ray)
+t_vector	trace_pixel(t_data *data, t_ray ray, int depth)
 {
 	t_hit		hit;
+	t_vector	light_color;
 	t_vector	color;
 	float		multiplier;
-	int			i;
+	t_ray		next_ray;
 
 	multiplier = 1.0;
 	color = black_color();
-	i = 0;
-	while (i < MAX_BOUNCE)
-	{
-		hit = get_closest_hit(data, ray);
-		if (hit.t == MAX_DIST)
-		{
-			color = vadd(color, vsmul(black_color(), multiplier));
-			break ;
-		}
-		get_normal_hit(data, ray, &hit);
-		hit = get_light(hit, data);
-		color = vadd(color, vsmul(hit.color, multiplier));
-		multiplier *= 0.5;
-		ray.position = translate_pt(hit.position, 0.001, hit.normal);
-		ray.orientation = vreflect(
-				ray.orientation, get_material_normal(data, hit, ray));
-		i++;
-	}
+
+	if (depth == MAX_BOUNCE)
+		return (color);
+	hit = get_closest_hit(data, ray);
+	if (hit.t == MAX_DIST)
+		return (color);
+	get_normal_hit(data, ray, &hit);
+	light_color = get_light(hit, data);
+	next_ray.position = translate_pt(hit.position, 0.001, hit.normal);
+	next_ray.orientation = get_material_normal(data, hit);
+	light_color = vsub(light_color, vsmul(trace_pixel(data, next_ray, depth + 1), 0.5));
+
+	color = vmul(clamp_color(light_color), vsmul(hit.color, (float) 1 / 255));
+	color = clamp_color(color);
 	return (color);
 }
 

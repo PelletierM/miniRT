@@ -14,7 +14,7 @@
 
 int			is_shadow(t_hit hit, t_data *data);
 
-t_hit	get_light(t_hit hit, t_data *data)
+t_vector get_light(t_hit hit, t_data *data)
 {
 	float		light;
 	t_vector	light_direction;
@@ -31,9 +31,8 @@ t_hit	get_light(t_hit hit, t_data *data)
 		if (light > 0)
 			light_color = vadd(light_color, vsmul(data->light.color, light));
 	}
-	hit.color = vmul(clamp_color(light_color), vsmul(hit.color, (float) 1 / 255));
-	hit.color = clamp_color(hit.color);
-	return (hit);
+	light_color = clamp_color(light_color);
+	return (light_color);
 }
 
 int	is_shadow(t_hit hit, t_data *data)

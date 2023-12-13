@@ -73,7 +73,7 @@ typedef struct s_material
 {
 	int		id;
 	float	roughness;
-	float	metalic;
+	float	metallic;
 }	t_material;
 
 typedef struct s_quadratic
@@ -248,7 +248,7 @@ float			check_hit_sphere(t_sphere sp, t_ray ray, t_hit *hit);
 float			check_hit_cylinders(t_cylinder cy, t_ray ray, int *flag);
 float			check_hit_planes(t_plane plane, t_ray ray);
 
-t_vector		trace_pixel(t_data *data, t_ray ray);
+t_vector		trace_pixel(t_data *data, t_ray ray, int depth);
 t_ray			get_current_ray(t_data *data, int x, int y);
 void			render(t_data *data);
 void			*render_thread(void *param);
