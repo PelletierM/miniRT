@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:06:59 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 14:33:44 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:53:18 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,8 @@ t_vector	trace_pixel(t_data *data, t_ray ray, int depth)
 	t_hit		hit;
 	t_vector	light_color;
 	t_vector	color;
-	float		multiplier;
 	t_ray		next_ray;
 
-	multiplier = 1.0;
 	color = black_color();
 	if (depth == MAX_BOUNCE)
 		return (color);
@@ -77,10 +75,10 @@ t_vector	trace_pixel(t_data *data, t_ray ray, int depth)
 	light_color = get_light(hit, data);
 	next_ray.position = translate_pt(hit.position, 0.001, hit.normal);
 	next_ray.orientation = vreflect(ray.orientation, get_material_normal(data, hit));
-	light_color = vsub(light_color, vsmul(trace_pixel(data, next_ray, depth + 1), 0.5));
 
+	light_color = vadd(light_color, vsmul(trace_pixel(data, next_ray, depth + 1), 0.5));
 	color = vmul(clamp_color(light_color), vsmul(hit.color, (float) 1 / 255));
-	color = clamp_color(hit.color);
+	color = clamp_color(color);
 	return (color);
 }
 
