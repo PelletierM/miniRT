@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:06:59 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 13:00:26 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 14:43:55 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 		color = vadd(color, vsmul(hit.color, multiplier));
 		multiplier *= 0.5;
 		ray.position = translate_pt(hit.position, 0.001, hit.normal);
-		ray.orientation = vreflect(ray.orientation, get_material_normal(data, hit));
+		ray.orientation = vreflect(
+				ray.orientation, get_material_normal(data, hit, ray));
 		i++;
 	}
 	return (color);
