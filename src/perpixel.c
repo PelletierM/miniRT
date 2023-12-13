@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:06:59 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/12 09:10:15 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/12 16:42:21 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_vector	trace_pixel(t_data *data, t_ray ray)
 		hit = get_light(hit, data);
 		color = vadd(color, vsmul(hit.color, multiplier));
 		multiplier *= 0.5;
-		ray.position = translate_pt(hit.position, 0.00001, hit.normal);
+		ray.position = translate_pt(hit.position, 0.001, hit.normal);
 		ray.orientation = vreflect(ray.orientation, hit.normal);
 		i++;
 	}
