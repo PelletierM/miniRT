@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   material.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
+/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:11:30 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 13:55:31 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 13:57:10 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,18 @@ t_vector	get_material_normal(t_data *data, t_hit hit)
 	t_vector	v;
 	float		roughness;
 
-	roughness = get_roughness_factor(data, hit);
-	v.x = (rand() / RAND_MAX) * roughness;
-	v.y = (rand() / RAND_MAX) * roughness;
-	v.z = (rand() / RAND_MAX) * roughness;
-	return (vnormalize(vadd(hit.normal, v)));
+	id = get_material_id(data, hit);
+	if (id < 0)
+		return (hit.normal);
+	roughness = get_roughness_factor(data, id);
+	roughness = 1;
+	v.x = ((float) rand() / RAND_MAX) * roughness;
+	v.y = ((float) rand() / RAND_MAX) * roughness;
+	v.z = ((float) rand() / RAND_MAX) * roughness;
+	v = vnormalize(v);	
+	if (vdot(v, hit.normal) < 0)
+		vsmul(v, -1);
+	return (v);
 }
 
 int	get_material_id(t_data *data, t_hit hit)

@@ -2,7 +2,11 @@ PROGNAME = miniRT
 PROGNAME_BONUS = miniRT_bonus
 
 CC = gcc
+<<<<<<< HEAD
 CFLAGS = -Wall -Wextra -Werror -lm -O3
+=======
+CFLAGS = -Wall -Wextra -Werror -lm -O3 
+>>>>>>> 7bee74ed0fcb3060e1882b2f72f0cf759a70b662
 
 LIB_DIR = ./lib
 LIBFT = libft.a
