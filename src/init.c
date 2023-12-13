@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:42:07 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/13 08:33:01 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 10:56:20 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,6 @@ void	mrt_init_data(t_data *data)
 	data->camera.z_axis.y = 0;
 	data->camera.z_axis.z = 0;
 	data->camera.fov = 55;
-	mrt_init_data_2(data);
-}
-
-static void	mrt_init_data_2(t_data *data)
-{
 	data->light.position.x = 0;
 	data->light.position.y = 0;
 	data->light.position.z = 0;
@@ -39,6 +34,11 @@ static void	mrt_init_data_2(t_data *data)
 	data->light.color.x = 0;
 	data->light.color.y = 0;
 	data->light.color.z = 0;
+	mrt_init_data_2(data);
+}
+
+static void	mrt_init_data_2(t_data *data)
+{
 	data->flag = 0;
 	data->num_spheres = 0;
 	data->num_planes = 0;
