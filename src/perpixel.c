@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   perpixel.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
+/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:06:59 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/12 16:42:21 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 08:32:20 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	perpixel(int x, int y, t_data *data)
 	ray = get_current_ray(data, x, y);
 	color = trace_pixel(data, ray);
 	color = clamp_color(color);
+	color = update_color(data->samples, color, get_img_pixel(data, x, y));
 	mlx_put_pixel(data->img, x, y, get_vect_rgba(color));
 }
 
@@ -43,6 +44,15 @@ t_ray	get_current_ray(t_data *data, int x, int y)
 		- (data->camera.vp_vert_len / 2);
 	new_cam.y_axis = vsmul(data->camera.y_axis, y_scale);
 	new_cam.z_axis = vsmul(data->camera.z_axis, data->camera.focal_len);
+
+	float pixel_len = (float) 1 / data->width * data->camera.vp_horiz_len;
+	float pixel_height = (float) 1 / data->height * data->camera.vp_vert_len;
+
+	float ratio = ((float) rand() / (float) (RAND_MAX)) - 0.5; 	
+	new_cam.x_axis = vadd(new_cam.x_axis, vsmul(data->camera.x_axis, ratio * pixel_len));
+	ratio = ((float) rand() / (float) (RAND_MAX)) - 0.5; 	
+	new_cam.y_axis = vadd(new_cam.y_axis, vsmul(data->camera.y_axis, ratio * pixel_height));
+
 	ray.orientation = vadd(vadd(
 				new_cam.z_axis, new_cam.y_axis), new_cam.x_axis);
 	return (ray);

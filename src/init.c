@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:42:07 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/12 16:00:26 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 08:33:01 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	mrt_init_data_2(t_data *data)
 	data->width = WIN_WIDTH;
 	data->height = WIN_HEIGHT;
 	data->ratio = (float) data->width / (float) data->height;
+	data->samples = 0;
 }
 
 int	ft_mlx_init(t_data *data)
