@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:11:30 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 11:09:01 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 11:15:47 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_vector	get_material_normal(t_data *data, t_hit hit)
 	v.x = (rand() / RAND_MAX - 1.0) * get_roughness_factor(data, id);
 	v.y = (rand() / RAND_MAX - 1.0) * get_roughness_factor(data, id);
 	v.z = (rand() / RAND_MAX - 1.0) * get_roughness_factor(data, id);
-	return (vadd(hit.normal, v));
+	return (vnormalize(vadd(hit.normal, v)));
 }
 
 int	get_material_id(t_data *data, t_hit hit)
