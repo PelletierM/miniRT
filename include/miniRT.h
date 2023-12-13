@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 15:13:44 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 16:01:59 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_material
 	int		id;
 	float	roughness;
 	float	metallic;
+	float	emissive_ratio;
 }	t_material;
 
 typedef struct s_quadratic
