@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:11:30 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 14:50:57 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 15:02:37 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ t_vector	get_material_normal(t_data *data, t_hit hit, t_ray ray)
 	roughness = get_roughness_factor(data, hit);
 	metallic = get_metallic_factor(data, hit);
 	if (metallic > 0)
+	{
 		v = get_metallic_normal(hit, ray);
+		v = vnormalize(v);
+	}
 	else if (roughness > 0)
 		v = get_roughness_normal(hit, roughness);
 	else
