@@ -6,14 +6,13 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 09:26:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/12 08:07:19 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 13:39:33 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 int			is_shadow(t_hit hit, t_data *data);
-t_vector	cap_light(t_vector color);
 
 t_hit	get_light(t_hit hit, t_data *data)
 {
@@ -32,8 +31,8 @@ t_hit	get_light(t_hit hit, t_data *data)
 		if (light > 0)
 			light_color = vadd(light_color, vsmul(data->light.color, light));
 	}
-	hit.color = vmul(cap_light(light_color), vsmul(hit.color, (float) 1 / 255));
-	hit.color = cap_light(hit.color);
+	hit.color = vmul(clamp_color(light_color), vsmul(hit.color, (float) 1 / 255));
+	hit.color = clamp_color(hit.color);
 	return (hit);
 }
 
@@ -51,21 +50,4 @@ int	is_shadow(t_hit hit, t_data *data)
 	if (new_hit.t == MAX_DIST)
 		return (0);
 	return (1);
-}
-
-t_vector	cap_light(t_vector color)
-{
-	if (color.x < 0)
-		color.x = 0;
-	if (color .x > 255)
-		color.x = 255;
-	if (color.y < 0)
-		color.y = 0;
-	if (color .y > 255)
-		color.y = 255;
-	if (color.z < 0)
-		color.z = 0;
-	if (color .z > 255)
-		color.z = 255;
-	return (color);
 }
