@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:15:21 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/13 11:02:02 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/13 13:37:30 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,49 @@ uint64_t rand_64(uint64_t seed)
 	return seed;
 }
 */
+
+float	random_double()
+{
+	return (rand() / RAND_MAX);
+}
+
+float	random_double_range(float min, float max)
+{
+	return (min + (max - min) * random_double());
+}
+
+t_vector	vrandom()
+{
+	t_vector	v;
+
+	v.x = random_double();
+	v.y = random_double();
+	v.z = random_double();
+	return (v);
+}
+
+t_vector	vrandom_range(double min, double max)
+{
+	t_vector	v;
+
+	v.x = random_double_range(min, max);
+	v.y = random_double_range(min, max);
+	v.z = random_double_range(min, max);
+	return 
+}
+
+t_vector	random_in_unit_sphre()
+{
+	t_vector	v;
+	while (true)
+	{
+		v = vrandom_range(-1, 1);
+		if (vlength(v) < 1)
+			return v;
+	}
+}
+
+t_vector	random_unit_vector()
+{
+	return unit_vector(random_in_unit_sphere());
+}

@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 11:10:36 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 13:55:17 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define MAX_DIST 1000000
 # define THREAD_MAX 12
-# define MAX_BOUNCE 2
+# define MAX_BOUNCE 5
 // Camera and viewport settings 
 # define VP_DIAG 0.04327
 # define WIN_HEIGHT 768
@@ -309,4 +309,16 @@ t_hit			get_closest_hit(t_data *data, t_ray ray);
 void			get_normal_hit(t_data *data, t_ray, t_hit *hit);
 t_hit			get_light(t_hit hit, t_data *data);
 t_vector		get_material_normal(t_data *data, t_hit hit);
+
+// Random functions
+t_vector	vrandom_range(double min, double max);
+t_vector	vrandom();
+float		random_double_range(float min, float max);
+float		random_double();
+t_vector	random_unit_vector();
+t_vector	random_in_unit_sphre();
+
+// Material
+float	get_roughness_factor(t_data *data, t_hit hit);
+float	get_metallic_factor(t_data *data, t_hit hit);
 #endif
