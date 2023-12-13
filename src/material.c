@@ -6,14 +6,14 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:11:30 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 15:02:37 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 15:50:37 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 int			get_material_id(t_data *data, t_hit hit);
-t_vector	get_roughness_normal(t_hit, float roughness);
+t_vector	get_roughness_normal(t_hit, float roughness, t_ray ray);
 t_vector	get_metallic_normal(t_hit hit, t_ray ray);
 
 t_vector	get_material_normal(t_data *data, t_hit hit, t_ray ray)
@@ -25,12 +25,9 @@ t_vector	get_material_normal(t_data *data, t_hit hit, t_ray ray)
 	roughness = get_roughness_factor(data, hit);
 	metallic = get_metallic_factor(data, hit);
 	if (metallic > 0)
-	{
 		v = get_metallic_normal(hit, ray);
-		v = vnormalize(v);
-	}
 	else if (roughness > 0)
-		v = get_roughness_normal(hit, roughness);
+		v = get_roughness_normal(hit, roughness, ray);
 	else
 		return (hit.normal);
 	return (v);
@@ -38,22 +35,19 @@ t_vector	get_material_normal(t_data *data, t_hit hit, t_ray ray)
 
 t_vector	get_metallic_normal(t_hit hit, t_ray ray)
 {
-	return (vsub(ray.orientation,
-				vsmul(
-					hit.normal, vdot(ray.orientation, hit.normal) * 2)));
+	t_vector	v;
+
+	v = vreflect(ray.orientation, hit.normal);
+	return (vnormalize(v));
 }
 
-t_vector	get_roughness_normal(t_hit hit, float roughness)
+t_vector	get_roughness_normal(t_hit hit, float roughness, t_ray ray)
 {
 	t_vector	v;
 
-	v.x = ((float) rand() / RAND_MAX) * roughness;
-	v.y = ((float) rand() / RAND_MAX) * roughness;
-	v.z = ((float) rand() / RAND_MAX) * roughness;
-	v = vnormalize(v);	
-	if (vdot(hit.normal, v) < 0)
-		vsmul(v, -1);
-	return (v);
+	v = vreflect(ray.orientation, vadd(hit.normal,
+				vsmul(random_unit_vector(), roughness)));
+	return (vnormalize(v));
 }
 
 int	get_material_id(t_data *data, t_hit hit)
@@ -97,7 +91,7 @@ float	get_metallic_factor(t_data *data, t_hit hit)
 	while (i < data->num_materials)
 	{
 		if (data->materials[i].id == id)
-			return (data->materials[i].roughness);
+			return (data->materials[i].metallic);
 		i++;
 	}
 	return (1);
