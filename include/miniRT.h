@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 13:03:20 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 13:18:44 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,8 @@
 
 typedef struct s_texture
 {
-	int		id;
-	char	path[MAX_CHAR_PATH];
-	mlx_texture_t	*texture;
+	int				id;
+	mlx_texture_t	*img;
 }	t_texture;
 
 typedef struct s_material
@@ -193,7 +192,7 @@ typedef struct s_data
 	int			num_cylinders;
 	t_material	materials[MAX_FIGURE];
 	int			num_materials;
-	t_material	textures[MAX_FIGURE];
+	t_texture	textures[MAX_FIGURE];
 	int			num_textures;
 	mlx_image_t	*img;
 	mlx_t		*mlx;
@@ -238,6 +237,7 @@ int				set_sphere(char *line, t_data *data);
 int				set_plane(char *line, t_data *data);
 int				set_cylinder(char *line, t_data *data);
 int				set_material(char *line, t_data *data);
+int				set_texture(char *line, t_data *data);
 
 int				get_ratio(char *line, float *ratio);
 int				get_coord(char *line, t_vector *vector);
@@ -336,4 +336,5 @@ t_vector	random_in_unit_sphere();
 float	get_roughness_factor(t_data *data, t_hit hit);
 float	get_metallic_factor(t_data *data, t_hit hit);
 float	get_emissive_ratio(t_data *data, t_hit hit);
+void	delete_textures(t_data *data);
 #endif

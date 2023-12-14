@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:33:08 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 10:49:48 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 13:20:14 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*is_valid_identifier(char *line);
 
 int	check_line(char *line)
 {
+	if (ft_strncmp(line, "tx", 2) == 0)
+		return (0);
 	if (check_characters(line))
 		return (1);
 	return (0);
@@ -49,6 +51,7 @@ char	*is_valid_identifier(char *line)
 	else if (!ft_strncmp(&line[i], "sp", 2)
 		|| !ft_strncmp(&line[i], "cy", 2)
 		|| !ft_strncmp(&line[i], "pl", 2)
+		|| !ft_strncmp(&line[i], "tx", 2)
 		|| !ft_strncmp(&line[i], "mt", 2))
 		line += 2;
 	else
