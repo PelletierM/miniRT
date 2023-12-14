@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:06:59 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 16:40:09 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 08:35:25 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_vector	trace_pixel(t_data *data, t_ray ray, int depth)
 	next_ray.position = translate_pt(hit.position, 0.001, hit.normal);
 	next_ray.orientation = get_material_normal(data, hit, ray);
 	light_color = vadd(light_color, vsmul(trace_pixel(data, next_ray, depth + 1), 0.5));
-	color = vmul(clamp_color(light_color), vsmul(hit.color, (float) 1 / 255));
+	color = vmul(clamp_color(light_color), hit.color);
 	color = clamp_color(color);
 	return (color);
 }

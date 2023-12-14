@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:54:44 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/13 16:02:00 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 08:32:47 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	set_cylinder_part(char *line, t_data *data)
 	data->cylinders[data->num_cylinders].height = get_float(line);
 	line = skip_float(line);
 	line = skip_spaces(line);
-	if (get_coord(line, &data->cylinders[data->num_cylinders].color))
+	if (get_color(line, &data->cylinders[data->num_cylinders].color))
 		return (1);
 	line = skip_coord(line);
 	line = skip_spaces(line);

@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 16:04:23 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 08:36:52 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,7 @@ int				set_material(char *line, t_data *data);
 
 int				get_ratio(char *line, float *ratio);
 int				get_coord(char *line, t_vector *vector);
+int				get_color(char *line, t_vector *vector);
 float			get_float(char *line);
 
 unsigned int	get_rgba(int r, int g, int b, int a);

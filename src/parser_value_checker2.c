@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_value_checker2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
+/*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:16:32 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 14:41:50 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 08:44:24 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ int	check_cylinders(t_data data)
 
 int	check_color(t_vector color)
 {
-	if (color.x < 0 || color.x > 255)
+	if (color.x < 0 || color.x > 1)
 		return (1);
-	if (color.y < 0 || color.y > 255)
+	if (color.y < 0 || color.y > 1)
 		return (1);
-	if (color.z < 0 || color.z > 255)
+	if (color.z < 0 || color.z > 1)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:32:19 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/13 10:03:19 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 08:44:03 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	set_light2(char *line, t_data *data)
 	data->light.ratio = get_float(line);
 	line = skip_float(line);
 	line = skip_spaces(line);
-	if (get_coord(line, &data->light.color))
+	if (get_color(line, &data->light.color))
 		return (1);
 	line = skip_coord(line);
 	line = skip_spaces(line);
