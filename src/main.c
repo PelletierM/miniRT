@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/14 09:38:12 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 10:50:33 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	main(int argc, char *argv[])
 	mlx_loop_hook(data.mlx, ft_gen_hook, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
+	if (data.accumulator)
+		free(data.accumulator);
 	return (0);
 }
 

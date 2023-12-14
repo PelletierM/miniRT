@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 10:04:56 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 10:58:33 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 # define MAX_BOUNCE 10
 // Camera and viewport settings 
 # define VP_DIAG 0.04327
-# define WIN_HEIGHT 140 
-# define WIN_WIDTH	182 
-# define RES_MAX_HEIGHT 800
-# define RES_MAX_WIDTH 800
+# define WIN_HEIGHT 720 
+# define WIN_WIDTH 1280
+# define RES_MAX_HEIGHT 1440
+# define RES_MAX_WIDTH 2560
 # define BG_COLOR 0x000000FF
 
 // Transformation flags
@@ -172,7 +172,7 @@ typedef struct s_nav_mode
 
 typedef struct s_data
 {
-	t_vector	accumulator[RES_MAX_WIDTH * RES_MAX_HEIGHT];
+	t_vector	*accumulator;
 	t_ambient	ambient;
 	t_camera	camera;
 	t_light		light;
