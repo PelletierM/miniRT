@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:06:59 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 09:47:29 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 10:31:04 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_ray	get_current_ray(t_data *data, int x, int y)
 	float pixel_len = (float) 1 / data->width * data->camera.vp_horiz_len;
 	float pixel_height = (float) 1 / data->height * data->camera.vp_vert_len;
 
-	float ratio = ((float) rand() / (float) (RAND_MAX)) - 0.5; 	
+	float ratio = ((float) rand() / (float) (RAND_MAX)) - 0.8; 	
 	new_cam.x_axis = vadd(new_cam.x_axis, vsmul(data->camera.x_axis, ratio * pixel_len));
 	ratio = ((float) rand() / (float) (RAND_MAX)) - 0.5; 	
 	new_cam.y_axis = vadd(new_cam.y_axis, vsmul(data->camera.y_axis, ratio * pixel_height));
