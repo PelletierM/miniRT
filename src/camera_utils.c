@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 11:47:59 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/08 11:58:04 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:18:24 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,17 @@ t_vector	cap_axis_y(t_vector v)
 	}
 	v = vnormalize(v);
 	return (v);
+}
+
+t_ray	fov_randomize(t_data *data, t_ray ray)
+{
+	t_vector	focus_point;
+	float		diaph_radius;
+	float		x_offset;
+	float		y_offset;
+
+	focus_point = vadd(ray.origin, vsmul(ray.orientation, data->camera.focus_dist));
+	diaph_radius = data->camera.aperture / (data->camera.focal_len * 2);
+	x_offset = 
+
 }

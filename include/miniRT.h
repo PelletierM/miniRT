@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 10:58:33 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:21:19 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,12 @@ typedef struct s_camera
 	t_vector	z_axis;
 	t_vector	y_axis;
 	t_vector	x_axis;
-	float		focal_len;
 	float		vp_horiz_len;
 	float		vp_vert_len;
 	float		fov;
+	float		focal_len;
+	float		focus_dist;
+	float		aperture;
 }				t_camera;
 
 typedef struct s_light
@@ -315,10 +317,10 @@ t_vector		get_light(t_hit hit, t_data *data);
 t_vector		get_material_normal(t_data *data, t_hit hit, t_ray ray);
 
 // Random functions
-t_vector	vrandom_range(double min, double max);
+t_vector	vrandom_range(float min, float max);
 t_vector	vrandom();
-float		random_double_range(float min, float max);
-float		random_double();
+float		random_float_range(float min, float max);
+float		random_float();
 t_vector	random_unit_vector();
 t_vector	random_in_unit_sphere();
 
