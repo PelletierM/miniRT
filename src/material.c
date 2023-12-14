@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:11:30 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 17:04:05 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:47:20 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_vector	get_material_normal(t_data *data, t_hit hit, t_ray ray)
 	float		roughness;
 	float		metallic;
 
-	if (has_texture(data, hit))
+	if (has_texture(data, &hit))
 		v = get_texture_normal(data, hit);
 	else
 	{

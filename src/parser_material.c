@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:56:19 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 17:05:24 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:47:27 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ int	set_material(char *line, t_data *data)
 			return (1);
 		}
 	}
-	while (*line && is_path(*line) && *line != ' ')
-			line++;
 	if (ft_strlen(splits[1]) > MAX_CHAR_PATH)
 	{
 		ft_cleansplits(splits);

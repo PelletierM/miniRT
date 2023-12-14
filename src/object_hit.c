@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 09:17:58 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 15:36:17 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:47:21 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	check_spheres_hit(t_data *data, t_ray ray, t_hit *hit)
 			hit->t = t;
 			hit->shape = OBJ_SPHERE;
 			hit->i = i;
-			if (get_material_id(data, *hit) < 0)
+			if (has_texture(data, hit) == 1)
 			{
 				set_sphere_uv(data, hit, ray);
 				hit->color = get_color_sphere_texture(data, hit);

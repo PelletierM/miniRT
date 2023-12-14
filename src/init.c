@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:42:07 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/14 12:53:54 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:07:49 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	mrt_init_data(t_data *data)
 static void	mrt_init_data_2(t_data *data)
 {
 	data->flag = 0;
-	data->num_textures = 0;
 	data->num_spheres = 0;
 	data->num_planes = 0;
 	data->num_materials = 0;
