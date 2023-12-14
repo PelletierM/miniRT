@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/14 16:28:16 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:18:05 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,10 @@ void		delete_textures(t_data data)
 	while (i < data.num_materials)
 	{
 		if (data.materials[i].texture_flag == 1)
+		{
 			mlx_delete_texture(data.materials[i].img);
+			mlx_delete_texture(data.materials[i].norm_img);
+		}
 		i++;
 	}
 }

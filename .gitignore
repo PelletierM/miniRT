@@ -9,3 +9,4 @@ test/test_parsing
 include/MLX42.h
 include/libft.h
 *.dSYM
+textures
