@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 16:35:07 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:16:10 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,13 @@
 
 typedef struct s_material
 {
-	int				id;
-	float			roughness;
-	float			metallic;
-	float			emissive_ratio;
+	int		id;
+	float	roughness;
+	float	metallic;
+	float	emissive_ratio;
 	int				texture_flag;
 	mlx_texture_t	*img;
+	mlx_texture_t	*norm_img;
 }	t_material;
 
 typedef struct s_quadratic
@@ -233,7 +234,6 @@ int				set_sphere(char *line, t_data *data);
 int				set_plane(char *line, t_data *data);
 int				set_cylinder(char *line, t_data *data);
 int				set_material(char *line, t_data *data);
-int				set_texture(char *line, t_data *data);
 
 int				get_ratio(char *line, float *ratio);
 int				get_coord(char *line, t_vector *vector);
@@ -338,4 +338,5 @@ int		get_material_id(t_data *data, t_hit hit);
 t_vector	get_color_sphere_texture(t_data *data, t_hit *hit);
 void		set_sphere_uv(t_data *data, t_hit *hit, t_ray ray);
 int			has_texture(t_data *data, t_hit *hit);
+t_vector	get_texture_normal(t_data *data, t_hit hit);
 #endif
