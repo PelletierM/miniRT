@@ -6,14 +6,13 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/12 17:26:26 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 09:10:56 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 t_hit	miss(void);
-void	perpixel(int x, int y, t_data *data);
 void	get_range(int id, t_data *data, int *range);
 
 void	*render_thread(void *param)
@@ -29,7 +28,7 @@ void	*render_thread(void *param)
 	i = range[0];
 	while (i < range[1])
 	{
-		perpixel((i % data->width), (i / data->width), data);
+		perpixel((i % data->width), (i / data->width), data, range[0]);
 		i++;
 	}
 	return (NULL);
