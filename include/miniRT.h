@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 18:08:04 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 09:10:56 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,7 @@ typedef struct s_nav_mode
 
 typedef struct s_data
 {
+	t_vector	accumulator[RES_MAX_WIDTH * RES_MAX_HEIGHT];
 	t_ambient	ambient;
 	t_camera	camera;
 	t_light		light;
@@ -240,7 +241,7 @@ int				get_alpha(unsigned int color);
 int				get_red(unsigned int color);
 int				get_green(unsigned int color);
 int				get_blue(unsigned int color);
-t_vector		update_color(int samples, t_vector color, t_vector color_old);
+t_vector		update_color(t_data *data, t_vector color, int x, int y, int start);
 t_vector		clamp_color(t_vector color);
 
 int				mrt_error_message(int error, int line);
@@ -253,7 +254,7 @@ t_vector		trace_pixel(t_data *data, t_ray ray, int depth);
 t_ray			get_current_ray(t_data *data, int x, int y);
 void			render(t_data *data);
 void			*render_thread(void *param);
-void			perpixel(int x, int y, t_data *data);
+void			perpixel(int x, int y, t_data *data, int start);
 
 // Camera functions
 void			mrt_create_cam(t_data *data);
