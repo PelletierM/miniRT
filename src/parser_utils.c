@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:00:57 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 08:44:48 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 09:32:05 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int	get_color(char *line, t_vector *vector)
 	vector->x = v[0] / 255;
 	vector->y = v[1] / 255;
 	vector->z = v[2] / 255;
-	printf("%f, %f, %f\n", vector->x, vector->y, vector->z);
 	return (0);
 }
 
