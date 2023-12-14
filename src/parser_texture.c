@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:52:33 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 14:00:23 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 14:55:45 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ int	set_texture(char *line, t_data *data)
 	if (ft_strlen(line) > MAX_CHAR_PATH)
 		return (1);
 	data->textures[data->num_textures].img = mlx_load_png(line);
-	if (data->textures[data->num_textures].img)
+	if (!data->textures[data->num_textures].img)
+	{
+		ft_dprintf(2, "ERROR:\nTexture loading error\n");
 		return (1);
+	}
 	while (*line && is_path(line))
 		line++;
 	data->num_textures++;

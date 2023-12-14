@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 13:18:44 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 15:28:01 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,8 @@ typedef struct s_hit
 	t_vector	position;
 	t_vector	normal;
 	t_vector	color;
+	float		u;
+	float		v;
 }	t_hit;
 
 typedef struct s_nav_mode
@@ -247,7 +249,7 @@ float			get_float(char *line);
 unsigned int	get_rgba(int r, int g, int b, int a);
 unsigned int	get_vect_rgba(t_vector c);
 t_vector		get_rgb_vect(unsigned int color);
-t_vector		get_img_pixel(t_data *data, int x, int y);
+t_vector		get_img_pixel(mlx_texture_t *texture, int x, int y);
 int				get_alpha(unsigned int color);
 int				get_red(unsigned int color);
 int				get_green(unsigned int color);
@@ -337,4 +339,9 @@ float	get_roughness_factor(t_data *data, t_hit hit);
 float	get_metallic_factor(t_data *data, t_hit hit);
 float	get_emissive_ratio(t_data *data, t_hit hit);
 void	delete_textures(t_data *data);
+int		get_material_id(t_data *data, t_hit hit);
+
+// Texture
+t_vector	get_color_sphere_texture(t_data *data, t_hit *hit);
+void		set_sphere_uv(t_data *data, t_hit *hit, t_ray ray);
 #endif

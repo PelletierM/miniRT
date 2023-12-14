@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 07:39:51 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 11:53:31 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 15:40:05 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ t_vector	clamp_color(t_vector color)
 	return (color);
 }
 
-t_vector	get_img_pixel(t_data *data, int x, int y)
+t_vector	get_img_pixel(mlx_texture_t *texture, int x, int y)
 {
 	t_vector	color;
 	uint8_t		*curr;
 
-	curr = &data->img->pixels[(y * data->img->width + x) * 4]; 
+	curr = &texture->pixels[(y * texture->width + x) * texture->bytes_per_pixel]; 
 	color.x = (float) *curr / 255;
 	curr++;
 	color.y = (float) *curr / 255;

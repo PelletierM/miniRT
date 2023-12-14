@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:11:30 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 12:12:27 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 16:05:52 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ float	get_roughness_factor(t_data *data, t_hit hit)
 	i = 0;
 	id = get_material_id(data, hit);
 	if (id == -1)
-		return (-1);
+		return (0);
 	while (i < data->num_materials)
 	{
 		if (data->materials[i].id == id)
@@ -121,5 +121,5 @@ float	get_emissive_ratio(t_data *data, t_hit hit)
 			return (data->materials[i].emissive_ratio);
 		i++;
 	}
-	return (1);
+	return (0);
 }
