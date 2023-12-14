@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 15:28:01 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 16:35:07 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,14 @@
 # define OBJ_CYL 3
 # define OBJ_LIGHT 4
 
-typedef struct s_texture
-{
-	int				id;
-	mlx_texture_t	*img;
-}	t_texture;
-
 typedef struct s_material
 {
-	int		id;
-	float	roughness;
-	float	metallic;
-	float	emissive_ratio;
+	int				id;
+	float			roughness;
+	float			metallic;
+	float			emissive_ratio;
+	int				texture_flag;
+	mlx_texture_t	*img;
 }	t_material;
 
 typedef struct s_quadratic
@@ -194,8 +190,6 @@ typedef struct s_data
 	int			num_cylinders;
 	t_material	materials[MAX_FIGURE];
 	int			num_materials;
-	t_texture	textures[MAX_FIGURE];
-	int			num_textures;
 	mlx_image_t	*img;
 	mlx_t		*mlx;
 	t_nav_mode	nav_mode;
@@ -338,10 +332,10 @@ t_vector	random_in_unit_sphere();
 float	get_roughness_factor(t_data *data, t_hit hit);
 float	get_metallic_factor(t_data *data, t_hit hit);
 float	get_emissive_ratio(t_data *data, t_hit hit);
-void	delete_textures(t_data *data);
 int		get_material_id(t_data *data, t_hit hit);
 
 // Texture
 t_vector	get_color_sphere_texture(t_data *data, t_hit *hit);
 void		set_sphere_uv(t_data *data, t_hit *hit, t_ray ray);
+int			has_texture(t_data *data, t_hit *hit);
 #endif
