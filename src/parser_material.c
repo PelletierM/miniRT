@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:56:19 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 14:55:29 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 16:33:14 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,22 @@ int	set_material(char *line, t_data *data)
 	line = skip_float(line);
 	line = skip_spaces(line);
 	data->materials[data->num_materials].emissive_ratio = get_float(line);
+
 	line = skip_float(line);
 	line = skip_spaces(line);
-	if (*line != '\n')
+	line = ft_strtrim(line, "\n ");
+	if (ft_strlen(line) > MAX_CHAR_PATH)
 		return (1);
+	if (ft_strncmp(line, "none", MAX_CHAR_PATH) != 0)
+	{
+		data->materials[data->num_materials].texture_flag = 1;
+		data->materials[data->num_materials].img = mlx_load_png(line);
+		if (!data->materials[data->num_materials].img)
+		{
+			ft_dprintf(2, "ERROR:\nTexture loading error\n");
+			return (1);
+		}
+	}
 	data->num_materials++;
 	return (0);
 }
