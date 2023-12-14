@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 07:39:51 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 10:17:17 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 15:40:05 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ t_vector	get_rgb_vect(unsigned int color)
 {
 	t_vector	rgba;
 
-	rgba.x = ((color & 0xff000000) >> 24) / 255; 
-	rgba.y = ((color & 0x00ff0000) >> 16) / 255;
-	rgba.z = ((color & 0x0000ff00) >> 8) / 255;
+	rgba.x = (float)((color & 0xff000000) >> 24) / 255; 
+	rgba.y = (float)((color & 0x00ff0000) >> 16) / 255;
+	rgba.z = (float)((color & 0x0000ff00) >> 8) / 255;
 	return (rgba);
 }
 
@@ -50,12 +50,12 @@ t_vector	clamp_color(t_vector color)
 	return (color);
 }
 
-t_vector	get_img_pixel(t_data *data, int x, int y)
+t_vector	get_img_pixel(mlx_texture_t *texture, int x, int y)
 {
 	t_vector	color;
 	uint8_t		*curr;
 
-	curr = &data->img->pixels[(y * data->img->width + x) * 4]; 
+	curr = &texture->pixels[(y * texture->width + x) * texture->bytes_per_pixel]; 
 	color.x = (float) *curr / 255;
 	curr++;
 	color.y = (float) *curr / 255;
