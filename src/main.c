@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/14 10:50:33 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:13:41 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char *argv[])
 	mlx_terminate(data.mlx);
 	if (data.accumulator)
 		free(data.accumulator);
+	delete_textures(&data);
 	return (0);
 }
 

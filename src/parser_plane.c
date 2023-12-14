@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:51:30 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/14 08:34:30 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 14:00:30 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	set_plane_2(char *line, t_data *data)
 	line = skip_coord(line);
 	line = skip_spaces(line);
 	data->planes[data->num_planes].material_id = ft_atoi(line);	
+	if (*line == '+' || *line == '-')
+		line++;
 	line = skip_digits(line);
 	line = skip_spaces(line);
 	if (*line != '\n')

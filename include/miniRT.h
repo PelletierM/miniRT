@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 10:58:33 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 15:28:01 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@
 
 # define MAX_LINES	128
 # define MAX_FIGURE 24
+# define MAX_CHAR_PATH 100
 
 # define VALID_CHARS "+-., 0123456789\n"
 # define ERR_ARGC 0
@@ -68,6 +69,12 @@
 # define OBJ_PLANE 2
 # define OBJ_CYL 3
 # define OBJ_LIGHT 4
+
+typedef struct s_texture
+{
+	int				id;
+	mlx_texture_t	*img;
+}	t_texture;
 
 typedef struct s_material
 {
@@ -162,6 +169,8 @@ typedef struct s_hit
 	t_vector	position;
 	t_vector	normal;
 	t_vector	color;
+	float		u;
+	float		v;
 }	t_hit;
 
 typedef struct s_nav_mode
@@ -185,6 +194,8 @@ typedef struct s_data
 	int			num_cylinders;
 	t_material	materials[MAX_FIGURE];
 	int			num_materials;
+	t_texture	textures[MAX_FIGURE];
+	int			num_textures;
 	mlx_image_t	*img;
 	mlx_t		*mlx;
 	t_nav_mode	nav_mode;
@@ -228,6 +239,7 @@ int				set_sphere(char *line, t_data *data);
 int				set_plane(char *line, t_data *data);
 int				set_cylinder(char *line, t_data *data);
 int				set_material(char *line, t_data *data);
+int				set_texture(char *line, t_data *data);
 
 int				get_ratio(char *line, float *ratio);
 int				get_coord(char *line, t_vector *vector);
@@ -237,7 +249,7 @@ float			get_float(char *line);
 unsigned int	get_rgba(int r, int g, int b, int a);
 unsigned int	get_vect_rgba(t_vector c);
 t_vector		get_rgb_vect(unsigned int color);
-t_vector		get_img_pixel(t_data *data, int x, int y);
+t_vector		get_img_pixel(mlx_texture_t *texture, int x, int y);
 int				get_alpha(unsigned int color);
 int				get_red(unsigned int color);
 int				get_green(unsigned int color);
@@ -326,4 +338,10 @@ t_vector	random_in_unit_sphere();
 float	get_roughness_factor(t_data *data, t_hit hit);
 float	get_metallic_factor(t_data *data, t_hit hit);
 float	get_emissive_ratio(t_data *data, t_hit hit);
+void	delete_textures(t_data *data);
+int		get_material_id(t_data *data, t_hit hit);
+
+// Texture
+t_vector	get_color_sphere_texture(t_data *data, t_hit *hit);
+void		set_sphere_uv(t_data *data, t_hit *hit, t_ray ray);
 #endif
