@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/13 08:32:34 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 09:10:57 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	render(t_data *data)
 	struct timeval	start;
 
 	i = 0;
-	// remove this?
+	if (data->samples == 1)
+		ft_bzero(data->accumulator, sizeof(t_vector) * data->width * data->height );
 	gettimeofday(&start, NULL);
 	while (i < THREAD_MAX)
 	{

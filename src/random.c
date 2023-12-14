@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:15:21 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/13 15:29:00 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/13 17:46:59 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ t_vector	random_in_unit_sphere()
 	while (true)
 	{
 		v = vrandom_range(-1, 1);
-		if (vlength_squared(v) < 1)
-			return (v);
+			if (vlength_squared(v) < 1)
+		return (v);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:11:30 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 16:33:19 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/13 17:54:13 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ t_vector	get_material_normal(t_data *data, t_hit hit, t_ray ray)
 
 	roughness = get_roughness_factor(data, hit);
 	metallic = get_metallic_factor(data, hit);
+	v = vcopy(hit.normal);
 	if (metallic > 0)
 		v = get_metallic_normal(hit, ray);
 	else if (roughness > 0)
 		v = get_roughness_normal(hit, roughness, ray);
-	else
-		return (hit.normal);
 	return (v);
 }
 
@@ -45,11 +44,12 @@ t_vector	get_roughness_normal(t_hit hit, float roughness, t_ray ray)
 {
 	t_vector	v;
 
-	v = vreflect(ray.orientation, vadd(hit.normal,
-				random_unit_vector()));
+	(void) ray;
 	(void) roughness;
-	//			vsmul(random_unit_vector(), roughness)));
-
+	(void) hit;
+	v = random_unit_vector();
+	v = vadd(hit.normal, vsmul(v, roughness));
+	v = vreflect(ray.orientation, v);
 	return (vnormalize(v));
 }
 

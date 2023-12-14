@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:06:59 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/13 16:40:09 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 08:49:57 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_vector	black_color(void);
 t_vector	get_ambient(t_data *data);
 
-void	perpixel(int x, int y, t_data *data)
+void	perpixel(int x, int y, t_data *data, int start)
 {
 	t_ray		ray;
 	t_vector	color;
@@ -23,7 +23,7 @@ void	perpixel(int x, int y, t_data *data)
 	ray = get_current_ray(data, x, y);
 	color = trace_pixel(data, ray, 0);
 	color = clamp_color(color);
-	color = update_color(data->samples, color, get_img_pixel(data, x, y));
+	color = update_color(data, color, x, y, start);
 	mlx_put_pixel(data->img, x, y, get_vect_rgba(color));
 }
 
@@ -67,7 +67,6 @@ t_vector	trace_pixel(t_data *data, t_ray ray, int depth)
 	float		emissive_ratio;
 
 	color = black_color();
-
 	if (depth == MAX_BOUNCE)
 		return (color);
 	hit = get_closest_hit(data, ray);
