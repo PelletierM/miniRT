@@ -118,3 +118,13 @@ mlx_texture_t	*get_norm_texture_img(t_data *data, t_hit hit)
 	}
 	return (0);
 }
+
+int	has_texture(t_data *data, t_hit *hit)
+{
+	int	id;
+
+	id = get_material_id(data, *hit);
+	if (data->materials[id].texture_flag == 1)
+		return (1);
+	return (0);
+}

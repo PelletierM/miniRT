@@ -39,6 +39,7 @@ int	set_material(char *line, t_data *data)
 	line = skip_float(line);
 	line = skip_spaces(line);
 	data->materials[data->num_materials].emissive_ratio = get_float(line);
+
 	line = skip_float(line);
 	line = skip_spaces(line);
 	line = ft_strtrim(line, "\n ");
