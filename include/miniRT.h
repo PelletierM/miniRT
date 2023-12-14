@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 10:58:33 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:03:20 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@
 
 # define MAX_LINES	128
 # define MAX_FIGURE 24
+# define MAX_CHAR_PATH 100
 
 # define VALID_CHARS "+-., 0123456789\n"
 # define ERR_ARGC 0
@@ -68,6 +69,13 @@
 # define OBJ_PLANE 2
 # define OBJ_CYL 3
 # define OBJ_LIGHT 4
+
+typedef struct s_texture
+{
+	int		id;
+	char	path[MAX_CHAR_PATH];
+	mlx_texture_t	*texture;
+}	t_texture;
 
 typedef struct s_material
 {
@@ -185,6 +193,8 @@ typedef struct s_data
 	int			num_cylinders;
 	t_material	materials[MAX_FIGURE];
 	int			num_materials;
+	t_material	textures[MAX_FIGURE];
+	int			num_textures;
 	mlx_image_t	*img;
 	mlx_t		*mlx;
 	t_nav_mode	nav_mode;
