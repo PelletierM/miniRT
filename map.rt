@@ -12,5 +12,5 @@ mt  0  0  1 0
 mt  1  0.5  0 0
 mt 2  1  0 1
 mt  3  1  0 0
-tx -2 ./textures/moon.png 
-tx -3 ./textures/earth.png 
+tx -2 ./textures/moon_texture.png ./textures/moon_normap_5.png
+tx -3 ./textures/new_earth_texture.png  ./textures/new_normap.png
