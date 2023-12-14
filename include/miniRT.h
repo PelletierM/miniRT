@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 09:10:56 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 10:04:56 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@
 
 # define MAX_DIST 1000000
 # define THREAD_MAX 12
-# define MAX_BOUNCE 50
+# define MAX_BOUNCE 10
 // Camera and viewport settings 
 # define VP_DIAG 0.04327
-# define WIN_HEIGHT 768
-# define WIN_WIDTH	1024 
-# define RES_MAX_HEIGHT 1440
-# define RES_MAX_WIDTH 2560
+# define WIN_HEIGHT 140 
+# define WIN_WIDTH	182 
+# define RES_MAX_HEIGHT 800
+# define RES_MAX_WIDTH 800
 # define BG_COLOR 0x000000FF
 
 // Transformation flags
@@ -231,6 +231,7 @@ int				set_material(char *line, t_data *data);
 
 int				get_ratio(char *line, float *ratio);
 int				get_coord(char *line, t_vector *vector);
+int				get_color(char *line, t_vector *vector);
 float			get_float(char *line);
 
 unsigned int	get_rgba(int r, int g, int b, int a);
@@ -241,7 +242,7 @@ int				get_alpha(unsigned int color);
 int				get_red(unsigned int color);
 int				get_green(unsigned int color);
 int				get_blue(unsigned int color);
-t_vector		update_color(t_data *data, t_vector color, int x, int y, int start);
+t_vector		update_color(t_data *data, t_vector color, int x, int y);
 t_vector		clamp_color(t_vector color);
 
 int				mrt_error_message(int error, int line);
@@ -254,7 +255,7 @@ t_vector		trace_pixel(t_data *data, t_ray ray, int depth);
 t_ray			get_current_ray(t_data *data, int x, int y);
 void			render(t_data *data);
 void			*render_thread(void *param);
-void			perpixel(int x, int y, t_data *data, int start);
+void			perpixel(int x, int y, t_data *data);
 
 // Camera functions
 void			mrt_create_cam(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:34:59 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/13 15:59:44 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 08:33:04 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	set_sphere(char *line, t_data *data)
 	data->spheres[data->num_spheres].diameter = get_float(line);
 	line = skip_float(line);
 	line = skip_spaces(line);
-	if (get_coord(line, &data->spheres[data->num_spheres].color))
+	if (get_color(line, &data->spheres[data->num_spheres].color))
 		return (1);
 	line = skip_coord(line);
 	line = skip_spaces(line);

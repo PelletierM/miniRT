@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 09:10:56 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 09:54:51 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*render_thread(void *param)
 	i = range[0];
 	while (i < range[1])
 	{
-		perpixel((i % data->width), (i / data->width), data, range[0]);
+		perpixel((i % data->width), (i / data->width), data);
 		i++;
 	}
 	return (NULL);

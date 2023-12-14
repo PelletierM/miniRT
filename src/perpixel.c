@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:06:59 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 08:49:57 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 09:47:29 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_vector	black_color(void);
 t_vector	get_ambient(t_data *data);
 
-void	perpixel(int x, int y, t_data *data, int start)
+void	perpixel(int x, int y, t_data *data)
 {
 	t_ray		ray;
 	t_vector	color;
@@ -23,7 +23,7 @@ void	perpixel(int x, int y, t_data *data, int start)
 	ray = get_current_ray(data, x, y);
 	color = trace_pixel(data, ray, 0);
 	color = clamp_color(color);
-	color = update_color(data, color, x, y, start);
+	color = update_color(data, color, x, y);
 	mlx_put_pixel(data->img, x, y, get_vect_rgba(color));
 }
 
@@ -80,7 +80,7 @@ t_vector	trace_pixel(t_data *data, t_ray ray, int depth)
 	next_ray.position = translate_pt(hit.position, 0.001, hit.normal);
 	next_ray.orientation = get_material_normal(data, hit, ray);
 	light_color = vadd(light_color, vsmul(trace_pixel(data, next_ray, depth + 1), 0.5));
-	color = vmul(clamp_color(light_color), vsmul(hit.color, (float) 1 / 255));
+	color = vmul(clamp_color(light_color), hit.color);
 	color = clamp_color(color);
 	return (color);
 }

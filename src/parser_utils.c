@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:00:57 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/04 16:30:05 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 09:32:05 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,32 @@ static float	get_decimal_for_float(char *line)
 		div *= 10;
 	}
 	return (retval);
+}
+
+int	get_color(char *line, t_vector *vector)
+{
+	int				i;
+	float			v[3];
+
+	i = 0;
+	while (i < 3)
+	{
+		if (!ft_isdigit(*line) && *line != '-' && *line != '+')
+			return (1);
+		v[i] = get_float(line);
+		if (*line == '+')
+			line++;
+		line = skip_float(line);
+		if (*line != ',' && i < 2)
+			return (1);
+		if (i < 2)
+			line++;
+		i++;
+	}
+	vector->x = v[0] / 255;
+	vector->y = v[1] / 255;
+	vector->z = v[2] / 255;
+	return (0);
 }
 
 int	get_coord(char *line, t_vector *vector)

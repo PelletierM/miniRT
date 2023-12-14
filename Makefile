@@ -1,7 +1,7 @@
 PROGNAME = miniRT 
 PROGNAME_BONUS = miniRT_bonus
 
-CFLAGS = -Wall -Wextra -Werror -lm -o3
+CFLAGS = -Wall -Wextra -Werror -lm -O3
 
 LIB_DIR = ./lib
 LIBFT = libft.a
@@ -29,7 +29,7 @@ SRCS_BONUS = $(addprefix $(SRCDIR)/, $(SRC_BONUS))
 
 all: $(PROGNAME)
 
-$(PROGNAME): $(LIB_DIR)/$(MLX42) $(LIB_DIR)/$(LIBFT) $(SRCS)  
+$(PROGNAME): $(LIB_DIR)/$(MLX42) $(LIB_DIR)/$(LIBFT) $(SRCS) $(IDIR)/miniRT.h 
 	$(CC) $(CFLAGS) -I$(IDIR) $(LIB_DIR)/$(MLX42) -lm -L"/Users/$(USER)/.brew/opt/glfw/lib/" -lglfw -framework Cocoa -framework OpenGL -framework IOKit -L$(LIB_DIR) -l$(patsubst lib%.a,%,$(LIBFT)) $(SRCS) -o $(PROGNAME)
 
 bonus: $(LIB_DIR)/$(MLX42) $(LIB_DIR)/$(LIBFT) $(SRCS_BONUS)  
