@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:48:22 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/14 09:55:54 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 10:11:59 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_resize_hook(int32_t width, int32_t height, void *param)
 	data->width = width;
 	data->height = height;
 	data->ratio = (float) width / (float) height;
+	data->samples = 1;
 	render(data);
 }
 
