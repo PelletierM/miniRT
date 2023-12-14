@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:00:56 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 17:47:19 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:53:59 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,6 @@ mlx_texture_t	*get_texture_img(t_data *data, t_hit *hit)
 	}
 	return (0);
 }
-int	has_texture(t_data *data, t_hit *hit)
-{
-	int	id;
-
-	id = get_material_id(data, *hit);
-	if (id < 0)
-		return (0);
-	if (data->materials[id].texture_flag == 1)
-		return (1);
-	return (0);
-}
 
 t_vector	get_texture_normal(t_data *data, t_hit hit)
 {
@@ -124,6 +113,8 @@ int	has_texture(t_data *data, t_hit *hit)
 	int	id;
 
 	id = get_material_id(data, *hit);
+	if (id < 0)
+		return (0);
 	if (data->materials[id].texture_flag == 1)
 		return (1);
 	return (0);
