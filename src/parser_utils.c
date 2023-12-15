@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:00:57 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 17:09:11 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/15 17:30:58 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,23 +116,5 @@ int	get_coord(char *line, t_vector *vector)
 	vector->x = v[0];
 	vector->y = v[1];
 	vector->z = v[2];
-	/*
-	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
-		return (1);
-	vector->x= get_float(line);
-	line = skip_float(line);
-	if (*line && *line != ',')
-		return (1);
-	line++;
-	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
-		return (1);
-	vector->y= get_float(line);
-	line = skip_float(line);
-	if (*line && *line != ',')
-		return (1);
-	line++;
-	vector->z= get_float(line);
-	line = skip_float(line);
-	*/
 	return (0);
 }

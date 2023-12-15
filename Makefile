@@ -1,7 +1,7 @@
 PROGNAME = miniRT 
 PROGNAME_BONUS = miniRT_bonus
 
-CFLAGS = -Wall -Wextra -Werror -lm -g -O3
+CFLAGS = -Wall -Wextra -Werror -lm -O3
 
 LIB_DIR = ./lib
 LIBFT = libft.a
