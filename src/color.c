@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 07:39:51 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 17:03:44 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/15 12:48:03 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,27 @@ unsigned int	get_vect_rgba(t_vector c)
 
 t_vector	clamp_color(t_vector color)
 {
+	float	max;
+	float	ratio;
+
+	max = color.x;
+	if (color.y > max)
+		max = color.y;
+	if (color.z > max)
+		max = color.z;
+	if (max > 1)
+	{
+		ratio = 1 / max;
+		color.x *= ratio;
+		color.y *= ratio;
+		color.z *= ratio;
+	}
 	if (color.x < 0)
 		color.x = 0;
-	if (color.x > 1)
-		color.x = 1;
 	if (color.y < 0)
 		color.y = 0;
-	if (color.y > 1)
-		color.y = 1;
 	if (color.z < 0)
 		color.z = 0;
-	if (color.z > 1)
-		color.z = 1;
 	return (color);
 }
 

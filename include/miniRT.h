@@ -256,6 +256,7 @@ int				get_green(unsigned int color);
 int				get_blue(unsigned int color);
 t_vector		update_color(t_data *data, t_vector color, int x, int y);
 t_vector		clamp_color(t_vector color);
+void			update_image(t_data *data);
 
 int				mrt_error_message(int error, int line);
 
