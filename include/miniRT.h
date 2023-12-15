@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 16:24:57 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 20:07:59 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@
 # define MAX_BOUNCE 10
 // Camera and viewport settings 
 # define VP_DIAG 0.04327
-# define WIN_HEIGHT 720 
+# define CAM_APERTURE 2.8
+# define CAM_FOCUS_DIST 3
+# define WIN_HEIGHT 720
 # define WIN_WIDTH 1280
 # define RES_MAX_HEIGHT 1440
 # define RES_MAX_WIDTH 2560
@@ -276,6 +278,7 @@ void			mrt_create_cam(t_data *data);
 void			move_cam(t_data *data, int direction);
 void			rot_cam(t_data *data, int direction);
 void			zoom_cam(t_data *data, int direction);
+t_ray			apply_dof(t_data *data, t_ray ray);
 
 // Obj move functions
 void			move_obj(t_data *data, int i);

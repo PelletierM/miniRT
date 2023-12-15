@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:42:07 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/14 16:24:36 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:55:22 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	mrt_init_data(t_data *data)
 	data->camera.z_axis.y = 0;
 	data->camera.z_axis.z = 0;
 	data->camera.fov = 55;
-	data->camera.focus_dist = 2;
-	data->camera.aperture = 8;
+	data->camera.focus_dist = CAM_FOCUS_DIST;
+	data->camera.aperture = CAM_APERTURE;
 	data->light.position.x = 0;
 	data->light.position.y = 0;
 	data->light.position.z = 0;

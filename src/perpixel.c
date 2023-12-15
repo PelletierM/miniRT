@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:06:59 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 16:24:05 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:20:32 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_ray	get_current_ray(t_data *data, int x, int y)
 	new_cam.y_axis = vadd(new_cam.y_axis, vsmul(data->camera.y_axis, ratio * pixel_height));
 	ray.orientation = vadd(vadd(
 				new_cam.z_axis, new_cam.y_axis), new_cam.x_axis);
-	ray = fov_randomize(data, ray);
+	ray = apply_dof(data, ray);
 	return (ray);
 }
 
