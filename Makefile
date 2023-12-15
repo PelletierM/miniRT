@@ -1,7 +1,7 @@
 PROGNAME = miniRT 
 PROGNAME_BONUS = miniRT_bonus
 
-CFLAGS = -Wall -Wextra -Werror -lm -O3
+CFLAGS = -Wall -Wextra -Werror -lm -g -O3
 
 LIB_DIR = ./lib
 LIBFT = libft.a
@@ -21,7 +21,7 @@ SRC = main.c parser.c parser_check.c parser_checker_line.c parser_value_setter.c
 	  object_normal_hit.c light.c camera_utils.c camera_mvmt.c \
 	  vect_utils2.c hooks_obj.c hooks_mouse.c obj_mvmt.c hooks_mode.c \
 	  perpixel.c sampling.c parser_material.c material.c random.c texture.c \
-	  texture_plane.c texture_sphere.c
+	  texture_plane.c texture_sphere.c parser_triangle.c
 
 SRC_BONUS = 
 

@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:00:57 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 15:30:19 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/15 17:09:11 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,19 +95,19 @@ int	get_color(char *line, t_vector *vector)
 
 int	get_coord(char *line, t_vector *vector)
 {
-	int				i;
-	float			v[3];
+	int		i;
+	float	v[3];
 
 	i = 0;
-	while (i < 3)
+	while (*line && i < 3)
 	{
 		if (!ft_isdigit(*line) && *line != '-' && *line != '+')
 			return (1);
 		v[i] = get_float(line);
-		if (*line == '+')
+		if (*line && *line == '+')
 			line++;
 		line = skip_float(line);
-		if (*line != ',' && i < 2)
+		if (*line && *line != ',' && i < 2)
 			return (1);
 		if (i < 2)
 			line++;
@@ -116,5 +116,23 @@ int	get_coord(char *line, t_vector *vector)
 	vector->x = v[0];
 	vector->y = v[1];
 	vector->z = v[2];
+	/*
+	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
+		return (1);
+	vector->x= get_float(line);
+	line = skip_float(line);
+	if (*line && *line != ',')
+		return (1);
+	line++;
+	if (!ft_isdigit(*line) && *line != '-' && *line != '+')
+		return (1);
+	vector->y= get_float(line);
+	line = skip_float(line);
+	if (*line && *line != ',')
+		return (1);
+	line++;
+	vector->z= get_float(line);
+	line = skip_float(line);
+	*/
 	return (0);
 }

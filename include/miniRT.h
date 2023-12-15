@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 15:39:25 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/15 17:09:03 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,16 @@ typedef struct s_light
 	t_vector		color;
 }				t_light;
 
+typedef struct s_triangle
+{
+	t_vector	c1;
+	t_vector	c2;
+	t_vector	c3;
+	t_vector	normal;
+	int			material_id;
+}	t_triangle;
+
+
 typedef struct s_sphere
 {
 	t_vector		position;
@@ -197,6 +207,8 @@ typedef struct s_data
 	int			num_cylinders;
 	t_material	materials[MAX_FIGURE];
 	int			num_materials;
+	t_triangle	triangles[MAX_FIGURE];
+	int			num_triangles;
 	mlx_image_t	*img;
 	mlx_t		*mlx;
 	t_nav_mode	nav_mode;
@@ -240,6 +252,7 @@ int				set_sphere(char *line, t_data *data);
 int				set_plane(char *line, t_data *data);
 int				set_cylinder(char *line, t_data *data);
 int				set_material(char *line, t_data *data);
+int				set_triangle(char *line, t_data *data);
 
 int				get_ratio(char *line, float *ratio);
 int				get_coord(char *line, t_vector *vector);
