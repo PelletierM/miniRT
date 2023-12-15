@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:11:30 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 14:07:37 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:35:54 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,4 +124,22 @@ float	get_emissive_ratio(t_data *data, t_hit hit)
 		i++;
 	}
 	return (0);
+}
+
+t_vector	get_material_color(t_data *data, t_hit hit)
+{
+	int	i;
+	int	id;
+
+	i = 0;
+	id = get_material_id(data, hit);
+	if (id == -1)
+		return (black_color());
+	while (i < data->num_materials)
+	{
+		if (data->materials[i].id == id)
+			return (data->materials[i].color);
+		i++;
+	}
+	return (black_color());
 }

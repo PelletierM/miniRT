@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:34:59 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/14 14:55:23 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:48:35 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@ int	set_sphere(char *line, t_data *data)
 		return (1);
 	data->spheres[data->num_spheres].diameter = get_float(line);
 	line = skip_float(line);
-	line = skip_spaces(line);
-	if (get_color(line, &data->spheres[data->num_spheres].color))
-		return (1);
-	line = skip_coord(line);
 	line = skip_spaces(line);
 	return (set_sphere_part(line, data));
 }
