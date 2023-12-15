@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:00:56 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 17:53:59 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/15 07:51:08 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ t_vector	get_texture_normal(t_data *data, t_hit hit)
 	x = texture->width - x - 1;
 	y = texture->height - y - 1;
 	normal = get_img_pixel(texture, x, y);
+	normal = vnormalize(vsadd(vsmul(normal, 2.0), 1.0));
 	return (normal);
 }
 
