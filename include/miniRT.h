@@ -25,7 +25,7 @@
 # define MAX_BOUNCE 10
 // Camera and viewport settings 
 # define VP_DIAG 0.04327
-# define CAM_APERTURE 2.8
+# define CAM_APERTURE 5.4
 # define CAM_FOCUS_DIST 3
 # define WIN_HEIGHT 720
 # define WIN_WIDTH 1280
@@ -73,16 +73,6 @@
 # define OBJ_CYL 3
 # define OBJ_LIGHT 4
 
-typedef struct s_material
-{
-	int		id;
-	float	roughness;
-	float	metallic;
-	float	emissive_ratio;
-	int				texture_flag;
-	mlx_texture_t	*img;
-	mlx_texture_t	*norm_img;
-}	t_material;
 
 typedef struct s_quadratic
 {
@@ -97,6 +87,18 @@ typedef struct s_vector
 	float	y;
 	float	z;
 }			t_vector;
+
+typedef struct s_material
+{
+	int				id;
+	float			roughness;
+	float			metallic;
+	float			emissive_ratio;
+	int				texture_flag;
+	t_vector		color;
+	mlx_texture_t	*img;
+	mlx_texture_t	*norm_img;
+}	t_material;
 
 typedef struct s_ambient
 {
@@ -341,6 +343,7 @@ float	get_roughness_factor(t_data *data, t_hit hit);
 float	get_metallic_factor(t_data *data, t_hit hit);
 float	get_emissive_ratio(t_data *data, t_hit hit);
 int		get_material_id(t_data *data, t_hit hit);
+void	get_object_color(t_data *data, t_hit *hit, t_ray ray);
 
 // Texture
 mlx_texture_t	*get_texture_img(t_data *data, t_hit *hit);
@@ -351,4 +354,5 @@ int				has_texture(t_data *data, t_hit *hit);
 t_vector		get_texture_normal(t_data *data, t_hit hit, t_ray ray);
 void			set_plane_uv(t_data *data, t_hit *hit, t_ray ray);
 t_vector		get_color_plane_texture(t_data *data, t_hit *hit);
+t_vector		get_material_color(t_data *data, t_hit hit);
 #endif

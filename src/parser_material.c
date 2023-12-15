@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:56:19 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 09:37:34 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:30:32 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int	set_material(char *line, t_data *data)
 	data->materials[data->num_materials].emissive_ratio = get_float(line);
 
 	line = skip_float(line);
+	line = skip_spaces(line);
+	get_color(line, &data->materials[data->num_materials].color);
+	line = skip_coord(line);
 	line = skip_spaces(line);
 	if (!*line && *line == '\n')
 		return (1);
