@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 15:53:59 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/15 16:53:08 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ float	clamp_image(t_data *data)
 		x++;
 	}
 	ratio = 1;
-	if (max > 1)
-		ratio = 1 / max; 
+	if (max > 1 * CAM_EXPOSURE)
+		ratio = 1 * CAM_EXPOSURE / max; 
 	return (ratio);
 }
 
@@ -98,6 +98,7 @@ void	update_image(t_data *data)
 			color.x = ratio * data->accumulator[y * data->width + x].x;
 			color.y = ratio * data->accumulator[y * data->width + x].y;
 			color.z = ratio * data->accumulator[y * data->width + x].z;
+			color = clamp_color(color);
 			mlx_put_pixel(data->img, x, y, get_vect_rgba(color));
 			y++;
 		}
