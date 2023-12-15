@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:54:24 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/11 15:58:37 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/15 15:41:13 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	check_cam_hook(t_data *data, int i)
 		rot_cam(data, i);
 		return (1);
 	}
-	if (i <= 2048 && data->nav_flag & i)
+	if (i <= 8192 && data->nav_flag & i)
 	{
 		zoom_cam(data, i);
 		return (1);

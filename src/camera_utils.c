@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 11:47:59 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/14 20:06:19 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/15 15:48:58 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@ float	cap_fov(float fov)
 	if (fov > 3.1241394)
 		fov = 3.1241394;
 	return (fov);
+}
+
+float	cap_aperture(float aperture)
+{
+	if (aperture < 0.1)
+		aperture = 0.1;
+	if (aperture > 30)
+		aperture = 30;
+	return (aperture);
 }
 
 t_vector	cap_axis_y(t_vector v)
@@ -57,7 +66,7 @@ t_ray	apply_dof(t_data *data, t_ray ray)
 	float		y_offset;
 
 	focus_point = vadd(ray.position, vsmul(ray.orientation, data->camera.focus_dist / data->camera.focal_len));
-	diaph_radius = ((data->camera.focal_len * 1000) / (float)(data->camera.aperture / 1)) / 2000;
+	diaph_radius = ((data->camera.focal_len * 1000) / (float)(data->camera.aperture / 4)) / 2000;
 	x_offset = 1;
 	y_offset = 1;
 	while (pow(x_offset, 2) + pow(y_offset, 2) > pow(diaph_radius, 2))

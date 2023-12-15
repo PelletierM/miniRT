@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 14:48:44 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/15 15:41:05 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 # define OBJ_SCALE_DOWN_B 8192
 # define OBJ_ZOOM_RATIO 0.0872665
 # define OBJ_SCALE_RATIO 1.05
+# define OBJ_APERTURE_RATIO 1.1
 # define LIGHT_RATIO 0.01
 
 # define MAX_LINES	128
