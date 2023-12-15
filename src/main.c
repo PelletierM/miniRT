@@ -14,6 +14,7 @@
 
 void		display_delta(struct timeval t_start);
 long int	get_time_in_micro(struct timeval t);
+void		delete_textures(t_data data);
 
 int	main(int argc, char *argv[])
 {
@@ -31,7 +32,7 @@ int	main(int argc, char *argv[])
 	mlx_terminate(data.mlx);
 	if (data.accumulator)
 		free(data.accumulator);
-	delete_textures(&data);
+	delete_textures(data);
 	return (0);
 }
 
@@ -84,4 +85,20 @@ void	display_delta(struct timeval t_start)
 long int	get_time_in_micro(struct timeval t)
 {
 	return (t.tv_sec * 1000 * 1000 + t.tv_usec);
+}
+
+void		delete_textures(t_data data)
+{
+	int		i;
+
+	i = 0;
+	while (i < data.num_materials)
+	{
+		if (data.materials[i].texture_flag == 1)
+		{
+			mlx_delete_texture(data.materials[i].img);
+			mlx_delete_texture(data.materials[i].norm_img);
+		}
+		i++;
+	}
 }

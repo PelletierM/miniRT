@@ -22,13 +22,18 @@ t_vector	get_material_normal(t_data *data, t_hit hit, t_ray ray)
 	float		roughness;
 	float		metallic;
 
-	roughness = get_roughness_factor(data, hit);
-	metallic = get_metallic_factor(data, hit);
-	v = vcopy(hit.normal);
-	if (metallic > 0)
-		v = get_metallic_normal(hit, ray);
-	else if (roughness > 0)
-		v = get_roughness_normal(hit, roughness, ray);
+	if (has_texture(data, &hit))
+		v = get_texture_normal(data, hit);
+	else
+	{
+		roughness = get_roughness_factor(data, hit);
+		metallic = get_metallic_factor(data, hit);
+		v = vcopy(hit.normal);
+		if (metallic > 0)
+			v = get_metallic_normal(hit, ray);
+		else if (roughness > 0)
+			v = get_roughness_normal(hit, roughness, ray);
+	}
 	return (v);
 }
 
