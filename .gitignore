@@ -1,7 +1,7 @@
 *.o
 *.swp
 *.swo
-DS_Store
+.DS_Store
 miniRT
 lib/MLX42
 *.a
