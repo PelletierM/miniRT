@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:52:51 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 09:37:39 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/15 16:00:56 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	get_data(char *file, t_data *data)
 
 int	parse_line(char *line, t_data *data)
 {
-	if (!ft_strcmp(line, "\n"))
+	if (!ft_strncmp(line, "\n", 1) || !ft_strncmp(line, "#", 1))
 		return (0);
 	if (!check_line(line))
 	{

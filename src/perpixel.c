@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:06:59 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 15:31:06 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:54:59 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ t_vector	trace_pixel(t_data *data, t_ray ray, int depth)
 	if (hit.t == MAX_DIST)
 		return (color);
 	emissive_ratio = get_emissive_ratio(data, hit);
+	get_object_color(data, &hit, ray);
 	if (emissive_ratio > 0)
 		return (vsmul(hit.color, emissive_ratio));
 	get_normal_hit(data, ray, &hit);
-	get_object_color(data, &hit, ray);
 	light_color = get_light(hit, data);
 	next_ray.position = translate_pt(hit.position, 0.001, hit.normal);
 	next_ray.orientation = get_material_normal(data, hit, ray);
