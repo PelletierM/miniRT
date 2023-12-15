@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 17:16:10 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/14 20:07:59 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@
 # define MAX_BOUNCE 10
 // Camera and viewport settings 
 # define VP_DIAG 0.04327
-# define WIN_HEIGHT 720 
+# define CAM_APERTURE 2.8
+# define CAM_FOCUS_DIST 3
+# define WIN_HEIGHT 720
 # define WIN_WIDTH 1280
 # define RES_MAX_HEIGHT 1440
 # define RES_MAX_WIDTH 2560
@@ -107,10 +109,12 @@ typedef struct s_camera
 	t_vector	z_axis;
 	t_vector	y_axis;
 	t_vector	x_axis;
-	float		focal_len;
 	float		vp_horiz_len;
 	float		vp_vert_len;
 	float		fov;
+	float		focal_len;
+	float		focus_dist;
+	float		aperture;
 }				t_camera;
 
 typedef struct s_light
@@ -268,6 +272,7 @@ void			mrt_create_cam(t_data *data);
 void			move_cam(t_data *data, int direction);
 void			rot_cam(t_data *data, int direction);
 void			zoom_cam(t_data *data, int direction);
+t_ray			apply_dof(t_data *data, t_ray ray);
 
 // Obj move functions
 void			move_obj(t_data *data, int i);
@@ -321,10 +326,10 @@ t_vector		get_light(t_hit hit, t_data *data);
 t_vector		get_material_normal(t_data *data, t_hit hit, t_ray ray);
 
 // Random functions
-t_vector	vrandom_range(double min, double max);
+t_vector	vrandom_range(float min, float max);
 t_vector	vrandom();
-float		random_double_range(float min, float max);
-float		random_double();
+float		random_float_range(float min, float max);
+float		random_float();
 t_vector	random_unit_vector();
 t_vector	random_in_unit_sphere();
 
