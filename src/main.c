@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/15 09:57:47 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/15 14:52:12 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	render(t_data *data)
 		pthread_join(threads[i].thread, NULL);
 		i++;
 	}
+	update_image(data);
 	display_delta(start);
 	data->samples++;
 }
