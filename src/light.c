@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 09:26:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 14:08:43 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/15 16:39:35 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ t_vector get_light(t_hit hit, t_data *data)
 		if (light > 0)
 			light_color = vadd(light_color, vsmul(data->light.color, light));
 	}
-	light_color = clamp_color(light_color);
 	return (light_color);
 }
 
