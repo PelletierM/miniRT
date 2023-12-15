@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:51:30 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/15 14:12:41 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:48:36 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	set_plane(char *line, t_data *data)
 		return (1);
 	if (get_coord(line, &data->planes[data->num_planes].orientation))
 		return (1);
+	line = skip_coord(line);
+	line = skip_spaces(line);
 	data->planes[data->num_planes].orientation = vnormalize(
 			data->planes[data->num_planes].orientation);
 	return (set_plane_2(line, data));
@@ -37,14 +39,8 @@ int	set_plane(char *line, t_data *data)
 
 int	set_plane_2(char *line, t_data *data)
 {
-	line = skip_coord(line);
-	line = skip_spaces(line);
 	if (!*line)
 		return (1);
-	if (get_color(line, &data->planes[data->num_planes].color))
-		return (1);
-	line = skip_coord(line);
-	line = skip_spaces(line);
 	data->planes[data->num_planes].material_id = ft_atoi(line);	
 	if (*line == '+' || *line == '-')
 		line++;

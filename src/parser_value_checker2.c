@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:16:32 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 13:00:03 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:48:16 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	check_spheres(t_data data)
 	{
 		if (data.spheres[i].diameter <= 0)
 			return (1);
-		if (check_color(data.spheres[i].color))
-			return (1);
 		i++;
 	}
 	return (0);
@@ -35,8 +33,6 @@ int	check_planes(t_data data)
 	i = 0;
 	while (i < data.num_planes)
 	{
-		if (check_color(data.planes[i].color))
-			return (1);
 		if (check_normalized_vector(data.planes[i].orientation))
 			return (1);
 		i++;
@@ -51,8 +47,6 @@ int	check_cylinders(t_data data)
 	i = 0;
 	while (i < data.num_cylinders)
 	{
-		if (check_color(data.cylinders[i].color))
-			return (1);
 		if (data.cylinders[i].diameter <= 0)
 			return (1);
 		if (data.cylinders[i].height <= 0)

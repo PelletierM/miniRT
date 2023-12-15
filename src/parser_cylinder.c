@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:54:44 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/14 08:32:47 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/15 15:41:43 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,6 @@ int	set_cylinder_part(char *line, t_data *data)
 		return (1);
 	data->cylinders[data->num_cylinders].height = get_float(line);
 	line = skip_float(line);
-	line = skip_spaces(line);
-	if (get_color(line, &data->cylinders[data->num_cylinders].color))
-		return (1);
-	line = skip_coord(line);
 	line = skip_spaces(line);
 	data->cylinders[data->num_cylinders].material_id = ft_atoi(line);	
 	line = skip_digits(line);
