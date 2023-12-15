@@ -93,6 +93,10 @@ render:
 	./miniRT map.rt
 
 
+solar:
+	make
+	./miniRT map_solar_system.rt
+
 clean:
 	make -C $(LIBFT_DIR) clean
 	rm -rf $(LIB_DIR)/MLX42
