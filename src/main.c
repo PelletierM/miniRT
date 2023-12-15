@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/14 16:24:26 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/15 09:57:47 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ void	render(t_data *data)
 
 	i = 0;
 	if (data->samples == 1)
+	{
 		ft_bzero(data->accumulator, sizeof(t_vector) * data->width * data->height );
+		mrt_create_cam(data);
+	}
 	gettimeofday(&start, NULL);
 	while (i < THREAD_MAX)
 	{

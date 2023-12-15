@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 20:07:59 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/15 10:31:57 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -314,6 +314,7 @@ int				is_vect_negative(t_vector vector);
 float			vlength(t_vector v1);
 t_vector		create_vector_from_points(t_vector p1, t_vector p2);
 t_vector		vreflect(t_vector v, t_vector normal);
+t_vector		black_color(void);
 
 float			vdistance(t_vector v1, t_vector v2);
 t_quadratic		solve_quadratic_cylinder(t_cylinder cy, t_ray ray);
@@ -340,8 +341,12 @@ float	get_emissive_ratio(t_data *data, t_hit hit);
 int		get_material_id(t_data *data, t_hit hit);
 
 // Texture
-t_vector	get_color_sphere_texture(t_data *data, t_hit *hit);
-void		set_sphere_uv(t_data *data, t_hit *hit, t_ray ray);
-int			has_texture(t_data *data, t_hit *hit);
-t_vector	get_texture_normal(t_data *data, t_hit hit);
+mlx_texture_t	*get_texture_img(t_data *data, t_hit *hit);
+mlx_texture_t	*get_norm_texture_img(t_data *data, t_hit hit);
+t_vector		get_color_sphere_texture(t_data *data, t_hit *hit);
+void			set_sphere_uv(t_data *data, t_hit *hit, t_ray ray);
+int				has_texture(t_data *data, t_hit *hit);
+t_vector		get_texture_normal(t_data *data, t_hit hit, t_ray ray);
+void			set_plane_uv(t_data *data, t_hit *hit, t_ray ray);
+t_vector		get_color_plane_texture(t_data *data, t_hit *hit);
 #endif

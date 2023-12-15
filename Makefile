@@ -20,7 +20,8 @@ SRC = main.c parser.c parser_check.c parser_checker_line.c parser_value_setter.c
 	  quadratic.c cylinder_utils.c color2.c object_hit.c hit_plane.c \
 	  object_normal_hit.c light.c camera_utils.c camera_mvmt.c \
 	  vect_utils2.c hooks_obj.c hooks_mouse.c obj_mvmt.c hooks_mode.c \
-	  perpixel.c sampling.c parser_material.c material.c random.c texture.c
+	  perpixel.c sampling.c parser_material.c material.c random.c texture.c \
+	  texture_plane.c
 
 SRC_BONUS = 
 
