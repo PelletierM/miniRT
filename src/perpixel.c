@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:06:59 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 13:10:53 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/15 15:06:29 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	perpixel(int x, int y, t_data *data)
 	ray = get_current_ray(data, x, y);
 	color = trace_pixel(data, ray, 0);
 	color = update_color(data, color, x, y);
-	mlx_put_pixel(data->img, x, y, get_vect_rgba(color));
+//	mlx_put_pixel(data->img, x, y, get_vect_rgba(color));
 }
 
 t_ray	get_current_ray(t_data *data, int x, int y)
@@ -71,12 +71,12 @@ t_vector	trace_pixel(t_data *data, t_ray ray, int depth)
 		return (color);
 	emissive_ratio = get_emissive_ratio(data, hit);
 	if (emissive_ratio > 0)
-		return (vsmul(hit.color, emissive_ratio * 10));
+		return (vsmul(hit.color, emissive_ratio));
 	get_normal_hit(data, ray, &hit);
 	light_color = get_light(hit, data);
 	next_ray.position = translate_pt(hit.position, 0.001, hit.normal);
 	next_ray.orientation = get_material_normal(data, hit, ray);
-	light_color = vadd(light_color, vsmul(trace_pixel(data, next_ray, depth + 1), 0.5));
+	light_color = vadd(light_color, vsmul(trace_pixel(data, next_ray, depth + 1), 0.8));
 	color = vmul(light_color, hit.color);
 	return (color);
 }
