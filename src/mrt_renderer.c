@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 14:49:05 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/15 15:53:59 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	get_range(int id, t_data *data, int *range)
 	if (THREAD_MAX > 0)
 		div = (int)((data->width * data->height) / THREAD_MAX);
 	remaining = (int)((data->width * data->height) % THREAD_MAX);
-	mrt_create_cam(data);
 	range[0] = id * div;
 	if (remaining > id)
 		range[0] += id;
