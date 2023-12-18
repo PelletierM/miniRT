@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/18 12:40:42 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:39:50 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@
 # define OBJ_LIGHT 4
 # define OBJ_TRIANGLE 5
 
-
 typedef struct s_quadratic
 {
 	float	dis;
@@ -141,7 +140,6 @@ typedef struct s_triangle
 	t_vector	normal;
 	int			material_id;
 }	t_triangle;
-
 
 typedef struct s_sphere
 {
@@ -351,19 +349,19 @@ t_vector		get_light(t_hit hit, t_data *data);
 t_vector		get_material_normal(t_data *data, t_hit hit, t_ray ray);
 
 // Random functions
-t_vector	vrandom_range(float min, float max);
-t_vector	vrandom();
-float		random_float_range(float min, float max);
-float		random_float();
-t_vector	random_unit_vector();
-t_vector	random_in_unit_sphere();
+t_vector		vrandom_range(float min, float max);
+t_vector		vrandom(void);
+float			random_float_range(float min, float max);
+float			random_float(void);
+t_vector		random_unit_vector(void);
+t_vector		random_in_unit_sphere(void);
 
 // Material
-float	get_roughness_factor(t_data *data, t_hit hit);
-float	get_metallic_factor(t_data *data, t_hit hit);
-float	get_emissive_ratio(t_data *data, t_hit hit);
-int		get_material_id(t_data *data, t_hit hit);
-void	get_object_color(t_data *data, t_hit *hit, t_ray ray);
+float			get_roughness_factor(t_data *data, t_hit hit);
+float			get_metallic_factor(t_data *data, t_hit hit);
+float			get_emissive_ratio(t_data *data, t_hit hit);
+int				get_material_id(t_data *data, t_hit hit);
+void			get_object_color(t_data *data, t_hit *hit, t_ray ray);
 
 // Texture
 mlx_texture_t	*get_texture_img(t_data *data, t_hit *hit);

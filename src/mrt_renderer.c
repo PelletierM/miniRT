@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/18 12:51:35 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:37:38 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ float	clamp_image(t_data *data)
 	int		y;
 
 	x = 0;
-	max = 0;	
+	max = 0;
 	while (x < data->width)
 	{
-		y = 0;
-		while (y < data->height)
+		y = -1;
+		while (++y < data->height)
 		{
 			if (data->accumulator[y * data->width + x].x > max)
 				max = data->accumulator[y * data->width + x].x;
@@ -71,7 +71,6 @@ float	clamp_image(t_data *data)
 				max = data->accumulator[y * data->width + x].y;
 			if (data->accumulator[y * data->width + x].z > max)
 				max = data->accumulator[y * data->width + x].z;
-			y++;
 		}
 		x++;
 	}
