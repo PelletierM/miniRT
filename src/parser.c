@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:52:51 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 16:00:56 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/18 15:09:11 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,17 @@
 
 int		get_data(char *file, t_data *data);
 int		parse_line(char *line, t_data *data);
+int		check_unicity(t_data *data);
 
 int	mrt_parser(char *file, t_data *data)
 {
+	int		retval;
+
 	mrt_init_data(data);
-	return (get_data(file, data));
+	retval = get_data(file, data);
+	if (retval)
+		return (1);
+	return (check_unicity(data));
 }
 
 int	get_data(char *file, t_data *data)
@@ -64,4 +70,12 @@ int	parse_line(char *line, t_data *data)
 	else
 		return (1);
 	return (0);
+}
+
+int	check_unicity(t_data *data)
+{
+	if (data->flag == 7)
+		return (0);
+	mrt_error_message(ERR_ELEM, 0);	
+	return (1);
 }
