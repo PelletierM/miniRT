@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 09:17:58 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 16:04:22 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/18 10:11:22 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_hit	get_closest_hit(t_data *data, t_ray ray)
 	check_spheres_hit(data, ray, &hit);
 	check_cylinders_hit(data, ray, &hit);
 	check_planes_hit(data, ray, &hit);
+	check_triangle_hit(data, ray, &hit);
 	return (hit);
 }
 

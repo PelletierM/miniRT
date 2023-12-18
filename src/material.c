@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:11:30 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 16:11:41 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/18 11:20:52 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	get_material_id(t_data *data, t_hit hit)
 		return (data->cylinders[hit.i].material_id);
 	if (hit.shape == OBJ_PLANE)
 		return (data->planes[hit.i].material_id);
+	if (hit.shape == OBJ_TRIANGLE)
+		return (data->triangles[hit.i].material_id);
 	return (-1);
 }
 

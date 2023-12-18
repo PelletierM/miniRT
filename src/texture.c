@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:13:41 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 16:15:54 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/18 11:20:52 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ mlx_texture_t	*get_norm_texture_img(t_data *data, t_hit hit)
 
 	i = 0;
 	id = get_material_id(data, hit);
+	printf("%d\n", id);
 	if (id < 0)
 		return (0);
 	while (i < data->num_materials)
@@ -72,7 +73,7 @@ int	has_texture(t_data *data, t_hit *hit)
 	int	id;
 
 	id = get_material_id(data, *hit);
-	if (id < 0)
+	if (id < 0 || id >= data->num_materials)
 		return (0);
 	if (data->materials[id].texture_flag == 1)
 		return (1);

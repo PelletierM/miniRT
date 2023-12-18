@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 17:25:33 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/18 11:27:51 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@
 # define OBJ_SCALE_RATIO 1.05
 # define LIGHT_RATIO 0.01
 
-# define MAX_LINES	128
-# define MAX_FIGURE 24
+# define MAX_LINES	1200
+# define MAX_FIGURE 1000
 # define MAX_CHAR_PATH 100
 
 # define VALID_CHARS "+-., 0123456789\n"
@@ -71,6 +71,7 @@
 # define OBJ_PLANE 2
 # define OBJ_CYL 3
 # define OBJ_LIGHT 4
+# define OBJ_TRIANGLE 5
 
 
 typedef struct s_quadratic
@@ -242,6 +243,7 @@ char			*skip_coord(char *line);
 
 int				check_data(t_data data);
 int				check_cylinders(t_data data);
+void			check_triangle_hit(t_data *data, t_ray ray, t_hit *hit);
 int				check_color(t_vector color);
 int				check_normalized_vector(t_vector vector);
 
