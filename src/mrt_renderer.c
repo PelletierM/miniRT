@@ -6,49 +6,36 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/18 14:56:12 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/18 15:41:44 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 t_hit	miss(void);
-void	get_range(int id, t_data *data, int *range);
 
 void	*render_thread(void *param)
 {
 	t_thread	*thread;
 	t_data		*data;
-	int			range[2];
 	int			i;
+	int			div;
+	int			end;
 
 	thread = (t_thread *) param;
 	data = thread->data;
-	get_range(thread->id, data, range);
-	i = range[0];
-	while (i < range[1])
+	div = (data->width * data->height) / THREAD_MAX;
+	i = thread->id * div;
+	if (thread->id == THREAD_MAX - 1)
+		end = data->width * data->height;
+	else
+		end = i + div;
+	while (i < end)
 	{
 		perpixel((i % data->width), (i / data->width), data);
 		i++;
 	}
 	return (NULL);
-}
-
-void	get_range(int id, t_data *data, int *range)
-{
-	int			div;
-	int			remaining;
-
-	div = 1;
-	if (THREAD_MAX > 0)
-		div = (int)((data->width * data->height) / THREAD_MAX);
-	remaining = (int)((data->width * data->height) % THREAD_MAX);
-	range[0] = id * div;
-	if (remaining > id)
-		range[0] += id;
-	range[1] = range[0] + div;
-	if (remaining > id)
-		range[1] += 1;
 }
 
 float	clamp_image(t_data *data)

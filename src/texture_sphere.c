@@ -6,7 +6,7 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:00:56 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/18 13:58:32 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/18 15:26:28 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ t_vector	get_texture_normal(t_data *data, t_hit hit, t_ray ray)
 	if (!texture)
 		return (hit.normal);
 	if (hit.shape == OBJ_SPHERE)
-	{
 		normal = get_sphere_normal_texture(texture, hit, ray);
-	}
 	else 
 	{
 		x = (int) hit.u % texture->width;

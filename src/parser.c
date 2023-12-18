@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:52:51 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/18 15:09:11 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/18 15:42:00 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ int	check_unicity(t_data *data)
 {
 	if (data->flag == 7)
 		return (0);
-	mrt_error_message(ERR_ELEM, 0);	
+	mrt_error_message(ERR_ELEM, 0);
 	return (1);
 }

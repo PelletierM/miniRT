@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/18 14:39:50 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:41:45 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@
 # define ERR_LINE_FORMAT 3
 # define ERR_MLX_INIT 4
 # define ERR_DIV_ZERO 5
+# define ERR_ELEM 6
 
 # define OBJ_CAM 0
 # define OBJ_SPHERE 1
