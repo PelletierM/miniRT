@@ -93,6 +93,9 @@ render:
 	make
 	./miniRT map.rt
 
+wolf:
+	make
+	./miniRT wolf.rt
 
 solar:
 	make
