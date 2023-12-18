@@ -59,8 +59,8 @@
 # define OBJ_EXPOSURE_RATIO 1.05
 # define LIGHT_RATIO 0.01
 
-# define MAX_LINES	128
-# define MAX_FIGURE 24
+# define MAX_LINES	1200
+# define MAX_FIGURE 1000
 # define MAX_CHAR_PATH 100
 
 # define VALID_CHARS "+-., 0123456789\n"
@@ -76,6 +76,7 @@
 # define OBJ_PLANE 2
 # define OBJ_CYL 3
 # define OBJ_LIGHT 4
+# define OBJ_TRIANGLE 5
 
 
 typedef struct s_quadratic
@@ -131,6 +132,16 @@ typedef struct s_light
 	float			ratio;
 	t_vector		color;
 }				t_light;
+
+typedef struct s_triangle
+{
+	t_vector	c1;
+	t_vector	c2;
+	t_vector	c3;
+	t_vector	normal;
+	int			material_id;
+}	t_triangle;
+
 
 typedef struct s_sphere
 {
@@ -203,6 +214,8 @@ typedef struct s_data
 	int			num_cylinders;
 	t_material	materials[MAX_FIGURE];
 	int			num_materials;
+	t_triangle	triangles[MAX_FIGURE];
+	int			num_triangles;
 	mlx_image_t	*img;
 	mlx_t		*mlx;
 	t_nav_mode	nav_mode;
@@ -236,6 +249,7 @@ char			*skip_coord(char *line);
 
 int				check_data(t_data data);
 int				check_cylinders(t_data data);
+void			check_triangle_hit(t_data *data, t_ray ray, t_hit *hit);
 int				check_color(t_vector color);
 int				check_normalized_vector(t_vector vector);
 
@@ -246,6 +260,7 @@ int				set_sphere(char *line, t_data *data);
 int				set_plane(char *line, t_data *data);
 int				set_cylinder(char *line, t_data *data);
 int				set_material(char *line, t_data *data);
+int				set_triangle(char *line, t_data *data);
 
 int				get_ratio(char *line, float *ratio);
 int				get_coord(char *line, t_vector *vector);
