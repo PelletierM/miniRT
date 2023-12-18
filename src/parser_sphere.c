@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:34:59 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/15 15:48:35 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/18 14:17:50 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	set_sphere(char *line, t_data *data)
 
 int	set_sphere_part(char *line, t_data *data)
 {
-	data->spheres[data->num_spheres].material_id = ft_atoi(line);	
+	data->spheres[data->num_spheres].material_id = ft_atoi(line);
 	if (*line && (*line == '+' || *line == '-'))
 		line++;
 	line = skip_digits(line);

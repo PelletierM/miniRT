@@ -6,13 +6,16 @@
 /*   By: eguefif <eguefif@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:00:56 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 15:15:03 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/18 13:58:32 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_vector		transform_to_sphere(t_vector normal, t_vector hit_normal, t_ray ray);
+t_vector	get_sphere_normal_texture(mlx_texture_t *texture,
+				t_hit hit, t_ray ray);
+t_vector	transform_to_sphere(t_vector normal,
+				t_vector hit_normal, t_ray ray);
 
 t_vector	get_color_sphere_texture(t_data *data, t_hit *hit)
 {
@@ -56,13 +59,7 @@ t_vector	get_texture_normal(t_data *data, t_hit hit, t_ray ray)
 		return (hit.normal);
 	if (hit.shape == OBJ_SPHERE)
 	{
-		x = (int) hit.u * texture->width;
-		y = (int) hit.v * texture->height;
-		x = texture->width - x - 1;
-		y = texture->height - y - 1;
-		normal = get_img_pixel(texture, x, y);
-		normal = vnormalize(vssub(vsmul(normal, 2.0), 1.0));
-		normal = transform_to_sphere(normal, hit.normal, ray);
+		normal = get_sphere_normal_texture(texture, hit, ray);
 	}
 	else 
 	{
@@ -74,6 +71,22 @@ t_vector	get_texture_normal(t_data *data, t_hit hit, t_ray ray)
 	return (normal);
 }
 
+t_vector	get_sphere_normal_texture(mlx_texture_t *texture, t_hit hit,
+				t_ray ray)
+{
+	int			x;
+	int			y;
+	t_vector	normal;
+
+	x = (int) hit.u * texture->width;
+	y = (int) hit.v * texture->height;
+	x = texture->width - x - 1;
+	y = texture->height - y - 1;
+	normal = get_img_pixel(texture, x, y);
+	normal = vnormalize(vssub(vsmul(normal, 2.0), 1.0));
+	normal = transform_to_sphere(normal, hit.normal, ray);
+	return (normal);
+}
 
 t_vector	transform_to_sphere(t_vector normal, t_vector hit_normal, t_ray ray)
 {

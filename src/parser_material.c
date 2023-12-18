@@ -6,17 +6,19 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:56:19 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 16:08:47 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/18 14:17:33 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	is_path(char line);
+int		is_path(char line);
+char	*set_material4(char *line, t_data *data);
+int		set_material3(t_data *data, char **splits);
+int		set_material2(char *line, t_data *data);
 
 int	set_material(char *line, t_data *data)
 {
-	char	**splits;
 	line += 2;
 	if (*line != ' ')
 		return (1);
@@ -39,12 +41,14 @@ int	set_material(char *line, t_data *data)
 	line = skip_float(line);
 	line = skip_spaces(line);
 	data->materials[data->num_materials].emissive_ratio = get_float(line);
+	line = set_material4(line, data);
+	return (set_material2(line, data));
+}
 
-	line = skip_float(line);
-	line = skip_spaces(line);
-	get_color(line, &data->materials[data->num_materials].color);
-	line = skip_coord(line);
-	line = skip_spaces(line);
+int	set_material2(char *line, t_data *data)
+{
+	char	**splits;
+
 	if (!*line && *line == '\n')
 		return (1);
 	line = ft_strtrim(line, "\n ");
@@ -64,7 +68,13 @@ int	set_material(char *line, t_data *data)
 			return (1);
 		}
 	}
-	if (!splits[1] || ft_strlen(splits[1]) > MAX_CHAR_PATH || ft_strlen(splits[1]) == 0)
+	return (set_material3(data, splits));
+}
+
+int	set_material3(t_data *data, char **splits)
+{
+	if (!splits[1] || ft_strlen(splits[1]) > MAX_CHAR_PATH
+		|| ft_strlen(splits[1]) == 0)
 	{
 		ft_cleansplits(splits);
 		return (1);
@@ -86,4 +96,14 @@ int	set_material(char *line, t_data *data)
 int	is_path(char line)
 {
 	return (ft_isalpha(line) || line == '.' || line == '/');
+}
+
+char	*set_material4(char *line, t_data *data)
+{
+	line = skip_float(line);
+	line = skip_spaces(line);
+	get_color(line, &data->materials[data->num_materials].color);
+	line = skip_coord(line);
+	line = skip_spaces(line);
+	return (line);
 }
