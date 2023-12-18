@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:48:22 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/14 10:11:59 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 08:56:05 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_gen_hook(void *ptr)
 	data = (t_data *) ptr;
 	change = 0;
 	i = 1;
-	while (i <= 8192)
+	while (i <= 32768)
 	{
 		if ((data->nav_mode.obj == OBJ_CAM && check_cam_hook(data, i))
 			|| (data->nav_mode.obj >= OBJ_SPHERE

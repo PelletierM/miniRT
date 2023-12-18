@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 07:39:51 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 17:21:49 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:08:06 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ unsigned int	get_vect_rgba(t_vector c)
 			(int)(c.z * 255) << 8 | 255);
 }
 
-t_vector	clamp_color(t_vector color)
+t_vector	clamp_color(t_data *data, t_vector color)
 {
 	float	max;
 	float	ratio;
@@ -45,17 +45,20 @@ t_vector	clamp_color(t_vector color)
 		max = color.z;
 	if (max > 1)
 	{
-		ratio = 1 / max;
-		color.x *= ratio;
-		color.y *= ratio;
-		color.z *= ratio;
+		ratio = (float) 1 / max;
+		color.x *= ratio + ((max - color.x)
+				* ratio * (data->camera.exposure - 1) / 16);
+		color.y *= ratio + ((max - color.y)
+				* ratio * (data->camera.exposure - 1) / 16);
+		color.z *= ratio + ((max - color.z)
+				* ratio * (data->camera.exposure - 1) / 16);
 	}
-	if (color.x < 0)
-		color.x = 0;
-	if (color.y < 0)
-		color.y = 0;
-	if (color.z < 0)
-		color.z = 0;
+	if (color.x > 1)
+		color.x = 1;
+	if (color.y > 1)
+		color.y = 1;
+	if (color.z > 1)
+		color.z = 1;
 	return (color);
 }
 

@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 11:51:36 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/15 15:43:37 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 08:55:20 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,8 @@ void	zoom_cam(t_data *data, int direction)
 		data->camera.aperture *= OBJ_APERTURE_RATIO;
 	else if (direction == OBJ_SCALE_DOWN_B)
 		data->camera.aperture /= OBJ_APERTURE_RATIO;
+	if (direction == OBJ_SCALE_UP_C)
+		data->camera.exposure *= OBJ_EXPOSURE_RATIO;
+	else if (direction == OBJ_SCALE_DOWN_C)
+		data->camera.exposure /= OBJ_EXPOSURE_RATIO;
 }

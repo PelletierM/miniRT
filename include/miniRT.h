@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 17:08:09 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 12:40:42 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define VP_DIAG 0.04327
 # define CAM_APERTURE 2.8
 # define CAM_FOCUS_DIST 3
-# define CAM_EXPOSURE 2.0
+# define CAM_EXPOSURE 1.0
 # define WIN_HEIGHT 720
 # define WIN_WIDTH 1280
 # define RES_MAX_HEIGHT 1440
@@ -56,7 +56,7 @@
 # define OBJ_ZOOM_RATIO 0.0872665
 # define OBJ_SCALE_RATIO 1.05
 # define OBJ_APERTURE_RATIO 1.1
-# define OBJ_EXPOSURE_RATIO 1.1
+# define OBJ_EXPOSURE_RATIO 1.05
 # define LIGHT_RATIO 0.01
 
 # define MAX_LINES	128
@@ -122,6 +122,7 @@ typedef struct s_camera
 	float		focal_len;
 	float		focus_dist;
 	float		aperture;
+	float		exposure;
 }				t_camera;
 
 typedef struct s_light
@@ -260,7 +261,7 @@ int				get_red(unsigned int color);
 int				get_green(unsigned int color);
 int				get_blue(unsigned int color);
 t_vector		update_color(t_data *data, t_vector color, int x, int y);
-t_vector		clamp_color(t_vector color);
+t_vector		clamp_color(t_data *data, t_vector color);
 void			update_image(t_data *data);
 
 int				mrt_error_message(int error, int line);
