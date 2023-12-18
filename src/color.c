@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 07:39:51 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/18 13:08:06 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:52:44 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ t_vector	get_img_pixel(mlx_texture_t *texture, int x, int y)
 	t_vector	color;
 	uint8_t		*curr;
 
-	curr = &texture->pixels[(y * texture->width + x) * texture->bytes_per_pixel]; 
+	curr = &texture->pixels[(y * texture->width + x)
+		* texture->bytes_per_pixel]; 
 	color.x = (float) *curr / 255;
 	curr++;
 	color.y = (float) *curr / 255;

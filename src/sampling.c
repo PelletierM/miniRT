@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 17:01:33 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/15 14:37:08 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:24:10 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_vector	update_color(t_data *data, t_vector color, int x, int y)
 {
-	t_vector new_color;
+	t_vector	new_color;
 
 	data->accumulator[y * data->width + x] = vadd(
 			data->accumulator[y * data->width + x], color);

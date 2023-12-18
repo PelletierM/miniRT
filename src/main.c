@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:10:58 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/15 15:53:58 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:06:25 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void		display_delta(struct timeval t_start);
 long int	get_time_in_micro(struct timeval t);
 void		delete_textures(t_data data);
+void		launch_threads(t_data *data);
 
 int	main(int argc, char *argv[])
 {
@@ -38,17 +39,23 @@ int	main(int argc, char *argv[])
 
 void	render(t_data *data)
 {
-	int			i;
-	t_thread	threads[THREAD_MAX];
-	struct timeval	start;
-
-	i = 0;
 	if (data->samples == 1)
 	{
-		ft_bzero(data->accumulator, sizeof(t_vector) * data->width * data->height );
+		ft_bzero(data->accumulator, sizeof(t_vector)
+			* data->width * data->height);
 		mrt_create_cam(data);
 	}
-	gettimeofday(&start, NULL);
+	launch_threads(data);
+	update_image(data);
+	data->samples++;
+}
+
+void	launch_threads(t_data *data)
+{
+	t_thread		threads[THREAD_MAX];
+	int				i;
+
+	i = 0;
 	while (i < THREAD_MAX)
 	{
 		threads[i].id = i;
@@ -67,31 +74,9 @@ void	render(t_data *data)
 		pthread_join(threads[i].thread, NULL);
 		i++;
 	}
-	update_image(data);
-	display_delta(start);
-	data->samples++;
 }
 
-void	display_delta(struct timeval t_start)
-{
-	struct timeval	t_end;
-	long int		start;	
-	long int		end;	
-	float			delta;
-
-	gettimeofday(&t_end, NULL);
-	start = get_time_in_micro(t_start);
-	end = get_time_in_micro(t_end);
-	delta = (end - start) / 1000;
-	ft_printf("Rendered in : %fms\n", delta);
-}
-
-long int	get_time_in_micro(struct timeval t)
-{
-	return (t.tv_sec * 1000 * 1000 + t.tv_usec);
-}
-
-void		delete_textures(t_data data)
+void	delete_textures(t_data data)
 {
 	int		i;
 

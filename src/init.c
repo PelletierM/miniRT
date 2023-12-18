@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:42:07 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/18 08:54:11 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:54:51 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ static void	mrt_init_data_2(t_data *data)
 	data->height = WIN_HEIGHT;
 	data->ratio = (float) data->width / (float) data->height;
 	data->samples = 1;
-	data->accumulator = malloc (sizeof (t_vector) * RES_MAX_WIDTH * RES_MAX_HEIGHT);
+	data->accumulator = malloc (sizeof (t_vector)
+			* RES_MAX_WIDTH * RES_MAX_HEIGHT);
 }
 
 int	ft_mlx_init(t_data *data)

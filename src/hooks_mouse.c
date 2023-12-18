@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:10:15 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/15 16:30:03 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:54:12 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	ft_get_click_target(t_data *data)
 	hit = get_closest_hit(data, ray);
 	if (hit.t != -1)
 	{
-		hit_dist = vsub(vadd(ray.position, vsmul(ray.orientation, hit.t)), data->camera.position);
+		hit_dist = vsub(vadd(ray.position, vsmul(ray.orientation, hit.t)),
+				data->camera.position);
 		data->camera.focus_dist = sqrt(vdot(hit_dist, hit_dist));
 		data->nav_flag = 0;
 		data->nav_mode.obj = hit.shape;
