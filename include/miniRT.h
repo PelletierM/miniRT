@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:42:04 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/18 15:41:45 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/18 16:19:31 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define MAX_BOUNCE 10
 // Camera and viewport settings 
 # define VP_DIAG 0.04327
-# define CAM_APERTURE 2.8
+# define CAM_APERTURE 35.8
 # define CAM_FOCUS_DIST 3
 # define CAM_EXPOSURE 1.0
 # define WIN_HEIGHT 720
