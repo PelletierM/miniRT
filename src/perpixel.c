@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:06:59 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 16:29:22 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/17 14:49:47 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ t_vector	trace_pixel(t_data *data, t_ray ray, int depth)
 		return (color);
 	get_object_color(data, &hit, ray);
 	emissive_ratio = get_emissive_ratio(data, hit);
+	get_object_color(data, &hit, ray);
 	if (emissive_ratio > 0)
 		return (vsmul(hit.color, emissive_ratio));
 	get_normal_hit(data, ray, &hit);

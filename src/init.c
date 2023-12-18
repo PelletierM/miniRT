@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:42:07 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/14 16:55:22 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/15 17:30:59 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	mrt_init_data_2(t_data *data)
 	data->flag = 0;
 	data->num_spheres = 0;
 	data->num_planes = 0;
+	data->num_triangles = 0;
 	data->num_materials = 0;
 	data->num_cylinders = 0;
 	data->nav_mode.obj = OBJ_CAM;
