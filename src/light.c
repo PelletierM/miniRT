@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 09:26:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 16:39:35 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:55:22 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			is_shadow(t_hit hit, t_data *data);
 
-t_vector get_light(t_hit hit, t_data *data)
+t_vector	get_light(t_hit hit, t_data *data)
 {
 	float		light;
 	t_vector	light_direction;
