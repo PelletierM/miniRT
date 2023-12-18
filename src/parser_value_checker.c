@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:08:12 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/14 13:00:02 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/18 14:08:04 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,13 @@ int	check_materials(t_data data)
 		if (data.materials[i].id < 0)
 			return (1);
 		if (data.materials[i].roughness < 0
-				&& data.materials[i].roughness > 1)
+			&& data.materials[i].roughness > 1)
 			return (1);
 		if (data.materials[i].metallic < 0
-				&& data.materials[i].metallic > 1)
+			&& data.materials[i].metallic > 1)
 			return (1);
 		if (data.materials[i].emissive_ratio < 0
-				&& data.materials[i].emissive_ratio > 5)
+			&& data.materials[i].emissive_ratio > 5)
 			return (1);
 		i++;
 	}
