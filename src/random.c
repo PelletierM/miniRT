@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:15:21 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/18 14:19:42 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/18 14:25:32 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_vector	vrandom_range(float min, float max)
 t_vector	random_unit_vector(void)
 {
 	t_vector	v;
+
 	while (true)
 	{
 		v = vrandom_range(-1, 1);
