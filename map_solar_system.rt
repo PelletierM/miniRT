@@ -1,13 +1,13 @@
 A   0.0   255,255,255
 
 C   0,3,28   0,0,-1  66
-L   0,2,0   0.0     250,250,250
+L   0,2,25   0.5     250,250,250
 
 
-#sp  5,0,25   0.1    0
+sp  5,0,25   0.5    0
 sp  -1,0,25   3    1
 sp  -1.3,0,-25   40    2
 
-mt  0  1  1 0 255,255,255 ./textures/moon.png ./textures/moon_norm.png
+mt  0  1  0 0 255,255,255 ./textures/moon.png ./textures/moon_norm.png
 mt 1 1 0 0 255,255,255 ./textures/earth.png  ./textures/earth_norm.png
 mt 2  1  0 1 255,255,255 ./textures/sun.png ./textures/sun_norm.png
