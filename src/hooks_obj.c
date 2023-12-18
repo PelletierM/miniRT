@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:54:24 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/15 15:41:13 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 09:35:08 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,14 @@ void	ft_keyhook_scale_obj(mlx_key_data_t keydata, t_data *data)
 		data->nav_flag += OBJ_SCALE_DOWN_B;
 	if (keydata.key == MLX_KEY_U && (keydata.action == MLX_RELEASE))
 		data->nav_flag = data->nav_flag & ~OBJ_SCALE_DOWN_B;
+	if (keydata.key == MLX_KEY_LEFT_BRACKET && (keydata.action == MLX_PRESS))
+		data->nav_flag += OBJ_SCALE_DOWN_C;
+	if (keydata.key == MLX_KEY_LEFT_BRACKET && (keydata.action == MLX_RELEASE))
+		data->nav_flag = data->nav_flag & ~OBJ_SCALE_DOWN_C;
+	if (keydata.key == MLX_KEY_RIGHT_BRACKET && (keydata.action == MLX_PRESS))
+		data->nav_flag += OBJ_SCALE_UP_C;
+	if (keydata.key == MLX_KEY_RIGHT_BRACKET && (keydata.action == MLX_RELEASE))
+		data->nav_flag = data->nav_flag & ~OBJ_SCALE_UP_C;
 }
 
 int	check_cam_hook(t_data *data, int i)
@@ -92,7 +100,7 @@ int	check_cam_hook(t_data *data, int i)
 		rot_cam(data, i);
 		return (1);
 	}
-	if (i <= 8192 && data->nav_flag & i)
+	if (i <= 32768 && data->nav_flag & i)
 	{
 		zoom_cam(data, i);
 		return (1);

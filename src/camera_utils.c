@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 11:47:59 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/15 15:48:58 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 09:38:51 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ float	cap_aperture(float aperture)
 	if (aperture > 30)
 		aperture = 30;
 	return (aperture);
+}
+
+float	cap_exposure(float exposure)
+{
+	if (exposure < 0.1)
+		exposure = 0.1;
+	if (exposure > 10)
+		exposure = 10;
+	return (exposure);
 }
 
 t_vector	cap_axis_y(t_vector v)
