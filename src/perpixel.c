@@ -69,6 +69,7 @@ t_vector	trace_pixel(t_data *data, t_ray ray, int depth)
 	hit = get_closest_hit(data, ray);
 	if (hit.t == MAX_DIST)
 		return (color);
+	get_object_color(data, &hit, ray);
 	emissive_ratio = get_emissive_ratio(data, hit);
 	get_object_color(data, &hit, ray);
 	if (emissive_ratio > 0)

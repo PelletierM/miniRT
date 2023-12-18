@@ -25,8 +25,9 @@
 # define MAX_BOUNCE 10
 // Camera and viewport settings 
 # define VP_DIAG 0.04327
-# define CAM_APERTURE 5.4
+# define CAM_APERTURE 2.8
 # define CAM_FOCUS_DIST 3
+# define CAM_EXPOSURE 2.0
 # define WIN_HEIGHT 720
 # define WIN_WIDTH 1280
 # define RES_MAX_HEIGHT 1440
@@ -50,8 +51,12 @@
 # define OBJ_SCALE_DOWN 2048
 # define OBJ_SCALE_UP_B 4096
 # define OBJ_SCALE_DOWN_B 8192
+# define OBJ_SCALE_UP_C	16384
+# define OBJ_SCALE_DOWN_C 32768
 # define OBJ_ZOOM_RATIO 0.0872665
 # define OBJ_SCALE_RATIO 1.05
+# define OBJ_APERTURE_RATIO 1.1
+# define OBJ_EXPOSURE_RATIO 1.1
 # define LIGHT_RATIO 0.01
 
 # define MAX_LINES	1200

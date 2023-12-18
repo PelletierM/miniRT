@@ -6,13 +6,14 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 08:34:22 by maxpelle          #+#    #+#             */
-/*   Updated: 2023/12/08 11:52:07 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/15 16:30:19 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 float		cap_fov(float fov);
+float		cap_aperture(float aperture);
 t_vector	cap_axis_y(t_vector v);
 
 void	mrt_create_cam(t_data *data)
@@ -28,6 +29,7 @@ void	mrt_create_cam(t_data *data)
 	data->camera.y_axis = vcross(data->camera.x_axis, data->camera.z_axis);
 	data->camera.y_axis = vnormalize(data->camera.y_axis);
 	data->camera.fov = cap_fov(data->camera.fov);
+	data->camera.aperture = cap_aperture(data->camera.aperture);
 	data->camera.focal_len = (float) VP_DIAG / (tanf(data->camera.fov / 2) * 2);
 	data->camera.vp_vert_len = sqrt(pow(VP_DIAG, 2)
 			/ (pow(data->ratio, 2) + 1));

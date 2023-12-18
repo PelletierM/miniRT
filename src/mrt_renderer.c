@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:10:24 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/15 14:49:05 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/15 16:53:08 by maxpelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	get_range(int id, t_data *data, int *range)
 	if (THREAD_MAX > 0)
 		div = (int)((data->width * data->height) / THREAD_MAX);
 	remaining = (int)((data->width * data->height) % THREAD_MAX);
-	mrt_create_cam(data);
 	range[0] = id * div;
 	if (remaining > id)
 		range[0] += id;
@@ -77,8 +76,8 @@ float	clamp_image(t_data *data)
 		x++;
 	}
 	ratio = 1;
-	if (max > 1)
-		ratio = 1 / max; 
+	if (max > 1 * CAM_EXPOSURE)
+		ratio = 1 * CAM_EXPOSURE / max; 
 	return (ratio);
 }
 
@@ -99,6 +98,7 @@ void	update_image(t_data *data)
 			color.x = ratio * data->accumulator[y * data->width + x].x;
 			color.y = ratio * data->accumulator[y * data->width + x].y;
 			color.z = ratio * data->accumulator[y * data->width + x].z;
+			color = clamp_color(color);
 			mlx_put_pixel(data->img, x, y, get_vect_rgba(color));
 			y++;
 		}
