@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:23:36 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/18 14:31:08 by maxpelle         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:51:29 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	is_in_triangle(t_triangle tr, t_vector pt)
 	a1 = calculate_area(tr.c1, tr.c2, pt);
 	a2 = calculate_area(tr.c3, tr.c2, pt);
 	a3 = calculate_area(tr.c1, tr.c3, pt);
-	if (a1 + a2 + a3 == area)
+	if (a1 + a2 + a3 <= area + 0.2)
 		return (1);
 	return (0);
 }
