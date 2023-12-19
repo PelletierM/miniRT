@@ -89,21 +89,6 @@ test:
 		bash ./test_parsing.sh ; \
 		cd ..
 
-render:
-	make
-	./miniRT map.rt
-
-wolf:
-	make
-	./miniRT wolf.rt
-
-solar:
-	make
-	./miniRT map_solar_system.rt
-triangle:
-	make
-	./miniRT triangle.rt
-
 clean:
 	make -C $(LIBFT_DIR) clean
 	rm -rf $(LIB_DIR)/MLX42

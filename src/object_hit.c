@@ -6,7 +6,7 @@
 /*   By: maxpelle <maxpelle@student.42quebec.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 09:17:58 by eguefif           #+#    #+#             */
-/*   Updated: 2023/12/18 10:11:22 by eguefif          ###   ########.fr       */
+/*   Updated: 2023/12/19 10:16:00 by eguefif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,20 @@ void	check_cylinders_hit(t_data *data, t_ray ray, t_hit *hit)
 {
 	int		i;
 	float	t;
+	int		flag;
 
 	i = 0;
+	flag = 4;
 	while (i < data->num_cylinders)
 	{
-		t = check_hit_cylinders(data->cylinders[i], ray, &hit->flag);
+		t = check_hit_cylinders(data->cylinders[i], ray, &flag);
 		if (t > 0 && t < hit->t)
 		{
 			hit->color = vcopy(data->cylinders[i].color);
 			hit->t = t;
 			hit->shape = OBJ_CYL;
 			hit->i = i;
+			hit->flag = flag;
 		}
 		i++;
 	}
