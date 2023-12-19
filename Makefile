@@ -12,16 +12,16 @@ MLX42_DIR = $(LIB_DIR)/MLX42/build
 IDIR = include
 
 SRCDIR = ./src
-SRC = main.c parser.c parser_check.c parser_checker_line.c parser_value_setter.c \
-	  errors.c parser_utils.c parser_ambient.c color.c parser_camera.c \
-	  parser_light.c parser_sphere.c parser_plane.c parser_cylinder.c init.c parser_value_checker.c \
-	  parser_value_checker2.c parser_utils2.c mrt_renderer.c hit_sphere.c \
-	  op_vectors1.c op_vectors2.c camera.c hooks.c vect_utils1.c hit_cylinder.c \
-	  quadratic.c cylinder_utils.c color2.c object_hit.c hit_plane.c \
-	  object_normal_hit.c light.c camera_utils.c camera_mvmt.c \
-	  vect_utils2.c hooks_obj.c hooks_mouse.c obj_mvmt.c hooks_mode.c \
-	  perpixel.c sampling.c parser_material.c material1.c material2.c random.c \
-	  texture.c texture_plane.c texture_sphere.c parser_triangle.c hit_triangle.c
+SRC = main_bonus.c parser_bonus.c parser_check_bonus.c parser_checker_line_bonus.c parser_value_setter_bonus.c \
+	  errors_bonus.c parser_utils_bonus.c parser_ambient_bonus.c color_bonus.c parser_camera_bonus.c \
+	  parser_light_bonus.c parser_sphere_bonus.c parser_plane_bonus.c parser_cylinder_bonus.c init_bonus.c parser_value_checker_bonus.c \
+	  parser_value_checker2_bonus.c parser_utils2_bonus.c mrt_renderer_bonus.c hit_sphere_bonus.c \
+	  op_vectors1_bonus.c op_vectors2_bonus.c camera_bonus.c hooks_bonus.c vect_utils1_bonus.c hit_cylinder_bonus.c \
+	  quadratic_bonus.c cylinder_utils_bonus.c color2_bonus.c object_hit_bonus.c hit_plane_bonus.c \
+	  object_normal_hit_bonus.c light_bonus.c camera_utils_bonus.c camera_mvmt_bonus.c \
+	  vect_utils2_bonus.c hooks_obj_bonus.c hooks_mouse_bonus.c obj_mvmt_bonus.c hooks_mode_bonus.c \
+	  perpixel_bonus.c sampling_bonus.c parser_material_bonus.c material1_bonus.c material2_bonus.c random_bonus.c \
+	  texture_bonus.c texture_plane_bonus.c texture_sphere_bonus.c parser_triangle_bonus.c hit_triangle_bonus.c
 
 SRC_BONUS = 
 
@@ -30,7 +30,7 @@ SRCS_BONUS = $(addprefix $(SRCDIR)/, $(SRC_BONUS))
 
 all: $(PROGNAME)
 
-$(PROGNAME): $(LIB_DIR)/$(MLX42) $(LIB_DIR)/$(LIBFT) $(SRCS) $(IDIR)/miniRT.h 
+$(PROGNAME): $(LIB_DIR)/$(MLX42) $(LIB_DIR)/$(LIBFT) $(SRCS) $(IDIR)/miniRT_bonus.h 
 	$(CC) $(CFLAGS) -I$(IDIR) $(LIB_DIR)/$(MLX42) -lm -L"/Users/$(USER)/.brew/opt/glfw/lib/" -lglfw -framework Cocoa -framework OpenGL -framework IOKit -L$(LIB_DIR) -l$(patsubst lib%.a,%,$(LIBFT)) $(SRCS) -o $(PROGNAME)
 
 bonus: $(LIB_DIR)/$(MLX42) $(LIB_DIR)/$(LIBFT) $(SRCS_BONUS)  

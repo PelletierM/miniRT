@@ -10,3 +10,4 @@ include/MLX42.h
 include/libft.h
 *.dSYM
 textures
+src_bu
