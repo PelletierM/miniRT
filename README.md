@@ -1,6 +1,6 @@
 # miniRT (Ray Tracer)
 
-miniRT is a basic ray tracing application coded in C which is capable of rendering spheres, cylinders, planes and triangles. It can handle various material properties such as specular / diffuse reflections, emissivity and texture maps. It also includes a camera system that replicates some of the behaviour of a real camera, allowing the user to control aperture (affecting camera blur), focal length (zoom) and exposure.
+miniRT is a basic ray tracing application written in C which is capable of rendering spheres, cylinders, planes and triangles. It can handle various material properties such as specular / diffuse reflections, emissivity and texture maps. It also includes a camera system that replicates some of the behaviour of a real camera, allowing the user to control aperture (affecting camera blur), focal length (zoom) and exposure.
 
 Rendering is done on the CPU, using multiple threads to increase render speeds. The application lets you move around the scene using different keybindings and also allows the selection of objects to move / scale them. As the user remains stationary, more and more samples accumulate to increase the render's quality.
 
