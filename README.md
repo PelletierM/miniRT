@@ -16,7 +16,7 @@ Rendering is done on the CPU, using multiple threads to increase render speeds. 
 - Geometrical optics
 - Teamwork and communication
 
-### Sample render
+### Render sample
 
 ![Sample render](https://github.com/PelletierM/miniRT/blob/master/scenes/renders/spheres.png?raw=true)
 Other render samples: https://github.com/PelletierM/miniRT/blob/master/scenes/renders/
